@@ -69,7 +69,7 @@ header h2{
 	float: right;
 	width: 200px;
 	height:550px;
-	background-color:#DFD;
+	background-color:lavender;
 	padding-top:20px;
 	padding-left:10px;
 	padding-right:10px;
@@ -96,7 +96,7 @@ header h2{
 
 footer {
 	padding: 10px 0;
-	background-color:#030;
+	background-color:#9370DB;
 	color:#fff;
 	text-align:center;
 	clear: both;
