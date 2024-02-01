@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>군산 메인</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,600,1,0" />
+    <link rel="stylesheet" href="css/styleLee.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+
+    <style>
+        #main-header {
+            text-align : center;
+        }
+        #gunsan-left {
+            width : 50%;
+            height: 50%;
+            float : left;
+        }
+        #gunsan-left-group {
+            clear : both;
+            border : 2px solid #b23232;
+            margin : 0 30px 0 30px;
+        }
+        #gunsan-left-group p {
+            text-align : center;
+            margin : -35px 0 0 0;
+            color: #ffffff;
+            background-color : #5e5e5e;
+        }
+        #gunsan-right {
+            width:50%;
+            float : right;
+        }
+        #gunsan-right-introduce {
+            padding-top : 100px;
+        }
+        #gunsan-right-introduce p {
+            line-height: 1.3em;
+        }
+        #gunsan-map {
+            display: flex;
+            align-items: center;
+        }
+        #gunsan-night img {
+            width : 100%;
+            height : 95%;
+            padding : 0 0 30px 0;
+        }
+        #gunsan-weather table,th,td {
+            align-items: center;
+            border : 1px solid #adadad;
+            padding : 6px 12px;
+            border-collapse: collapse;
+        }
+        .weather img {
+            width : 50px;
+        }
+        .weather td {
+
+        }
+    </style>
+    <script>
+        $(function() {
+            $('.slide_gallery').bxSlider({
+                auto: true,
+                autoControls: true,
+                stopAutoOnClick: true,
+                pager: true
+            });
+        });
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom">
+    <div class="container">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="#offcanvas" aria-labelledby="#offcanvasLabel">
+            <ul class="navbar-nav flex-grow-1 justify-content-between">
+                <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a>
+                    <ul class = sub-nav>
+                        <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+                    </ul>
+                <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                    <ul class = sub-nav>
+                        <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                    </ul>
+                <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                    <ul class = sub-nav>
+                        <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                    </ul>
+                <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                    <ul class = sub-nav>
+                        <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">금강권</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                    </ul>
+                <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                    <ul class = sub-nav>
+                        <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                        <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                        <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                    </ul>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<section id ="main-header">
+    <h2>전라북도 군산시</h2>
+</section>
+<br>
+<div id="gunsan-left">
+    <div id="gunsan-left-group">
+        <div class="slide_gallery">
+            <img src="images/KakaoTalk_20240112_181558982.jpg" alt="동국사">
+            <img src="images/20180803_112753_HDR.jpg" alt="신흥동 일본식 가옥(히로쓰 가옥)">
+            <img src="images/KakaoTalk_20240112_181558982_01.jpg" alt="초원사진관">
+            <img src="images/KakaoTalk_20240112_181558982_02.jpg" alt="호남관세박물관(구 군산세관)">
+            <img src="images/KakaoTalk_20240112_181558982_03.jpg" alt="진포해양테마공원">
+            <img src="images/KakaoTalk_20240112_181558982_04.jpg" alt="임피역사">
+        </div>
+        <p>군산의 대표 관광지</p>
+    </div>
+</div>
+<div id="gunsan-right">
+    <div id="gunsan-right-introduce">
+        <h3>도시에 대한 정보</h3>
+        <hr>
+        <p>1930년대 우리나라 근대역사를 고스란히 간직한 도시 군산.<br>
+            근대문화유산 투어 코스를 따라 걷다보면 곳곳에 남아있는 일본식 주택과 근대건축물들을 쉽게 볼 수 있습니다.<br>
+            2.5km 길이의 오래된 철도가 놓인 경암동 철길마을은 출사지로도 유명하며<br>
+            우리나라에서 가장 오래된 빵집, 전국 5대 짬뽕 맛집, 70년 역사의 호떡집 등 군산 맛집 먹방 여행도 추천합니다.</p>
+        <p>호남평야 북서부 말단, 금강 하구 좌안(남안)에 있으며,<br>
+            동쪽은 익산시, 북쪽은 금강을 사이에 두고 충청남도 서천군,<br>
+            남쪽은 만경강을 경계로 김제시와 접하고, 서쪽은 황해에 면합니다.</p>
+        <hr>
+    </div>
+</div>
+<div id="gunsan-weather">
+    <table>
+        <caption align="center">군산의 날씨</caption>
+        <tr>
+            <th>1.15</th>
+            <th>1.16</th>
+            <th>1.17</th>
+            <th>1.18</th>
+            <th>1.19</th>
+            <th style="color:blue">1.20</th>
+            <th style="color:red">1.21</th>
+        </tr>
+        <tr>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+            <th style="color:blue">토</th>
+            <th style="color:red">일</th>
+        </tr>
+        <tr class="weather">
+            <td><img src="images/sunny.jpg"></td>
+            <td><img src="images/cloud-sun.jpg"></td>
+            <td><img src="images/cloud2.jpg"></td>
+            <td><img src="images/rain.jpg"></td>
+            <td><img src="images/cloud2.jpg"></td>
+            <td><img src="images/cloud2.jpg"></td>
+            <td><img src="images/cloud2.jpg"></td>
+        </tr>
+        <tr class="weather">
+            <th><span style="color: blue">-5º</span> / <span style="color: red">3º</span></th>
+            <th><span style="color: blue">-5º</span> / <span style="color: red">5º</span></th>
+            <th><span style="color: blue">-2º</span> / <span style="color: red">5º</span></th>
+            <th><span style="color: blue">2º</span> / <span style="color: red">6º</span></th>
+            <th><span style="color: blue">5º</span> / <span style="color: red">7º</span></th>
+            <th><span style="color: blue">4º</span> / <span style="color: red">9º</span></th>
+            <th><span style="color: blue">2º</span> / <span style="color: red">7º</span></th>
+        </tr>
+    </table>
+</div>
+
+<div id="gunsan-map">
+    <img align="center" src="images/군산%20관광지도%20map01_page-0001.jpg" width=750px height=511px usemap="#mapNavi">
+    <map name="mapNavi">
+        <!--
+        이미지가 area태그에서 지정한 도형의 영역안에서 클릭을 하여 링크 이동
+        shape가 rect인 경우 좌상단, 우하단의 좌표로 사각형 위치 표시
+        예) coords="10,10,160,200" => 좌상단: (10,10), 우하단: (160,200)
+        -->
+        <area shape="poly" coords="456,86,478,172,551,172,577,115,510,61" href="Gunsan_Travel.html" target="_blank" alt="금강권으로 가기">
+        <area shape="rect" coords="11,11,247,172" href="Gunsan_Travel_2.html" target="_blank" alt="고군산군도로 가기">
+        <area shape="rect" coords="371,134,467,253" href="Gunsan_Travel_3.html" target="_blank" alt="시간여행테마로 가기1">
+        <area shape="rect" coords="561,311,738,499" href="Gunsan_Travel_3.html" target="_blank" alt="시간여행테마로 가기2">
+        <area shape="poly" coords="488,221,636,269,676,240,656,134,532,167" href="Gunsan_Travel_4.html" target="_blank" alt="개정 / 임피면으로 가기">
+    </map>
+</div>
+</body>
+</html>

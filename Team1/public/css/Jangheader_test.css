@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Varela+Round&display=swap');
+/**{*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    box-sizing: border-box;*/
+/*}*/
+.container1 a, a:link, a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+.container1 li{
+    list-style: none;
+}
+.container1{
+    width: 100%;
+    height:13%;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    color: wheat;
+    font-weight: bold;
+    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+    padding: 10px;
+    z-index: 1;
+    background: #3c3c3c;
+}
+.container1 ul{
+    text-align: center;
+}
+.nav-item {
+    list-style: none;
+    float: none;
+    padding: 10px;
+    display: inline-block;
+    align-items: center;
+    margin: 5px 10px;
+    justify-content: center;
+    width: 150px;
+    position: relative;
+    font-weight: bold;
+}
+header button{
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+header button{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.sub-nav {
+    display: none;
+    background-color: #555;
+    padding: 10px;
+    margin: auto;
+}
+.nav-item:hover .sub-nav {
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+.nav-item a:hover{
+    color: yellow;
+    text-decoration: underline;
+}

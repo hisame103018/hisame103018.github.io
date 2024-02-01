@@ -1,0 +1,44 @@
+.footer {
+    width:101%;
+    background-color:#3c3c3c;
+    color:wheat;
+    height: 152px;
+    margin-top: 50px;
+}
+.footer-text {
+    float:left;
+    width:57%;
+    vertical-align: middle;
+    margin: 35px 0 0 35px;
+}
+.footer-text p {
+    text-align : right;
+    margin: 10px 100px 0 0;
+}
+.footer-text ul {
+    margin : 20px 50px 0 0;
+}
+.footer-text li {
+    float:right;
+    margin-left : 20px;
+}
+.footer-text2 {
+    float:right;
+    width:20%;
+}
+.footer-text2 ul {
+    margin-top : 25px;
+    padding-right:70px;
+    text-align:right;
+}
+.footer-text2 li {
+    font-size : 14px;
+    margin:2px 0;
+}
+.footer li {
+    list-style-type : none;
+}
+.footer a {
+    color:wheat;
+    text-decoration: none;
+}

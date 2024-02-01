@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울 홈</title>
+    <link rel="stylesheet" href="css/Jangheader_test.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.bxslider.min.css">
+
+  <style>
+    #main {
+        background-color: #ffffff;
+        width : 90%;
+        margin-left : 120px;
+        margin-top: 150px;
+    }
+    #main-header {
+        text-align : center;
+        margin : 40px 0;
+    }
+    #seoul-left {
+        width : 50%;
+        float : left;
+    }
+    #seoul-left-group {
+        clear : both;
+        margin : 0 40px 0 40px;
+    }
+    #seoul-left-group p {
+        text-align : center;
+        margin : 0 0 0 0;
+        color: #ffffff;
+        background-color : #5e5e5e;
+    }
+    #seoul-right {
+        width:50%;
+        float : right;
+    }
+    #seoul-right-introduce {
+        padding-top : 10px;
+        padding-bottom : 10px;
+    }
+    #seoul-right-introduce p {
+        line-height: 1.3em;
+    }
+    #seoul-night {
+        clear : both;
+    }
+    #seoul-night li {
+        list-style : none;
+    }
+    #seoul-night img {
+        width : 100%;
+    }
+    #seoul-weather table,th,td {
+        border : 1px solid #adadad;
+        padding : 7px 13px;
+        border-collapse: collapse;
+        background-color : #ffffff;
+        text-align : center;
+    }
+    .weather img {
+        width : 50px;
+    }
+    .weather td {
+        clear:both;
+    }
+    .weather .blue {
+        color : blue;
+        font-weight : bold;
+        padding-right : 2px;
+    }
+    .weather .red {
+        color : red;
+        font-weight : bold;
+        padding-left : 2px;
+    }
+    .weather .slash {
+        color : #a8a8a8;
+    }
+    #map {
+        background-color: #e0f1fb;
+        margin-top : 20px;
+    }
+    #map img {
+
+        width : 70%;
+        padding-left : 300px;
+    }
+    #scrollToTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        background-color: rgba(0, 0, 0, 0);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
+    #scrollToTopBtn img {
+        width:50px;
+    }
+
+
+  </style>
+    <script>
+        $(function() {
+            $("#seoul-night").bxSlider({
+                auto:true,
+                autoControls:false,
+                pagerCustom: ".slider-pager"
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+<div class="container1">
+    <nav>
+        <ul>
+            <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                </ul>
+        </ul>
+    </nav>
+</div>
+
+
+<div id="main">
+    <section id ="main-header">
+        <h1 style="font-weight:bold;">서울특별시</h1>
+    </section>
+    <div id="seoul-introduce">
+        <div id="seoul-left">
+            <div id="seoul-left-group">
+                <p>서울의 야경</p>
+                <ul id="seoul-night">
+                    <li><img src="images/seoul-night.jpg"></li>
+                    <li><img src="images/seoul-image1.jpg"></li>
+                    <li><img src="images/seoul-night2.jpg"></li>
+                    <li><img src="images/seoul-night3.jpg"></li>
+                </ul>
+            </div>
+        </div>
+        <div id="seoul-right">
+            <div id="seoul-right-introduce">
+                <h3>도시에 대한 정보</h3>
+                <hr>
+                <p>서울특별시는 대한민국의 수도, 그리고 최대도시이다. 평양시, 경주시, 개성시와 함께 오랜 역사를 가진 한반도의 고도 중 하나다.<br>
+                    법률상 대한민국 제1의 도시로 규정되어 있다. 현재 한국에서 유일한 특별시고, 수장인 서울특별시장은 한국 광역자치단체장 중 유일하게 장관급 대우를 받으며 국무회의 참여권 및 발언권이 있다.<br>
+                    서울특별시는 한국 제2의 도시인 부산광역시보다도 인구가 약 3배 더 많은 명실상부한 한국의 종주도시다.</p>
+                <b>또한,</b>
+                <p>국내 관광객 기준으로나, 외국인 관광객 기준으로나 압도적으로 국내 1위의 관광도시이다.<br>
+                    서울은 경제도시, 교육도시, 문화도시, 의료도시, 행정도시일 뿐만 아니라 한국 최대의 관광도시기도 하다.<br>
+                    당장 서울을 제외한 나머지 모든 지자체를 합쳐야 서울에 방문하는 외국인 관광객 수를 넘어설 정도다.<br>
+                    물론 스키장이나 해수욕장 같은 경우는 서울에 없지만 서울과 교통으로 연결되지 않은 지역은 거의 없기 때문에<br>
+                    서울 시민이 스키나 스노보드, 해수욕을 즐기기 위한 난이도는 다른 지역에 비해서 매우 낮은 편이다.</p>
+                <hr>
+            </div>
+        </div>
+        <div id="seoul-weather">
+            <table>
+                <caption></caption>
+                <tr>
+                    <th style="color:red">1.14</th>
+                    <th>1.15</th>
+                    <th>1.16</th>
+                    <th>1.17</th>
+                    <th>1.18</th>
+                    <th>1.19</th>
+                    <th style="color:blue">1.20</th>
+                </tr>
+                <tr>
+                    <th style="color:red">일</th>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                    <th style="color:blue">토</th>
+                </tr>
+                <tr class="weather">
+                    <td><img src="images/sunny-rain.jpg"><br><span class="blue">-3˚</span><span class="slash">/</span><span class="red">2˚</span></td>
+                    <td><img src="images/sunny.jpg"><br><span class="blue">-4˚</span><span class="slash">/</span><span class="red">4˚</span></td>
+                    <td><img src="images/sunny.jpg"><br><span class="blue">1˚</span><span class="slash">/</span><span class="red">7˚</span></td>
+                    <td><img src="images/cloud-sun.jpg" style="width : 55px;"><br><span class="blue">3˚</span><span class="slash">/</span><span class="red">6˚</span></td>
+                    <td><img src="images/cloud.jpg"><br><span class="blue">0˚</span><span class="slash">/</span><span class="red">4˚</span></td>
+                    <td><img src="images/cloud2.jpg" style="width : 55px;"><br><span class="blue">-5˚</span><span class="slash">/</span><span class="red">0˚</span></td>
+                    <td><img src="images/cloud-sun.jpg"><br><span class="blue">-7˚</span><span class="slash">/</span><span class="red">-1˚</span></td>
+                </tr>
+            </table>
+        </div>
+        <div id="map">
+            <img src="images/map2.png">
+        </div>
+    </div>
+</div>
+<button id="scrollToTopBtn" onclick="scrollToTop()"><img src="images/up.png"></button>
+
+
+<footer class="footer">
+    <div class="footer-text">
+        <p>&copy; 주식회사 TRIP 2024.</p>
+        <ul>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">고객센터</a></li>
+        </ul>
+    </div>
+    <div class="footer-text2">
+        <ul> 운영진
+            <li>강연배</li>
+            <li>장준희</li>
+            <li>이은진</li>
+            <li>배호진</li>
+        </ul>
+    </div>
+</footer>
+<script>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    window.onscroll = function () {
+        var scrollButton = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+            scrollButton.style.display = "block";
+        } else {
+            scrollButton.style.display = "none";
+        }
+    };
+</script>
+</body>
+</html>

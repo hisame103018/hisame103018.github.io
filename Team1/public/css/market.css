@@ -1,0 +1,127 @@
+#main {
+    width : 85%;
+    margin-left : 150px;
+    margin-top:150px;
+    padding-left : 180px;
+}
+#main-header {
+    text-align : center;
+    margin-left:-100px;
+}
+#main-middle-img {
+    text-align : center;
+    margin-left:-100px;
+}
+#main-middle-img img {
+    display:inline-block;
+    width:40%;
+}
+#main-middle-img table,th,td {
+    border : 1px solid #505050;
+}
+h3 {
+    font-weight : bold;
+}
+#main-middle-text {
+    width:80%;
+}
+.divide {
+    width : 100%;
+    height : 1px;
+    background-color: #9b9b9b;
+    margin : 10px 0;
+}
+.middle-price p {
+    line-height : 1.3em;
+}
+.price li {
+    list-style-type : circle;
+    margin-left : -10px;
+}
+#market1 {
+    display : inline-block;
+}
+#market2 {
+    display : inline-block;
+    margin-bottom : 50px;
+}
+.lodging {
+    width : 330px;
+    display:inline-block;
+    float : left;
+}
+.lodging-img img {
+    width : 100%;
+}
+.lodging-name {
+    padding : 2px 0 2px 2px;
+}
+.lodging button {
+    font-size:13px;
+    float:right;
+    clear:both;
+}
+.hotel-name {
+    width: 330px; /* 초기 너비 설정 */
+    overflow: hidden; /* 초과된 내용 숨김 */
+    transition: width 0.5s ease;/* 너비 변경 애니메이션 */
+    position: relative; /* 부모 요소로부터 상대 위치 설정 */
+    border: 1px solid #ccc;
+}
+.expanded {
+    width: 450px; /* 확장된 상태의 너비 설정 */
+    height:200px;
+}
+
+.hidden-content {
+    display: none; /* 초기에는 내용을 숨김 */
+    position: absolute; /* 부모 요소에 상대적으로 위치 고정 */
+}
+
+.visible-content {
+    display: block; /* 버튼 클릭 시 내용을 보이게 함 */
+}
+.grade2 {
+    font-weight : bold;
+    font-size : 1.1em;
+    color : #626262;
+}
+.price1 {
+    font-size:0.8em;
+    color:gray;
+    margin-left : 92px;
+}
+.price2 {
+    color:red;
+    font-weight:bold;
+    font-size:1.2em;
+}
+.won {
+    color:red;
+    font-size:1.1em;
+}
+.bold {
+    font-weight: bold;
+}
+a {
+    color : #56aeff;
+}
+a:hover {
+    text-decoration : underline;
+}
+.hidden-content a {
+    color : #56aeff;
+}
+#middle4 {
+    clear :both;
+}
+.traffic li {
+    list-style-type: circle;
+    line-height : 1.4em;
+}
+#footer {
+    background-color : #212529;
+    color: #f3ddb2;
+    text-align:center;
+    padding : 20px 0;
+}

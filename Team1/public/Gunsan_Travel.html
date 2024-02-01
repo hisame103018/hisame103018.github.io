@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head><script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>금강권 여행 안내</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styleLee.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/card_style.css">
+
+  <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+
+        section {
+            position:relative;
+            background-image: url("images/1.jpg");
+            background-repeat: no-repeat;
+            background-position: center top;
+        }
+
+        section p {
+            font-size: 14px;
+        }
+
+        .box1 {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: wheat;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box1:hover {
+            background-color: burlywood;
+            font-weight: bold;
+        }
+
+        .box2 {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: wheat;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box2:hover {
+            background-color: burlywood;
+            font-weight: bold;
+        }
+
+        .box3 {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: wheat;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box3:hover {
+            background-color: burlywood;
+            font-weight: bold;
+        }
+        /* 돌아가기 버튼 */
+        .box4_top {
+            text-align: right;
+        }
+        .box4 {
+            display: inline-block;
+            padding: 5px 5px;
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: darkgray;
+            transition: background-color 0.3s ease;
+        }
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box4:hover {
+            background-color: gray;
+            font-weight: bold;
+        }
+        .card-text1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .chaShadow {
+            text-shadow: 2px 2px 2px #fff;
+        }
+    </style>
+    <script>
+        function scrollToPage1() {
+            // JavaScript를 사용하여 스크롤 페이지로 이동
+            var targetElement = document.getElementById('targetSection1');
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+        function scrollToPage2() {
+            // JavaScript를 사용하여 스크롤 페이지로 이동
+            var targetElement = document.getElementById('targetSection2');
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+        function scrollToPage3() {
+            // JavaScript를 사용하여 스크롤 페이지로 이동
+            var targetElement = document.getElementById('targetSection3');
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+    <script>
+        // JavaScript로 이벤트를 처리하는 부분입니다.
+        document.addEventListener('DOMContentLoaded', function () {
+            // 모든 이미지 요소를 가져옵니다.
+            var imageContainers = document.querySelectorAll('.card');
+
+            // 각 이미지에 대한 이벤트를 등록합니다.
+            imageContainers.forEach(function (container) {
+                var roundedTop = container.querySelector('.roundedTop');
+                var overlayImage = container.querySelector('.overlayImage');
+
+                container.addEventListener('mouseover', function () {
+                    // 오버레이 이미지를 보여주고, 기존 이미지를 숨깁니다.
+                    overlayImage.style.display = 'block';
+                    roundedTop.style.display = 'none';
+                });
+
+                container.addEventListener('mouseout', function () {
+                    // 기존 이미지를 보여주고, 오버레이 이미지를 숨깁니다.
+                    overlayImage.style.display = 'none';
+                    roundedTop.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-dark fixed-top border-bottom">
+        <div class="container">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="#offcanvas" aria-labelledby="#offcanvasLabel">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                            <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">금강권</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                            <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                            <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="py-5 text-center container">
+        <h1><strong>금강권</strong></h1><br>
+        <p class="chaShadow">금강(錦江)은 전라북도의 장수군에서 발원하여<br>
+            충청남도의 논산시에 있는 강경읍에서부터<br>
+            충청남도·전라북도의 도계를 이루며<br>
+            군산만으로 흘러드는 유로연장 397.79㎞의 강입니다.<br><br>
+            대한민국(남한 기준)의 국가하천 중에서<br>
+            본류 기준, 길이와 유역면적 공히 3위의 강입니다.
+        </p>
+        <p>
+            <button class="box1" onclick="scrollToPage1()">관광지 안내</button>&nbsp;
+            <button class="box2" onclick="scrollToPage2()">주변 맛집 안내</button>&nbsp;
+            <button class="box3" onclick="scrollToPage3()">주변 숙소 안내</button>
+        </p>
+    </section>
+    <div class="album py-5 bg-body-tertiary">
+        <div id="targetSection1">
+        <h3 align="center"><strong>관광지 안내</strong></h3>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/kumRiverFuture.jpg">
+                        <img class="overlayImage" src="images/kumRiver.gif">
+                        <div class="card-body">
+                            <p class="card-text1">금강미래체험관</p>
+                            <p class="card-text">금강하굿둑 부근에 위치한 금강미래체험관은 금강의 문화, 생태, 기후변화 전시 및 체험 시설입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://museum.gunsan.go.kr/new/contents/exhibition501.jsp">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/1011861222?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14111449.3364374,4303357.6835318,%EA%B8%88%EA%B0%95%EB%AF%B8%EB%9E%98%EC%B2%B4%ED%97%98%EA%B4%80,1011861222,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/ChaeMansikCulture.jpg">
+                        <img class="overlayImage" src="images/CMSculture.gif">
+                        <div class="card-body">
+                            <p class="card-text1">채만식문학관</p>
+                            <p class="card-text">채만식문학관은 재향 소설가 백릉 채만식 선생의 문학 업적을 기리기 위해 건립되었습니다.<br>
+                                금강 변에 자리한 160평 규모의 문학관은 정박한 배의 모습을 하고 있으며, 채만식 선생의 삶의 여정과 작품을 접할 수 있습니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://museum.gunsan.go.kr/new/contents/exhibition401.jsp">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/11796437?lng=126.75790000000008&lat=36.008657999102404&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14110624.8820247,4301812.7647749,%EC%B1%84%EB%A7%8C%EC%8B%9D%EB%AC%B8%ED%95%99%EA%B4%80,11796437,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/gunsan31Hundred.jpg">
+                        <img class="overlayImage" src="images/gunsanHundred.gif">
+                        <div class="card-body">
+                            <p class="card-text1">군산 3.1 운동 100주년기념관</p>
+                            <p class="card-text">군산은 한강 이남에서 최초로 3·1 만세 운동이 일어난 곳으로, 영명학교와 예수병원, 구암교회 등이 주축이 되어 만세운동을 일으켰으며 전국으로 만세운동을 전파하는 도화선이 되었습니다.<br>
+                                3.1 운동 100주년 기념관은 이러한 군산 독립만세운동의 역사성을 널리 알리고, 목숨 바쳐 독립운동을 하신 선조들의 고귀한 나라사랑 정신을 배우는데 목적을 두고 있습니다.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://museum.gunsan.go.kr/new/contents/exhibition601.jsp">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/search/%EA%B5%B0%EC%82%B03.1%EC%9A%B4%EB%8F%99?c=15.74,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14108895.8899576,4298835.6285903,%EA%B5%B0%EC%82%B0%203.1%EC%9A%B4%EB%8F%99%20100%EC%A3%BC%EB%85%84%20%EA%B8%B0%EB%85%90%EA%B4%80,1454709128,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/roadrail.jpg">
+                        <img class="overlayImage" src="images/kyungamRoad.gif">
+                        <div class="card-body">
+                            <p class="card-text1">경암동 철길마을</p>
+                            <p class="card-text">옛 군산화물역에서 군산시 동쪽에 있는 페이퍼코리아(구 세풍제지) 공장으로 들어가던 (구)세풍제지선, 페이퍼코리아선으로 알려진 화물용 인입선이었습니다.<br>
+                                이 선로가 유명해진 것은 경암동을 지나가는 구간이 선로 옆에 집들이 바짝 붙어 있는 구조였고 독특한 풍류도 있었기에 열차가 운행하던 시절에는 철도 동호인 및 사진 동호인들의 인기가 높아 이후 공장이 이전해 선로가 용도폐지되자 그대로 공원화되었습니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="#">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/31825959?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14108061.1162281,4298051.8599303,%EA%B2%BD%EC%95%94%EB%8F%99%EC%B2%A0%EA%B8%B8%EB%A7%88%EC%9D%84,31825959,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="box4_top">
+                <a href="#">
+                <button class="box4">위로 돌아가기</button>
+                </a>
+            </div>
+            <br>
+            <hr>
+            <div id="targetSection2">
+            <h3 align="center"><strong>주변 맛집 안내</strong></h3><br>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                       <img class="rounded-top" src="images/chanese1.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">진성원</p>
+                            <p class="card-text">금강권 주변에 알려진 중국집 중 하나로 여행객들에게 숨겨진 맛집으로 알려져있습니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/17160363?lng=126.72683248597194&lat=35.981268654006286&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14107166.4621828,4298044.2737255,%EC%A7%84%EC%84%B1%EC%9B%90,17160363,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">중식</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/korean1.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">장국명가</p>
+                            <p class="card-text">구암동에 위치한 한정식집으로 전복장, 간장게장, 보리비빔밥을 대표 메뉴가 있습니다.<br>
+                            군산시민과 관광객들을 통해 추천된 음식점입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/17162409?c=13.71,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14109994.1457898,4297555.2859514,%EC%9E%A5%EA%B5%AD%EB%AA%85%EA%B0%80,17162409,PLACE_POI/-/transit?c=13.71,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">한식</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/korean2.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">유성가든</p>
+                            <p class="card-text">군산시 성산면에 위치한 한정식집으로 꽃게장으로 대표적인 맛집입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/17190828?c=14.58,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14111054.6977105,4302221.9527976,%EC%9C%A0%EC%84%B1%EA%B0%80%EB%93%A0,17190828,PLACE_POI/-/transit?c=14.58,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">한식</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/korean3.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">금강해물칼국수</p>
+                            <p class="card-text">2008년 개업한 금강해물칼국수입니다.<br>
+                                정성을 다해 최고의 맛으로 모시겠습니다. 감사합니다.<br><br>
+                                2021년 8월부터 마지막주 수요일 휴무입니다.^^</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/12910096?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14110752.5432167,4302614.2696864,%EA%B8%88%EA%B0%95%ED%95%B4%EB%AC%BC%EC%B9%BC%EA%B5%AD%EC%88%98,12910096,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">칼국수, 만두</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/korean4.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">신가네칼국수</p>
+                            <p class="card-text">SBS 스타킹 전라도 팥칼국수, 새알팥죽 달인으로 1등 수상
+                                SBS 출발 모닝와이드 출연한 명품 맛집
+                                삼색 해물칼국수, 국내산 팥칼국수, 국내산 새알팥죽, 왕만두, 들깨수제비, 수제돈까스, 국내산 서리태 콩국수 등 판매
+                                어린이 놀이방 시설 완비</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/12883436?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14110749.5598631,4302585.9055257,%EC%8B%A0%EA%B0%80%EB%84%A4%EC%B9%BC%EA%B5%AD%EC%88%98,12883436,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">칼국수, 만두</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="box4_top">
+                <a href="#">
+                    <button class="box4">위로 돌아가기</button>
+                </a>
+            </div>
+            <br>
+            <hr>
+            <div id="targetSection3">
+                <h3 align="center"><strong>주변 숙소 안내</strong></h3><br>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/hotel1.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">군산스테이호텔</p>
+                            <p class="card-text">휴식과 위로가 필요한 요즘,
+                                지친 일상에서 벗어나 군산 자연의 향기 가득 최상의 뷰를 보며 머물 수 있는 낭만적인 이곳,
+                                Stay In, 군산스테이 관광호텔입니다.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://hotels.naver.com/item?hotelFileName=hotel%3AGunsan_Stay_Tourist_Hotel&adultCnt=2&checkIn=2024-01-23&checkOut=2024-01-24">예약하기</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/1034062538?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14111167.3577112,4302706.3191739,%EA%B5%B0%EC%82%B0%EC%8A%A4%ED%85%8C%EC%9D%B4%ED%98%B8%ED%85%94,1034062538,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">호텔</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/hotel2.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">군산 스테이인 1025</p>
+                            <p class="card-text">군산 스테이인 1025무인호텔이<br>
+                                2023년 5월 그랜드 오픈하였습니다.<br>
+                                고객님의 만족을 위해 세련되고 깔끔한 인테리어로 전객실을 꼼꼼하게 설계시공하였습니다.
+                                쾌적한 실내와 최신식 시설은 물론 청결 또한 세심하게 신경쓰고 있습니다.
+                                프라이빗한 공간과 더불어 자연을 만끽해보세요.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://booking.naver.com/booking/3/bizes/985063?tr=bnm">예약하기</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/1719584927?c=14.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14110164.976680394,4300692.937238181,%EC%8A%A4%ED%85%8C%EC%9D%B4%20%EC%9D%B8%201025%20%ED%98%B8%ED%85%94,1719584927,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">호텔</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/hotel3.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">라시에스타 호텔</p>
+                            <p class="card-text">군산 IC 5분거리 위치,<br>
+                                자차10분거리 철길마을, 철새조망대,<br>
+                                자전거 금강종주로, 클럽디 금강 골프장<br>
+                                1층 24시간 편의점과 40평규모의 이쁜카페가 가성비까지 좋아요~<br>
+                                조식은 토스트와 아메리카노를 룸으로 배달해드립니다.<br>
+                                아침 8시~9시, 3,900원/4,500원 체크인시 신청하세요~</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://hotels.naver.com/item/rates?adultCnt=2&hotelFileName=hotel%3AGunsan_La_Siesta_Hotel&checkIn=2024-01-24&checkOut=2024-01-25&includeTax=false">예약하기</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/278719591?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14112289.8721824,4301683.3508708,%EB%9D%BC%EC%8B%9C%EC%97%90%EC%8A%A4%ED%83%80%20%ED%98%B8%ED%85%94,278719591,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">호텔</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="box4_top">
+                <a href="#">
+                    <button class="box4">위로 돌아가기</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="text-body-secondary py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">위로 이동하기</a>
+        </p>
+        <p class="mb-1">전라북도 군산에 관광하시는 분들 환영합니다!<br>
+            충청남도 서천군과 가로짓는 금강권 주변의 관광지를 소개한 페이지로<br>
+            또 다른 군산을 관광하고 싶다면 오른쪽에 있는 <b>'위로 이동하기'</b>를 클릭하세요.</p>
+    </div>
+</footer>
+<script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

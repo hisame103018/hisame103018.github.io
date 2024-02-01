@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>강릉홈</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,600,1,0" />
+    <link rel="stylesheet" href="css/header_test.css">
+    <link rel="stylesheet" href="css/main2.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script>
+        $(function() {
+            $(".slide_gallery").bxSlider({
+                auto : true,
+                autoControls: true,
+                stopAutoOnClick : true,
+                pager : true
+            })
+
+            $(".btn3").on("click", function( ) {
+                // 현재 상황에 따라 slide up/ slide down 수행
+                $(".box").slideToggle(1000, "linear");
+            });
+
+
+
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <ul>
+            <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a></li>
+            <ul class = sub-nav>
+                <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+            </ul>
+            <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">금강권</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                </ul>
+        </ul>
+    </nav>
+</div>
+
+<section id="about">
+    <div class = "container2">
+        <div class = "title">
+            <h3>강원도</h3>
+            <h1>강 릉</h1>
+        </div>
+        <div class="about-self">
+        <div class="left">
+            <div class="slide_gallery">
+                <a> <img src="images/sea.jpg" alt="바다"></a>
+                <a> <img src="images/artworld.jpg" alt="하슬라아트월드"></a>
+                <a> <img src="images/food.jpg" alt="순두부"></a>
+             </div>
+        </div>
+        <div class="right">
+            <h3>맛과 문화의 도시 강릉입니다.</h3>
+            <p>은은한 커피향이 남다른 강원도 강릉시.</p>
+            <p>그중에도 카페거리로 유명한 안목해변은 발이 닿는 어디든 향긋한 커피 한 잔에 지평선 끝까지 펼쳐지는 바다 풍경은 덤으로 얻을 수 있다</p>
+            <p> 일출 명소로 유명한 정동진과 야경이 아름다운 경포대는 대표 여행 코스! 구름도 머물다 간다는 해발 1,100m에 위치한 강릉 안반데기 마을은 전망대에 올라 드넓게 펼쳐진 배추밭이 붉게 물드는 일출 전경이 일품이다.</p>
+            <p><button class="btn3">강릉의 역사</button></p>
+            <div class="box">
+                <div class="content">
+                    본래 동예이자 남말갈, 예국(濊國)의 땅으로 하슬라(河瑟羅)라고 불렸다. 일대가 비옥해 살기 좋았다고 한다.<br>
+                    <br>
+                   고구려는 이곳을 하서량(河西良) 또는 하슬라(河瑟羅)라고 불리고 예국을 속국으로 삼아 이곳을 지배했다.<br>
+                    <br>
+                    639년 신라가 이곳을 점령하고 (신라 선덕여왕 8년) 소경(小京)으로 삼아 북빈경(北濱京)이라 하여 사신(仕臣)을 두었다. 658년(신라 태종 무열왕 5년) 무열왕이 "이곳은 말갈과 인접해 있다"라는 이유로 소경을 폐지하고 아슬라주를 만들어 도독을 파견하였으며 757년(경덕왕 16년) 명주(溟州)로 개칭하였다가 776년(혜공왕 12년)에 복구하였다.
+                    <br>
+                    《대동여지도》
+                    고려 태조 때 명주라 다시 개칭되고, 성종 14년(995) 삭방도(朔方道)의 행정 중심지로 함남북과 영동 일대와 영서의 춘천 이북 등지를 관할하였다. 1178년 이를 폐하고 함남과 강원 영동 일대를 임해(臨海) 명주라 개칭하고 원종 4년(1263) 강릉도라 고쳤으며, 그 후 다시 함남 쌍성(雙城) 지방과 합하여 강릉삭방도라 하였다. 공양왕 때 함경도를 분리하고 강릉도라 다시 칭하였으며 항시 행정과 군사의 중심지로 되어 왔다. 조선 초에는 원양도(原襄道)·원춘도(原春道)라 칭하다가 세종 5년(1423) 강원도라 하였다. 1895년 23부제 실시로 강원도가 춘천부와 강릉부로 나뉘며 영동의 군들을 관할했다가, 이듬해(1896년) 강원도가 재설치되면서 강릉군만 관할하게 되었다.
+                </div>
+            </div>
+            <div class="social">
+            </div>
+        </div>
+    <div class="container3">
+        <div class="bigPicture">
+        <img src="images/map.jpg"  alt="강릉지도" usemap="#map" />
+        <map name="map" id="map">
+            <area shape="rect" coords="421, 306, 627, 465" alt="오죽헌그림" target="_blank" class="picture" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%98%A4%EC%A3%BD%ED%97%8C"></button>
+            <area shape="rect" coords="485, 470, 556, 503" alt="오죽헌 글씨" target="_blank" class="picture" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%98%A4%EC%A3%BD%ED%97%8C">
+            <area shape="rect" coords="558, 211, 743, 282" alt="강문해변" target="_blank" class="picture" href="https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=%EA%B0%95%EB%AC%B8%ED%95%B4%EB%B3%80">
+            <area shape="rect" coords="115, 259, 306, 375" alt="구룡폭포" target="_blank" class="picture" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EA%B0%95%EB%A6%89+%EA%B5%AC%EB%A3%A1%ED%8F%AD%ED%8F%AC">
+        </map>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>
+</body>
+</html>

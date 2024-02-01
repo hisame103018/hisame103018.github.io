@@ -1,0 +1,187 @@
+/* chat-bar의 기본 스타일 및 위치 설정 */
+.chat-bar {
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    z-index: 1000;
+}
+
+/* chat-bar가 collapsed 상태일 때 content를 숨기는 스타일 */
+.chat-bar.collapsed .content {
+    max-height: 0;
+    display: none;
+}
+.content.expanded {
+    max-height: 100% !important;
+    display: block !important;
+}
+
+.btn3 button{
+        background-color: transparent;
+        background: linear-gradient(rgba(225,225,225,0.8), rgba(225,225,225,0.8));
+        border: 3px solid white;
+        border-radius: 20px;
+        padding: 1rem 2rem;
+        color: wheat;
+        text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+        font-weight: bold;
+}
+
+/* chat-bar가 expanded 상태일 때 content를 펼치는 스타일 */
+.chat-bar.expanded .content {
+    max-height: 100%;
+    display: block;
+}
+
+/* content의 기본 스타일 */
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+/* full-chat-block의 스타일 설정 */
+.full-chat-block {
+    width: 400px;
+    background-color: rgba(225, 225, 225, 0.8);
+    text-align: center;
+    height: max-content;
+    transition: max-height 0.2s ease-out;
+}
+
+/* chat-container의 스타일 및 위치 설정 */
+.chat-container {
+    max-height: 500px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    scroll-behavior: smooth;
+    hyphens: auto;
+    overflow-y: auto;
+}
+
+/* 스크롤바 숨기기 */
+.chat-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* chat-bar-input-block의 스타일 설정 */
+.chat-bar-input-block {
+    display: flex;
+    float: left;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+    background-color: rgba(225, 225, 225, 0.8);
+    border-radius: 10px 10px 0 0;
+    padding: 10px 0 10px 0;
+}
+
+/* chat-bar-icons의 스타일 설정 */
+.chat-bar-icons {
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    width: 25%;
+    float: right;
+    font-size: 20px;
+}
+
+/* chat-icon에 호버 효과 추가 */
+#chat-icon:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+/* userInput의 스타일 설정 */
+#userInput {
+    width: 75%;
+}
+
+/* input-box의 스타일 설정 */
+.input-box {
+    justify-content: left;
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    color: black;
+    background-color: #FFFFFF;
+    outline: none;
+}
+
+/* userText 및 botText의 스타일 설정 */
+.userText {
+    color: #000;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: right;
+    clear: both;
+}
+.botText {
+    color: #000;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: left;
+    clear: both;
+}
+
+/* userText 및 botText에서 사용되는 span의 스타일 설정 */
+.userText span {
+    line-height: 1.5em;
+    display: inline-block;
+    background-color: skyblue;
+    padding: 10px;
+    border-radius: 8px;
+    border-bottom-left-radius: 2px;
+    max-width: 80%;
+    margin-right: 10px;
+    animation: floatup 0.5s forwards;
+}
+
+.botText span {
+    line-height: 1.5em;
+    display: inline-block;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    border-bottom-left-radius: 2px;
+    max-width: 80%;
+    margin-right: 10px;
+    animation: floatup 0.5s forwards;
+}
+/* floatup 애니메이션 설정 */
+@keyframes floatup {
+    from {
+        transform: translateY(14px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* 미디어 쿼리 추가: 화면 폭이 600px 이하일 때의 스타일 설정 */
+@media screen and (max-width: 600px) {
+    .full-chat-block {
+        width: 100%;
+        border-radius: 0;
+    }
+    .chat-bar {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+    }
+    .collapsible {
+        width: 100%;
+        border: 0;
+        border-top: 3px solid #fff;
+        border-radius: 0;
+    }
+}

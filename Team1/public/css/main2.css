@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Varela+Round&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a, a:link, a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+section{
+    font-family: 'Poppins', sans-serif;
+    padding: 5rem 0;
+    margin-left: 10%;
+}
+section .title{
+    margin-bottom: 5rem;
+    background: radial-gradient(circle at 20% 20%, white,#C4FDFF);
+    margin-top: 100px;
+}
+section .title h3{
+    font-size: 2rem;
+    position: relative;
+    font-weight: bold;
+}
+section .title h1{
+    font-size: 3.5rem;
+    color: #14ADE5;
+    text-shadow : -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+section .title p{
+    font-size: 1.5rem;
+}
+
+.about-self .left {
+    float: left;
+    width: 50%;
+}
+.about-self .left img{
+    width: 500px;
+    height: 500px;
+}
+
+section .about-self .right{
+    width: 50%;
+    float: left;
+    padding: 0 2rem;
+}
+section .about-self .right h3{
+    font-size: 2rem;
+    font-weight: bold;
+}
+section .about-self .right p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+section .about-self .left .slide_gallery{
+    margin: 0 auto;
+    padding: 0;
+    width: 500px;
+    height: 350px;
+}
+.slide_gallery .a{
+    width: auto;
+}
+.container3{
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+.bigPicture{
+    display: inline-block;
+    background: rgb(251,249,236) center center;
+    float: none;
+}
+.bigPicture img{
+    margin: 20px;
+    width: 1000px;
+    height: 900px;
+}
+footer{
+    text-align: center;
+}

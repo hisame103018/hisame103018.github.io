@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>강릉맛집</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,600,1,0" />
+    <link rel="stylesheet" href="css/header_test.css">
+</head>
+<style>
+    .header{
+        background : radial-gradient(circle at 20% 5%,white,#FAF4C0);
+        padding: 0;
+    }
+    .header h1{
+       position: relative;
+        left: 450px;
+        color: wheat;
+        text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+        animation: upDown 1s ease-in-out infinite;
+    }
+    .header h2{
+        position: relative;
+        left: 450px;
+        margin-top: 40px;
+        padding: 10px;
+    }
+    .container1, .container_1{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .goodPlace{
+        display: inline-block;
+        text-align: center;
+        border: 1px solid black;
+        width: 600px;
+        height: 700px;
+        margin: 20px 10px;
+        padding: 10px;
+    }
+    .back{
+        margin-top: 100px;
+    }
+    h3{
+        margin: 20px;
+    }
+    p{
+        padding: 10px;
+    }
+    .goodPlace > a:link{
+        color: black;
+        text-decoration: none;
+    }
+    .goodPlace > a:hover{
+        background: #ffe45c;
+    }
+    .goodPlace > a:after{
+        color: black;
+        text-decoration: none ;
+    }
+    img{
+        width: 300px;
+        height: 200px;
+    }
+    @keyframes upDown {
+        0%{
+            top:1rem
+        }
+        50%{
+            top: 1.5rem;
+        }
+        100%{
+            top: 1rem;
+        }
+    }
+    table {
+          border-collapse: collapse;
+          width: 50%;
+          margin: 20px auto;
+          table-layout: fixed;
+      }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    canvas {
+        margin: 20px auto;
+        display: block;
+    }
+
+</style>
+
+<body>
+<div class="container">
+    <nav>
+        <ul>
+            <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a></li>
+            <ul class = sub-nav>
+                <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+            </ul>
+            <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">금강권</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                </ul>
+        </ul>
+    </nav>
+</div>
+<div class="back">
+    <div class="header">
+        <h1>맛집소개</h1>
+        <h2>TV속 맛집부터 직접 다며온 맛집까지!</h2>
+    </div>
+</div>
+
+<div class="container1">
+    <div class="goodPlace">
+        <img src="images/mymy.jpg" class="goodPlace_1">
+        <a href="https://map.naver.com/p/search/%EA%B0%95%EB%A6%89%20%EB%A7%88%EC%9D%B4%EB%A7%88%EC%9D%B4/place/1611468087?placePath=?entry=pll&from=nx&fromNxList=true&searchType=place&c=15.00,0,0,0,dh">
+        <h3 class="name">마이마이</h3>
+        <p>강릉 대표 우육면!</p>
+        <p>항상 엄청난 웨이팅과 언제나 재료소진으로인한 조기마감!</p>
+        </a>
+        <table id="stockTable">
+            <tr>
+                <th>웨이팅</th>
+                <th>대기팀</th>
+                <th>대기시간</th>
+            </tr>
+            <tr>
+                <td>마이마이</td>
+                <td id="waiting_team">5</td>
+                <td id="waiting_time">30</td>
+            </tr>
+        </table>
+        <div>
+            <canvas id="myLineChart" width="250" height="150"></canvas>
+        </div>
+    </div>
+    <div class="goodPlace">
+        <img src="images/lettleDiner.jpg" class="goodPlace_2">
+        <a href="https://map.naver.com/p/entry/place/1938856872?lng=128.9404725131614&lat=37.76517756406241&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh">
+        <h3>리틀 다이너</h3>
+            <p>강릉속의 작은 미국</p>
+        <p>음식에서 느껴지는 미국의맛! 기본웨이팅 30분이상!</p>
+        </a>
+        <table id="stockTable_1">
+            <tr>
+                <th>웨이팅</th>
+                <th>대기팀</th>
+                <th>대기시간</th>
+            </tr>
+            <tr>
+                <td>다이너</td>
+                <td id="waiting_team_1">5</td>
+                <td id="waiting_time_1">30</td>
+            </tr>
+        </table>
+        <div>
+            <canvas id="myLineChart_1" width="250" height="150"></canvas>
+        </div>
+    </div>
+    <div class="goodPlace">
+        <img src="images/food.jpg" class="goodPlace_3">
+        <a href="https://map.naver.com/p/entry/place/11859878?lng=128.91463730000387&lat=37.79117970090872&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh">
+            <h3>동화가든</h3>
+        <p>강릉 초당순두부 원조집</p>
+        <p>여전한 명성! 순두부백반시키면 반찬이 많아지니 꼭하나 같이시켜요!</p>
+        </a>
+        <table id="stockTable_2">
+            <tr>
+                <th>웨이팅</th>
+                <th>대기팀</th>
+                <th>대기시간</th>
+            </tr>
+            <tr>
+                <td>동화가든</td>
+                <td id="waiting_team_2">5</td>
+                <td id="waiting_time_2">30</td>
+            </tr>
+        </table>
+        <div>
+            <canvas id="myLineChart_2" width="250" height="150"></canvas>
+        </div>
+    </div>
+  <div class = "goodPlace">
+        <img src="images/coffee.jpg" class="coffee_1">
+        <a href="https://map.naver.com/p/search/%EA%B0%95%EB%A6%89%20%ED%88%87%EB%A7%88%EB%A3%A8/place/998885728?placePath=?entry=pll&from=nx&fromNxList=true&searchType=place&c=15.00,0,0,0,dh">
+            <h3>툇마루</h3>
+            <p>흑임자 커피로 유명한 그곳!</p>
+            <p>오픈런을해도 힘들다고하니 겨울과 여름엔 차량필수</p>
+        </a>
+      <table id="stockTable_3">
+          <tr>
+              <th>웨이팅</th>
+              <th>대기팀</th>
+              <th>대기시간</th>
+          </tr>
+          <tr>
+              <td>툇마루</td>
+              <td id="waiting_team_3">5</td>
+              <td id="waiting_time_3">30</td>
+          </tr>
+      </table>
+      <div>
+          <canvas id="myLineChart_3" width="250" height="150"></canvas>
+      </div>
+  </div>
+<!--      <div>-->
+<!--          <canvas id="myLineChart_3" width="250" height="150"></canvas>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class = "goodPlace">-->
+<!--        <img src="../images/ice.jpg" class="ice">-->
+<!--        <a href="#">-->
+<!--            <h3>순두부 젤라또</h3>-->
+<!--            <p>순두부먹고 디저트는 무조건?!</p>-->
+<!--            <p>맛도 종류도 다양하니 꼭 맛보기!</p>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--    <div class = "goodPlace">-->
+<!--        <img src="../images/gguok.jpg" class="gguok">-->
+<!--        <a href="#">-->
+<!--            <h3>꾸옥</h3>-->
+<!--            <p>강릉 옥수수푸딩과 라떼로 유명한 곳!</p>-->
+<!--            <p>테이크아웃 가능하니 돌아다니면서 먹는것을 추천!</p>-->
+<!--        </a>-->
+<!--    </div>-->
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/mymy.js"></script>
+<script src="js/little.js"></script>
+<script src="js/동화가든.js"></script>
+<script src="js/coffee.js"></script>
+</body>
+</html>

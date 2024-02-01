@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동대문디자인플라자(DDP)</title>
+    <link rel="stylesheet" href="css/Jangheader_test.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        #main {
+            width : 85%;
+            margin : 150px 0 0 100px;
+            padding-left : 180px;
+        }
+        #main-header {
+            text-align : center;
+            margin-left:-100px;
+        }
+        #main-middle-img {
+            text-align : center;
+            margin-left:-100px;
+        }
+        #main-middle-img img {
+            display:inline-block;
+            width:65%;
+        }
+        #main-middle-img table,th,td {
+            border : 1px solid #505050;
+        }
+        h3 {
+            font-weight : bold;
+        }
+        .table {
+            width:400px;
+            text-align : center;
+            vertical-align: middle;
+            font-size:15px;
+            border-right : 1px solid black;
+        }
+        .table th {
+            color:white;
+            background-color: #9f9f9f;
+        }
+        .table td {
+            padding : 2px 7px;
+        }
+        #main-middle-text {
+            width:80%;
+        }
+        .divide {
+            width : 93%;
+            height : 1px;
+            background-color: #9b9b9b;
+            margin : 10px 0;
+        }
+        #main-middle-map {
+            width : 30%;
+            display:inline-block;
+        }
+        #map-text {
+            width:30%;
+            display:inline-block;
+            vertical-align: top;
+            margin-left : 90px;
+        }
+        #map-text ul {
+            font-size:23px;
+        }
+        #map-text li {
+            text-align:left;
+            font-size:15px;
+            list-style-type : circle;
+            line-height : 1.5em;
+            margin-bottom:7px;
+        }
+        #middle2 {
+            clear:both;
+        }
+        .lodging {
+            width : 330px;
+            display:inline-block;
+            float : left;
+        }
+        .lodging-img img {
+            width : 100%;
+        }
+        .lodging-name {
+            padding : 2px 0 2px 2px;
+        }
+        .lodging button {
+            font-size:13px;
+            float:right;
+            clear:both;
+        }
+        .hotel-name {
+            width: 330px; /* 초기 너비 설정 */
+            overflow: hidden; /* 초과된 내용 숨김 */
+            transition: width 0.5s ease;/* 너비 변경 애니메이션 */
+            position: relative; /* 부모 요소로부터 상대 위치 설정 */
+            border: 1px solid #ccc;
+        }
+        .expanded {
+            width: 450px; /* 확장된 상태의 너비 설정 */
+            height:200px;
+        }
+
+        .hidden-content {
+            display: none; /* 초기에는 내용을 숨김 */
+            position: absolute; /* 부모 요소에 상대적으로 위치 고정 */
+        }
+
+        .visible-content {
+            display: block; /* 버튼 클릭 시 내용을 보이게 함 */
+        }
+        .red {
+            font-size:1.3em;
+            color:red;
+        }
+        .grade1 {
+            font-weight: bold;
+            border-right : 1px solid #9d9d9d;
+            padding-right : 10px;
+            padding-top : -5px;
+            font-size : 1.1em;
+        }
+        .grade2 {
+            font-weight : bold;
+            font-size : 1.1em;
+            color : #626262;
+        }
+        .price1 {
+            font-size:0.8em;
+            color:gray;
+            margin-left : 100px;
+        }
+        .price2 {
+            color:red;
+            font-weight:bold;
+            font-size:1.2em;
+        }
+        .won {
+            color:red;
+            font-size:1.1em;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        a {
+            color : #56aeff;
+        }
+        a:hover {
+            text-decoration : underline;
+        }
+        .hidden-content a {
+            color : #56aeff;
+        }
+        #middle3 {
+            clear : both;
+        }
+        #middle4 {
+            clear :both;
+        }
+        .traffic {
+            text-align:left;
+        }
+        .traffic li {
+            text-align: left;
+            list-style-type: circle;
+            line-height : 1.4em;
+        }
+        #lodging1 {
+            display: inline-block;
+        }
+        #market1 {
+            display: inline-block;
+        }
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: rgba(0, 0, 0, 0);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #scrollToTopBtn img {
+            width:50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container1">
+    <nav>
+        <ul>
+            <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                </ul>
+        </ul>
+    </nav>
+</div>
+
+<div id="main">
+    <div id="main-header">
+        <h1 style="padding-top:30px; font-weight:bold; font-size:50px;">동대문디자인플라자(DDP)</h1>
+        <p><h4 style="color:#707070;">세계 최대 규모의 3차원 비정형 건축물</h4></p>
+    </div>
+    <div id="main-middle">
+        <div id="main-middle-img">
+            <img src="images/ddp-main.webp">
+        </div>
+        <div id="main-middle-text">
+            <p><h3>상세정보</h3></p>
+            <div class="divide" style="width:85%;"></div>
+            <p>서울특별시 중구의 전시장 및 쇼핑몰. 영국의 건축가 자하 하디드가 설계했다.<br>
+            <a href="https://ddp.or.kr/?menuno=228" target="_blank">DDP메인페이지</a>에 따르면 세계 최대 규모의 3차원 비정형 건축물이라고 한다.<br>
+            2007년 동대문운동장이 철거된 이후 동대문운동장에 대한 개발 정책의 일원으로 세워지게 되었으며,<br>
+            2008년에 착공하여 6년 만인 2014년 3월에 개장하였다.<br>
+            현재 운영기관은 서울시 출연기관인 서울디자인재단이며 20090년에 먼저 개장한 동대문역사문화공원과 더불어 총 관리를 하고 있다.</p>
+        </div>
+        <div class="divide" style="margin-bottom:30px; width:68%;"></div>
+        <div id="main-middle-map">
+            <h3>DDP 지도</h3>
+            <div class="divide" style="margin-bottom:20px;"></div>
+            <img src ="images/ddp-map.jpg" style="width:450px;">
+        </div>
+        <div id="map-text">
+
+            <h3>시설</h3>
+            <div class="divide" style="margin-bottom:20px;"></div>
+            <ul>
+                <li><b>알림터(A)</b><br>
+                    ┖ 전시장 내지는 갤러리로 사용할수있다. 알림1관, 알림2관, 국제회의장 으로 나뉜다.</li>
+                <li><b>배움터(M)</b><br>
+                    ┖ 박물관 기획전시로 쓰기 좋다. 메인 테넌트로 간송미술관이 있다.</li>
+                <li><b>살림터(D)</b><br>
+                    ┖ 디자인업체들의 물건을 전시해놔 경험한다는 취지의 장소라고 볼 수 있다.</li>
+                <li><b>어울림광장</b><br>
+                    ┖ 중앙광장으로, 디자인장터가 있어 쇼핑이 가능하고, 식당이 있다.</li>
+                <li><b>동대문역사문화공원</b></li>
+            </ul>
+        </div>
+        <div id="middle2">
+            <div class="divide" style="margin-bottom:50px;"></div>
+            <h3>주변숙소</h3>
+            <div class="divide"></div>
+        </div>
+        <div id="lodging1">
+            <div class="lodging" style="margin:20px;">
+                <div class="lodging-img">
+                    <img src="images/ddp-lodging1.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox1"><b>나인트리 호텔 동대문</b>
+                        <button onclick="expandBox(1)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">8.8</span> <span class="grade2">3성급</span><span class="price1">1박(세금미포함/평균가격) </span><span class="price2">80,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 중구 을지로 224</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://hotels.naver.com/item?adultCnt=2&hotelFileName=hotel%3ANine_Tree_Hotel_Dongdaemun&checkIn=2024-01-23&checkOut=2024-01-24&includeTax=false" target="_blank">나인트리 호텔 동대문 (네이버 여행상품)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:105px 0 0 150px;">
+                <div class="lodging-img">
+                    <img src="images/ddp-lodging2.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox2"><b>토요코인 서울 동대문 2호점</b>
+                        <button onclick="expandBox(2)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">8.6</span> <span class="grade2">2성급</span><span class="price1">1박(세금미포함/평균가격) </span><span class="price2">90,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 중구 퇴계로 325</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://hotels.naver.com/item?adultCnt=2&hotelFileName=hotel%3AToyoko_Inn_Seoul_Dongdeamun_No_2&checkIn=2024-01-24&checkOut=2024-01-25&includeTax=false" target="_blank">토요코인 서울 동대문 2호점 (네이버 여행상품)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:280px 0 0 150px;">
+                <div class="lodging-img">
+                    <img src="images/ddp-lodging3.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox3"><b>호텔 아트리움 종로</b>
+                        <button onclick="expandBox(3)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">8.5</span> <span class="grade2">3성급</span><span class="price1">1박(세금미포함/평균가격) </span><span class="price2">90,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 종로구 창경궁로 106</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://hotels.naver.com/item?adultCnt=2&hotelFileName=hotel%3AHotel_Atrium_Jongno&checkIn=2024-01-24&checkOut=2024-01-25&includeTax=false" target="_blank">호텔 아트리움 종로 (네이버 여행상품)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="middle3">
+            <div class="divide" style="margin-bottom:50px;"></div>
+            <h3>주변 맛집</h3>
+            <div class="divide"></div>
+        </div>
+        <div id="market1">
+            <div class="lodging" style="margin:40px 0 0 20px">
+                <div class="lodging-img">
+                    <img src="images/ddp-restaurant1.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox4"><b>그릴 1492 본점</b>
+                        <button onclick="expandBox(4)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">4.57</span> <span class="grade2">돼지고기구이</span><span class="price1" style="margin-left:105px;">메뉴당 평균 </span><span class="price2">30,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 중구 퇴계로 369</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://map.naver.com/p/entry/place/37351404?c=15.00,0,0,0,dh" target="_blank">그릴 1492 본점 (네이버 지도)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:80px 0 0 150px">
+                <div class="lodging-img">
+                    <img src="images/ddp-restaurant2.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox5"><b>평양면옥</b>
+                        <button onclick="expandBox(5)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">4.19</span> <span class="grade2">냉면</span><span class="price1" style="margin-left:215px;">평균 </span><span class="price2">30,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 중구 장충동1가 13</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://map.naver.com/p/entry/place/13578191?c=15.00,0,0,0,dh" target="_blank">평양면옥 (네이버 지도)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:50px 0 0 150px">
+                <div class="lodging-img">
+                    <img src="images/ddp-restaurant3.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox6"><b>우육미</b>
+                        <button onclick="expandBox(6)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">4.31</span> <span class="grade2">육류,고기요리</span><span class="price1" style="margin-left:145px;">평균 </span><span class="price2">60,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 중구 퇴계로 373</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://map.naver.com/p/entry/place/1011242808?c=15.00,0,0,0,dh" target="_blank">우육미 (네이버 지도)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="middle4">
+            <div class="divide" style="margin:30px 0 50px 0;"></div>
+            <h3>오시는 길</h3>
+            <div class="divide" style="width:85%"></div>
+        </div>
+        <div class="traffic">
+            <ul><img src="images/icon-subway.png" style="width:70px; margin:0 0 10px -20px;">
+                <li><b>동대문역사문화공원역 1번 출구 (2, 4, 5호선)</b><br>
+                    ┖ 어울림광장, DDP마켓, 디자인랩 지하2층 출입구, 뮤지엄 지하2층 출입구에서 가까움</li>
+                <li><b>동대문역사문화공원역 2번 출구 (2, 4, 5호선)</b><br>
+                    ┖ 디자인랩 1층 출입구, 동대문역사문화공원 입구(갤러리 문, 지하주차장 측)에 가까움</li>
+            </ul>
+            <ul><img src="images/icon-bus.png" style="width:70px; margin:0 0 5px -20px;">
+                <li><b>동대문디자인플라자,동대문시장 (02908)</b><br>
+                    ┖ TOUR01 버스 이용</li>
+            </ul>
+        </div>
+        <div class="divide" style="margin-bottom:50px; width:85%;"></div>
+    </div>
+</div>
+<button id="scrollToTopBtn" onclick="scrollToTop()"><img src="images/up.png"></button>
+
+<footer class="footer">
+    <div class="footer-text">
+        <p>&copy; 주식회사 TRIP 2024.</p>
+        <ul>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">고객센터</a></li>
+        </ul>
+    </div>
+    <div class="footer-text2">
+        <ul> 운영진
+            <li>강연배</li>
+            <li>장준희</li>
+            <li>이은진</li>
+            <li>배호진</li>
+        </ul>
+    </div>
+</footer>
+
+<script>
+    function expandBox(boxNumber) {
+        var box = document.getElementById('expandableBox' + boxNumber);
+        var hiddenContent = box.querySelector('.hidden-content');
+
+        // 확장된 상태로 전환
+        box.classList.toggle('expanded');
+
+        // 내용 보이기/숨기기 토글
+        hiddenContent.classList.toggle('visible-content');
+    }
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    window.onscroll = function () {
+        var scrollButton = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+            scrollButton.style.display = "block";
+        } else {
+            scrollButton.style.display = "none";
+        }
+    };
+</script>
+</body>
+</html>

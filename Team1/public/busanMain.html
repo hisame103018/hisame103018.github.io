@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>부산 여행안내</title>
+    <link rel="stylesheet" href="css/busanstylefinal.css">
+    <link rel="stylesheet" href="css/jquery.bxslider.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <style>
+
+        #gallery_wrap {
+            margin: 20px auto; /* 조정 가능한 여백 값 */
+            width: 80%; /* 조정 가능한 너비 값 */
+        }
+    </style>
+    <script>
+        $(function() {
+            $(".slide_gallery").bxSlider({
+                auto: true,
+                autoControls: true,
+                stopAutoOnClick: true,
+                pager: true
+            })
+        });
+    </script>
+
+</head>
+<body>
+<header>
+    <h1>부산 여행안내</h1>
+</header>
+<nav>
+    <a href="index.html">메인으로</a>
+    <a href="#about">부산 소개</a>
+    <a href="#tourist-spots">인기 관광지</a>
+    <a href="#food">맛집</a>
+    <a href="#accommodation">숙소</a>
+</nav>
+
+<div class="back">
+    <div class="header">
+        <h1>부산소개</h1>
+        <h2>부산은 대한민국 제2의 수도로 불리며, 해운대, 감천문화마을, 광안리 등 다양한 관광지와 맛집, 숙소가 있는 도시입니다</h2>
+    </div>
+</div><br>
+<div class="container">
+    <div class="textBox"  id="tourist-spots">
+        <h2>인기 관광지</h2>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div id="gallery_wrap" style="width: 300px; height: 300px;" class="slide_gallery">
+                    <a><img src="images/haeundaebackground.jpg" alt="사진1"></a>
+                    <a><img src="images/haeundae.jpg" alt="사진2"></a>
+                    <a href="https://map.naver.com/p/search/%ED%99%80%EB%A6%AC%EB%8D%B0%EC%9D%B4%20%EC%9D%B8%20%EB%B6%80%EC%82%B0/place/1942297898?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                        <img src="images/holiday.png" alt="사진3">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EC%8A%A4%EB%88%84%ED%94%BC%20%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4/place/1373634521?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/snoopy.png" alt="사진4">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EB%8F%99%EB%B0%B1%EC%84%AC/place/11491874?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/dongbak.png" alt="사진5">
+                    </a>
+                </div>
+                <a href="busanHeaundae.html">
+                    <h3 class="name">해운대</h3>
+                </a>
+
+                <p><a href="https://map.naver.com/p/search/%ED%99%80%EB%A6%AC%EB%8D%B0%EC%9D%B4%20%EC%9D%B8%20%EB%B6%80%EC%82%B0/place/1942297898?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                    라이언 홀리데이 인 부산</a>
+                </p>
+
+                <p><a href="https://map.naver.com/p/search/%EC%8A%A4%EB%88%84%ED%94%BC%20%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4/place/1373634521?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                    스누피 플레이스</a>
+                </p>
+
+                <p><a href="https://map.naver.com/p/search/%EB%8F%99%EB%B0%B1%EC%84%AC/place/11491874?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                    동백섬</a>
+                </p>
+        </div>
+     </div>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div class="slide_gallery">
+                    <a><img src="images/gamcheon.jpg" alt="사진1"></a>
+                    <a><img src="images/prince.jpg" alt="사진2"></a>
+                    <a><img src="images/prince_2.png" alt="사진3"></a>
+                    <a href="https://map.naver.com/p/search/%EC%86%8C%ED%96%89%EC%84%B1%20b612/place/1172350461?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/b612.png" alt="사진4">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EB%8D%94%ED%94%8C%EB%A0%88%EC%9D%B4%ED%8A%B8/place/36666165?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/theplate.png" alt="사진5">
+                    </a>
+                </div>
+                <a href="busanGamcheon.html">
+                    <h3>감천문화마을</h3>
+                </a>
+
+                <p><a href="https://map.naver.com/p/search/%EC%86%8C%ED%96%89%EC%84%B1%20b612/place/1172350461?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                    소행성B612</a>
+                </p>
+                <p><a href="https://map.naver.com/p/search/%EB%8D%94%ED%94%8C%EB%A0%88%EC%9D%B4%ED%8A%B8/place/36666165?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                    더플레이트</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="food">
+                <div class="slide_gallery">
+                    <a href="https://map.naver.com/p/search/%EA%B4%91%EC%95%88%EB%A6%AC?c=15.00,0,0,0,dh" target="_blank">
+                        <img src="images/gwangalli.jpg" alt="사진1">
+                    </a>
+                    <a href="https://map.naver.com/p/entry/place/12126649?lng=129.12820410000384&lat=35.14548009999818&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank">
+                        <img src="../images/bridge.jpg" alt="사진2">
+                    </a>
+                    <a href="https://map.naver.com/p/entry/place/11491655?lng=129.120140900028&lat=35.1541210999874&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank">
+                        <img src="../images/gwangallibeach.png">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EB%AF%BC%EB%9D%BD%EC%88%98%EB%B3%80%EA%B3%B5%EC%9B%90/place/13196092?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="../images/minlak.png">
+                    </a>
+                </div>
+                    <a href="../부산_광안리.html">
+                        <h3>광안리</h3>
+                    </a>
+                    <p><a href="https://map.naver.com/p/entry/place/12126649?lng=129.12820410000384&lat=35.14548009999818&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank">
+                        광안대교</a></p>
+                    <p><a href="https://map.naver.com/p/search/%EA%B4%91%EC%95%88%EB%A6%AC%20%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5/place/11491655?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        광안리 해수욕장</a></p>
+                    <p><a href="https://map.naver.com/p/search/%EB%AF%BC%EB%9D%BD%EC%88%98%EB%B3%80%EA%B3%B5%EC%9B%90/place/13196092?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        민락 수변공원</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="textBox" id="food">
+        <h2>맛집</h2>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div class="slide_gallery">
+                    <a href="https://map.naver.com/p/search/%EA%B0%80%EC%95%BC%EB%B0%80%EB%A9%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/20430372?c=13.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank"><img src="images/noodle.png" alt="사진1"></a>
+                    <a href="https://map.naver.com/p/search/%ED%95%B4%EB%AA%A9%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/193024519?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank"><img src="images/haemok.png" alt="사진2"></a>
+                    <a href="https://map.naver.com/p/search/%EA%B8%88%EC%88%98%EB%B3%B5%EA%B5%AD%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/11672174?c=14.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank"><img src="images/koook.png" alt="사진3"></a>
+                </div>
+                    <h3>해운대 맛집</h3>
+                        <p><a href="https://map.naver.com/p/search/%EA%B0%80%EC%95%BC%EB%B0%80%EB%A9%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/20430372?c=13.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                            가야밀면</a>
+                        </p>
+                        <p><a href="https://map.naver.com/p/search/%ED%95%B4%EB%AA%A9%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/193024519?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                            해목 해운대점</a>
+                        </p>
+                        <p><a href="https://map.naver.com/p/search/%EA%B8%88%EC%88%98%EB%B3%B5%EA%B5%AD%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/11672174?c=14.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                            금수복국 해운대본점</a>
+                        </p>
+            </div>
+        </div>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div class="slide_gallery">
+                    <a href="https://map.naver.com/p/search/%EA%B0%88%EC%82%BC%EA%B5%AC%EC%9D%B4/place/38015046?c=13.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/galsam.png" alt="사진1">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EC%9A%94%EC%9D%B4%EC%BF%A0%EB%A7%88/place/1045338521?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                        <img src="images/kuma.png" alt="사진2">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EC%86%94%EC%86%A5%20%EA%B4%91%EC%95%88%EB%A6%AC/place/1422399262?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/solsot.png" alt="사진3">
+                    </a>
+                </div>
+                    <h3>광안리 맛집</h3>
+                        <p><a href="https://map.naver.com/p/search/%EA%B0%88%EC%82%BC%EA%B5%AC%EC%9D%B4/place/38015046?c=13.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                            갈삼구이</a>
+                        </p>
+                        <p><a href="https://map.naver.com/p/search/%EC%9A%94%EC%9D%B4%EC%BF%A0%EB%A7%88/place/1045338521?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                            요이쿠마</a>
+                        </p>
+                        <p><a href="https://map.naver.com/p/search/%EC%86%94%EC%86%A5%20%EA%B4%91%EC%95%88%EB%A6%AC/place/1422399262?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                            솔솥</a>
+                        </p>
+            </div>
+        </div>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div class="slide_gallery">
+                    <a href="https://map.naver.com/p/search/%EC%8A%A4%EB%88%84%ED%94%BC%20%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4/place/1373634521?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/snoopy.png" alt="사진1">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EC%86%8C%ED%96%89%EC%84%B1%20b612%20%EC%B9%B4%ED%8E%98/place/1172350461?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/b612.png" alt="사진2">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EB%9D%BC%ED%81%AC%EC%B4%88%EC%BD%9C%EB%A6%BF/place/1810725777?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                        <img src="images/chocolate.png" alt="사진3">
+                    </a>
+                </div>
+                    <h3>카페</h3>
+                        <p><a href="https://map.naver.com/p/search/%EC%8A%A4%EB%88%84%ED%94%BC%20%ED%94%8C%EB%A0%88%EC%9D%B4%EC%8A%A4/place/1373634521?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                            스누피 플레이스</a>
+                        </p>
+                        <p><a href="https://map.naver.com/p/search/%EC%86%8C%ED%96%89%EC%84%B1%20b612%20%EC%B9%B4%ED%8E%98/place/1172350461?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                            소행성B612카페</a>
+                        </p>
+                        <p><a href="https://map.naver.com/p/search/%EB%9D%BC%ED%81%AC%EC%B4%88%EC%BD%9C%EB%A6%BF/place/1810725777?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                            라크초콜릿</a>
+                        </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="textBox"  id="accommodation">
+        <h2>숙소</h2>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div class="slide_gallery">
+                    <a href="https://map.naver.com/p/entry/place/11576700?lng=129.1641055000202&lat=35.159924899095145&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank">
+                        <img src="images/paradise.png" alt="사진1">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EA%B7%B8%EB%9E%9C%EB%93%9C%20%EC%A1%B0%EC%84%A0%20%EB%B6%80%EC%82%B0/place/1016404332?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/grandjosunbusan.png" alt="사진2">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/791821570?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/shilla.png" alt="사진3">
+                    </a>
+                </div>
+                    <h3>해운대 호텔</h3>
+                    <p><a href="https://map.naver.com/p/entry/place/11576700?lng=129.1641055000202&lat=35.159924899095145&placePath=%2Fhome&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank">
+                        파라다이스 호텔</a>
+                    </p>
+                    <p><a href="https://map.naver.com/p/search/%EA%B7%B8%EB%9E%9C%EB%93%9C%20%EC%A1%B0%EC%84%A0%20%EB%B6%80%EC%82%B0/place/1016404332?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        그랜드 조선 부산</a>
+                    </p>
+                    <p><a href="https://map.naver.com/p/search/%EC%8B%A0%EB%9D%BC%EC%8A%A4%ED%85%8C%EC%9D%B4%20%ED%95%B4%EC%9A%B4%EB%8C%80/place/791821570?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        신라스테이 해운대</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div class="slide_gallery">
+                    <a href="https://map.naver.com/p/search/%EC%BC%84%ED%8A%B8%ED%98%B8%ED%85%94%20%EA%B4%91%EC%95%88%EB%A6%AC/place/37750119?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/kenthotel.png" alt="사진1">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%ED%98%B8%EB%A9%94%EB%A5%B4%EC%8A%A4%20%ED%98%B8%ED%85%94/place/11620088?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/homers.png" alt="사진2">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EC%95%84%EC%BF%A0%EC%95%84%ED%8E%A0%EB%A6%AC%EC%8A%A4/place/12014049?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/aquapalace.png" alt="사진3">
+                    </a>
+                </div>
+                    <h3>광안리 호텔</h3>
+                    <p><a href="https://map.naver.com/p/search/%EC%BC%84%ED%8A%B8%ED%98%B8%ED%85%94%20%EA%B4%91%EC%95%88%EB%A6%AC/place/37750119?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        켄트호텔 광안리</a>
+                    </p>
+                    <p><a href="https://map.naver.com/p/search/%ED%98%B8%EB%A9%94%EB%A5%B4%EC%8A%A4%20%ED%98%B8%ED%85%94/place/11620088?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        호메르스 호텔</a>
+                    </p>
+                    <p><a href="https://map.naver.com/p/search/%EC%95%84%EC%BF%A0%EC%95%84%ED%8E%A0%EB%A6%AC%EC%8A%A4/place/12014049?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        호텔 아쿠아펠리스</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+    <div class="goodPlace">
+        <div class="about-self">
+            <div class="tourist-spot">
+                <div class="slide_gallery">
+                    <a href="https://map.naver.com/p/search/%EC%8B%9C%EC%A0%90%20%ED%92%80%EB%B9%8C%EB%9D%BC%20%ED%8E%9C%EC%85%98/place/1709402539?c=13.00,0,0,0,dh&placePath=%3Fbounds%253D129.10395039274385%25253B35.14715132273521%25253B129.13371218397378%25253B35.160818063877784%2526businessCategory%253Dpension%2526clientX%253D126.927075%2526clientY%253D37.487426%2526entry%253Dpbl%2526mapUrl%253Dhttps%25253A%25252F%25252Fmap.naver.com%25252Fp%25252Fsearch%25252F%2525EC%25258B%25259C%2525EC%2525A0%252590%252520%2525ED%252592%252580%2525EB%2525B9%25258C%2525EB%25259D%2525BC%252520%2525ED%25258E%25259C%2525EC%252585%252598%2526query%253D%2525EC%25258B%25259C%2525EC%2525A0%252590%252520%2525ED%252592%252580%2525EB%2525B9%25258C%2525EB%25259D%2525BC%252520%2525ED%25258E%25259C%2525EC%252585%252598%2526summaryKeywordFilterIds%253DIjUsNiw3LDIwIg%2525253D%2525253D%2526ts%253D1705539172831%2526x%253D129.12291897489837%2526y%253D35.15407269999919" target="_blank">
+                        <img src="images/c_pension.png" alt="사진1">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%ED%95%B4%EC%9A%B4%EB%8C%80%20%ED%8E%9C%ED%8A%B8%ED%95%98%EC%9A%B0%EC%8A%A4/place/37690529?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        <img src="images/penthouse.png" alt="사진2">
+                    </a>
+                    <a href="https://map.naver.com/p/search/%EB%A8%B8%EB%AC%BC%EB%8B%A4%EA%B0%80%20%EC%88%98%EB%B3%80/place/1883996789?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                        <img src="images/moolda.png" alt="사진3">
+                    </a>
+                </div>
+                    <h3>펜션</h3>
+                    <p><a href="https://map.naver.com/p/search/%EC%8B%9C%EC%A0%90%20%ED%92%80%EB%B9%8C%EB%9D%BC%20%ED%8E%9C%EC%85%98/place/1709402539?c=13.00,0,0,0,dh&placePath=%3Fbounds%253D129.10395039274385%25253B35.14715132273521%25253B129.13371218397378%25253B35.160818063877784%2526businessCategory%253Dpension%2526clientX%253D126.927075%2526clientY%253D37.487426%2526entry%253Dpbl%2526mapUrl%253Dhttps%25253A%25252F%25252Fmap.naver.com%25252Fp%25252Fsearch%25252F%2525EC%25258B%25259C%2525EC%2525A0%252590%252520%2525ED%252592%252580%2525EB%2525B9%25258C%2525EB%25259D%2525BC%252520%2525ED%25258E%25259C%2525EC%252585%252598%2526query%253D%2525EC%25258B%25259C%2525EC%2525A0%252590%252520%2525ED%252592%252580%2525EB%2525B9%25258C%2525EB%25259D%2525BC%252520%2525ED%25258E%25259C%2525EC%252585%252598%2526summaryKeywordFilterIds%253DIjUsNiw3LDIwIg%2525253D%2525253D%2526ts%253D1705539172831%2526x%253D129.12291897489837%2526y%253D35.15407269999919" target="_blank">
+                        시점풀빌라펜션</a>
+                    </p>
+                    <p><a href="https://map.naver.com/p/search/%ED%95%B4%EC%9A%B4%EB%8C%80%20%ED%8E%9C%ED%8A%B8%ED%95%98%EC%9A%B0%EC%8A%A4/place/37690529?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" target="_blank">
+                        해운대펜트하우스</a>
+                    </p>
+                    <p><a href="https://map.naver.com/p/search/%EB%A8%B8%EB%AC%BC%EB%8B%A4%EA%B0%80%20%EC%88%98%EB%B3%80/place/1883996789?c=15.00,0,0,0,dh&isCorrectAnswer=true" target="_blank">
+                        머물다가수변</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container_chart">
+    <div class="container_chart1">
+        <canvas id="touristEstimation" width= "1000" height="800"></canvas>
+    </div>
+    <div class="container_chart2">
+        <canvas id="areaTourist" width= "500" height="200"></canvas>
+    </div>
+</div>
+<footer>
+    <p>2024 부산 여행안내</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/busan.js"></script>
+<!--<script src="../busnaboxslider.js"></script>-->
+</body>
+</html>

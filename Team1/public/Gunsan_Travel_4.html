@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head><script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개정면/임피면 안내</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styleLee.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/card_style.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .bd-mode-toggle .dropdown-menu .active .bi {
+            display: block !important;
+        }
+
+        section {
+            position:relative;
+            background-image: url("images/4.jpg");
+            background-repeat: no-repeat;
+            background-position: center top;
+        }
+
+        section p {
+            font-size: 14px;
+        }
+
+        .box1 {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: wheat;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box1:hover {
+            background-color: burlywood;
+            font-weight: bold;
+        }
+
+        .box2 {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: wheat;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box2:hover {
+            background-color: burlywood;
+            font-weight: bold;
+        }
+
+        .box3 {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: wheat;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box3:hover {
+            background-color: burlywood;
+            font-weight: bold;
+        }
+        /* 돌아가기 버튼 */
+        .box4_top {
+            text-align: right;
+        }
+        .box4 {
+            display: inline-block;
+            padding: 5px 5px;
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: darkgray;
+            transition: background-color 0.3s ease;
+        }
+        /* 버튼에 마우스를 올렸을 때의 스타일 */
+        .box4:hover {
+            background-color: gray;
+            font-weight: bold;
+        }
+        .card-text1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .chaShadow {
+            text-shadow: 2px 2px 2px #fff;
+        }
+    </style>
+    <script>
+        function scrollToPage1() {
+            // JavaScript를 사용하여 스크롤 페이지로 이동
+            var targetElement = document.getElementById('targetSection1');
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+        function scrollToPage2() {
+            // JavaScript를 사용하여 스크롤 페이지로 이동
+            var targetElement = document.getElementById('targetSection2');
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+        function scrollToPage3() {
+            // JavaScript를 사용하여 스크롤 페이지로 이동
+            var targetElement = document.getElementById('targetSection3');
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+    <script>
+        // JavaScript로 이벤트를 처리하는 부분입니다.
+        document.addEventListener('DOMContentLoaded', function () {
+            // 모든 이미지 요소를 가져옵니다.
+            var imageContainers = document.querySelectorAll('.card');
+
+            // 각 이미지에 대한 이벤트를 등록합니다.
+            imageContainers.forEach(function (container) {
+                var roundedTop = container.querySelector('.roundedTop');
+                var overlayImage = container.querySelector('.overlayImage');
+
+                container.addEventListener('mouseover', function () {
+                    // 오버레이 이미지를 보여주고, 기존 이미지를 숨깁니다.
+                    overlayImage.style.display = 'block';
+                    roundedTop.style.display = 'none';
+                });
+
+                container.addEventListener('mouseout', function () {
+                    // 기존 이미지를 보여주고, 오버레이 이미지를 숨깁니다.
+                    overlayImage.style.display = 'none';
+                    roundedTop.style.display = 'block';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom">
+        <div class="container">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="#offcanvas" aria-labelledby="#offcanvasLabel">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                            <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                            <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">금강권</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                        <ul class = sub-nav>
+                            <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                            <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                            <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+</header>
+
+<main>
+    <section class="py-5 text-center container">
+        <h1><strong>개정 / 임피</strong></h1><br>
+        <p class="chaShadow">본래 군산은 현재의 옛도심을 '옥구군'으로 불렸으며<br>
+            옥구군과 함께 '임피군'으로 나뉘어져 있었습니다.<br><br>
+            일제강점기 시절에는 임피군을 옥구군으로 불리다<br>
+            독립 후 군산과 옥구로 나누어 불려지다<br>
+            1995년 이후로 군산으로 통합되어 있습니다.
+        </p>
+        <p>
+            <button class="box1" onclick="scrollToPage1()">관광지 안내</button>&nbsp;
+            <button class="box2" onclick="scrollToPage2()">주변 맛집 안내</button>&nbsp;
+            <button class="box3" onclick="scrollToPage3()">주변 숙소 안내</button>
+        </p>
+    </section>
+    <div class="album py-5 bg-body-tertiary">
+        <div id="targetSection1">
+            <h3 align="center"><strong>관광지 안내</strong></h3>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/japaneseRiceLocker.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">군산 발산리 구 일본인 농장창고</p>
+                            <p class="card-text">1920년대에 군산지역의 대표적인 농장주였던 시마타니 야소야가 귀중품을 보관하기 위해 만든 금고형 건물입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://www.gunsan.go.kr/tour/m2127/view/305633?">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/17509941?c=17.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14115018.8182152,4295003.5801811,%EA%B5%B0%EC%82%B0%EA%B0%9C%EC%A0%95%EB%A9%B4%EA%B5%AC%EC%9D%BC%EB%B3%B8%EC%9D%B8%EB%86%8D%EC%9E%A5%EC%B0%BD%EA%B3%A0,17509941,PLACE_POI/-/transit?c=17.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/balsan5thRocktower.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">발산리 오층석탑</p>
+                            <p class="card-text">고려 전기의 것으로 추정되는 이 석탑은 높이가 6.4m이고, 2층 기단위에 5층의 탑신을 올린 형태였으나 지금은 탑신의 한 층이 없어지고 4층만 남아있습니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://www.gunsan.go.kr/tour/m2322">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/20103572?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14114910.6823969,4294996.4287623,%EB%B0%9C%EC%82%B0%EB%A6%AC%EC%98%A4%EC%B8%B5%EC%84%9D%ED%83%91,20103572,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/KumamotoHouse.jpg">
+                        <img class="overlayImage" src="images/LYCHouse.gif">
+                        <div class="card-body">
+                            <p class="card-text1">이영춘 가옥</p>
+                            <p class="card-text">1920년경에 일본인 대지주 구마모토가 지은 별장으로 서구식과 일본식, 한식의 절충양식 건물로 해방 후에는 개정병원 원장이었던 이영춘 박사가 거주하면서 현재의 이름을 갖게 되었습니다. </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://www.gunsan.go.kr/tour/m2127/view/305632?">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/20103620?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14110854.8903176,4296626.2208563,%EC%9D%B4%EC%98%81%EC%B6%98%EA%B0%80%EC%98%A5,20103620,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/GunsanKimjeBridge.jpg">
+                        <img class="overlayImage" src="images/SaechangiBridge.gif">
+                        <div class="card-body">
+                            <p class="card-text1">새창이다리</p>
+                            <p class="card-text">1933년 10월 5일에 준공된 군산 새창이다리는 우리나라에서 현존하는 시멘트 다리 중 가장 오래된 시멘트 다리입니다.<br>
+                            '만경대교'라는 이름으로 지어졌지만 지역 주민들로부터 '청하 다리', '청하 인도교', '새챙이 다리', '새창이 다리' 등으로 불렸습니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://blog.naver.com/gunsanpr/223261025757">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/1052417466?c=17.11,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14119593.9065548,4288281.8127906,%EC%83%88%EC%B0%BD%EC%9D%B4%EB%8B%A4%EB%A6%AC,1052417466,PLACE_POI/-/transit?c=17.11,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/ImpiHyanggyo.jpg">
+                        <img class="overlayImage" src="images/ImpiSchool.gif">
+                        <div class="card-body">
+                            <p class="card-text1">임피향교</p>
+                            <p class="card-text">임피향교는 임피면 읍내리에 있는데 조선시대 관리들의 업적을 알리는 비석이 입구에 많이 있습니다.<br>
+                                최근에 보수도 많이하고 단장을 해서 옛 모습이 사라졌다고 하지만 옛날 선비들이 공부하던 모습을 떠올리기에 부족함이 없이 잘 정돈된 향교입니다. </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://www.gunsan.go.kr/tour/m2314">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/17506708?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14120667.84502,4298978.7792999,%EC%9E%84%ED%94%BC%ED%96%A5%EA%B5%90,17506708,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="roundedTop" src="images/Impistation.jpg">
+                        <img class="overlayImage" src="images/ImpiHistory.gif">
+                        <div class="card-body">
+                            <p class="card-text1">임피역사</p>
+                            <p class="card-text">일제강점기 전라도 농산물을 군산항을 통하여 일본으로 반출하는 중요 교통로의 역할을 담당한 수탈의 아픈 역사를 지닌 역입니다.<br>
+                                2002년에 등록문화재 제 208호로 지정된 「임피역」은 건축 당시 농촌지역 소규모 간이역사의 전형적 건축형식과 기법을 잘 보여주며, 원형이 비교적 잘 보존되어 있고 현재는 객차전시관·시실리광장·방죽공원을 조성하고 재래식화장실·우물터·오포대 등을 만들어서 이 고장 출신 소설가 채만식의 작품의 이야기와 엮어서 관광객들의 사랑을 받고 있습니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://www.gunsan.go.kr/tour/m2318">정보 안내</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/20103563?c=15.00,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14122452.7115048,4294288.6956991,%EC%9E%84%ED%94%BC%EC%97%AD%EC%82%AC%20%EA%B0%84%EC%9D%B4%EC%97%AD,20103563,PLACE_POI/-/transit?c=15.00,0,0,0,dh">길찾기</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="box4_top">
+                <a href="#">
+                    <button class="box4">위로 돌아가기</button>
+                </a>
+            </div>
+            <br>
+            <hr>
+            <div id="targetSection2">
+                <h3 align="center"><strong>주변 맛집 안내</strong></h3><br>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/Impi_korean1.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">계곡가든꽃게장</p>
+                            <p class="card-text">꽃게로 담은 간장게장이 명물인 이곳은 일반 간장에 각종 약재를 넣고 숙성시키는 것이 맛의 비결이라고 합니다. 짜지 않다는 평을 받으며 알이 꽉 찬 꽃게를 한꺼번에 구입해 냉동 시킨 후 게장을 담가 일년 내내 상위에 올릴 수 있습니다. kg단위로 판매도 합니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/11785035?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14112161.1113986,4298306.6924523,%EA%B3%84%EA%B3%A1%EA%B0%80%EB%93%A0%EA%BD%83%EA%B2%8C%EC%9E%A5,11785035,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">해산물</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/Impi_korean2.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">예토아명인</p>
+                            <p class="card-text">농림축산식품부에서 제공된 안심식당으로 돼지갈비를 비롯한 고기요리, 냉면이 대표메뉴입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/37814254?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14120988.4483188,4298389.8370606,%EC%98%88%ED%86%A0%EC%95%84%EB%AA%85%EC%9D%B8,37814254,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">갈비, 냉면</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="box4_top">
+                <a href="#">
+                    <button class="box4">위로 돌아가기</button>
+                </a>
+            </div>
+            <br>
+            <hr>
+            <div id="targetSection3">
+                <h3 align="center"><strong>주변 숙소 안내</strong></h3><br>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/Impi_Pension1.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">해오름펜션</p>
+                            <p class="card-text">이곳에 오셔서 행복한 추억을 쌓고 가세요!<br>
+                                밤에는 야경과 경치가 좋아요!<br><br>
+                                1박 5인기준(방2개, 거실,주방, 욕실)<br>
+                                - 평일 190,000<br>
+                                - 주말 190,000<br>
+                                *7인부터는 방3개,욕실2개,거실,주방) 성수기 요금 적용하지 않고 운영합니다.<br><br>
+                                야외바베큐장 사용^^3만원입니다. 숯 추가시 문의해주세요</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="tel:0507-1386-4415">전화예약</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/1953437408?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14115068.8785486,4294954.0429936,%ED%95%B4%EC%98%A4%EB%A6%84%ED%8E%9C%EC%85%98,1953437408,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">펜션</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/Impi_Pension2.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">안느루</p>
+                            <p class="card-text">안느루는 한적한 시골마을에 위치한 독채로 하루한팀만 이용가능하며 150평 가량의 앞마당과 데크, 야외바베큐, 실내수영장을 별장처럼 프라이빗하게 즐기실수 있습니다.
+                                <br><br>이름만 독채 인곳들과 달리 정말 우리끼리 조용하게 한가로이 계실수 있는 공간 입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://booking.naver.com/booking/3/bizes/674569">예약하기</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/1567404812?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14116662.8178094,4294014.584082,%EC%95%88%EB%8A%90%EB%A3%A8,1567404812,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">펜션</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/Impi_Guesthouse.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">마리하우스</p>
+                            <p class="card-text">마리하우스는 아름다운전원마을에 위치하고있는 전원게스트하우스입니다.
+                                마리하우스는 에어비엔비에서 유명한 조식맛집입니다.<br>
+                                (주인의 특제소스 샐러드. 수제쨈 샌드위치, 구운계란 과일 커피 또는 우유 무료로 넉넉하게 제공합니다.)</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://mary2house2.modoo.at/?link=489fjwzx">예약하기</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/37371185?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14123532.9109147,4296397.211549,%EB%A7%88%EB%A6%AC%ED%95%98%EC%9A%B0%EC%8A%A4,37371185,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">게스트하우스</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/Impi_Pension3.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">문빌리지</p>
+                            <p class="card-text">잔디공원, 야외 바베큐를 즐길수 있는 프리이빗한 숙소이며, 여러 가족이 같이 뛰어 놀면서 행복한 시간을 보낼 수 있는 펜션입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="tel:0507-1403-3930">전화예약</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/1704560810?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14122921.4110889,4295689.5879137,%EB%AC%B8%EB%B9%8C%EB%A6%AC%EC%A7%80,1704560810,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">민박</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img class="rounded-top" src="images/Impi_motel1.jpg">
+                        <div class="card-body">
+                            <p class="card-text1">엘도라도모텔</p>
+                            <p class="card-text">저희 모텔에는 전기차충전소가 설치되어 있습니다. 넓은 주차장과 깨끗하게 관리된 객실 등 편안하게 쉬어갈 수 있는 장소입니다.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://place-site.yanolja.com/places/25352?menu=pay&trackcode=rm">예약하기</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/entry/place/11723097?c=11.30,0,0,0,dh">지도</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://map.naver.com/p/directions/-/14120726.7687739,4298444.2159764,%EC%97%98%EB%8F%84%EB%9D%BC%EB%8F%84%EB%AA%A8%ED%85%94,11723097,PLACE_POI/-/transit?c=11.30,0,0,0,dh">길찾기</a></button>
+                                </div>
+                                <small class="text-body-secondary">모텔</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="box4_top">
+                <a href="#">
+                    <button class="box4">위로 돌아가기</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="text-body-secondary py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">위로 이동하기</a>
+        </p>
+        <p class="mb-1">전라북도 군산에 관광하시는 분들 환영합니다!<br>
+            군산의 또다른 명소 개정면과 임피면을 안내하는 페이지입니다.<br>
+            또 다른 군산을 관광하고 싶다면 오른쪽에 있는 <b>'위로 이동하기'</b>를 클릭하세요.</p>
+    </div>
+</footer>
+<script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

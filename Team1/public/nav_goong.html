@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경복궁</title>
+    <link rel="stylesheet" href="css/Jangheader_test.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        #main {
+            width : 85%;
+            margin-top:150px;
+            margin-left : 150px;
+            padding-left : 180px;
+        }
+        #main-header {
+            text-align : center;
+            margin-left:-100px;
+        }
+        #main-middle-img {
+            text-align : center;
+            margin-left:-100px;
+        }
+        #main-middle-img img {
+            display:inline-block;
+            width:65%;
+        }
+        #main-middle-img table,th,td {
+            border : 1px solid #505050;
+        }
+        h3 {
+            font-weight : bold;
+        }
+        .table {
+            width:400px;
+            text-align : center;
+            vertical-align: middle;
+            font-size:15px;
+            border-right : 1px solid black;
+        }
+        .table th {
+            color:white;
+            background-color: #9f9f9f;
+        }
+        .table td {
+            padding : 2px 7px;
+        }
+        #main-middle-text {
+            width:80%;
+        }
+        .divide {
+            width : 100%;
+            height : 1px;
+            background-color: #9b9b9b;
+            margin : 10px 0;
+        }
+        .middle-price {
+            display : inline-block;
+            vertical-align: top;
+            margin : 20px 10px 30px 0;
+            padding-bottom : -10px;
+            clear:both;
+        }
+        .middle-price p {
+            line-height : 1.3em;
+        }
+        .price li {
+            list-style-type : circle;
+            margin-left : -10px;
+        }
+        .lodging {
+            width : 330px;
+            display:inline-block;
+            float : left;
+        }
+        .lodging-img img {
+            width : 100%;
+        }
+        .lodging-name {
+            padding : 2px 0 2px 2px;
+        }
+        .lodging button {
+            font-size:13px;
+            float:right;
+            clear:both;
+        }
+        .hotel-name {
+            width: 330px; /* 초기 너비 설정 */
+            overflow: hidden; /* 초과된 내용 숨김 */
+            transition: width 0.5s ease;/* 너비 변경 애니메이션 */
+            position: relative; /* 부모 요소로부터 상대 위치 설정 */
+            border: 1px solid #ccc;
+        }
+        .expanded {
+            width: 450px; /* 확장된 상태의 너비 설정 */
+            height:200px;
+        }
+
+        .hidden-content {
+            display: none; /* 초기에는 내용을 숨김 */
+            position: absolute; /* 부모 요소에 상대적으로 위치 고정 */
+        }
+
+        .visible-content {
+            display: block; /* 버튼 클릭 시 내용을 보이게 함 */
+        }
+        .red {
+            font-size:1.3em;
+            color:red;
+        }
+        .grade1 {
+            font-weight: bold;
+            border-right : 1px solid #9d9d9d;
+            padding-right : 10px;
+            padding-top : -5px;
+            font-size : 1.1em;
+        }
+        .grade2 {
+            font-weight : bold;
+            font-size : 1.1em;
+            color : #626262;
+        }
+        .price1 {
+            font-size:0.8em;
+            color:gray;
+            margin-left : 87px;
+        }
+        .price2 {
+            color:red;
+            font-weight:bold;
+            font-size:1.2em;
+        }
+        .won {
+            color:red;
+            font-size:1.1em;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        #middle3 {
+            clear : both;
+        }
+        #middle4 {
+            clear :both;
+        }
+        .traffic li {
+            list-style-type: circle;
+            line-height : 1.4em;
+        }
+        #footer {
+            background-color : #212529;
+            color: #f3ddb2;
+            text-align:center;
+            padding : 20px 0;
+        }
+        #lodging1 {
+            display: inline-block;
+        }
+        #market1 {
+            display: inline-block;
+        }
+        a {
+            color : #56aeff;
+        }
+        a:hover {
+            text-decoration : underline;
+        }
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: rgba(0, 0, 0, 0);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #scrollToTopBtn img {
+            width:50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container1">
+    <nav>
+        <ul>
+            <li class="nav-item"><a class="nav-link" href="index.html"><h2>Trip</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html">회원가입</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main_seoul.html"><h2>서울</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="nav_goong.html">경복궁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_market.html">광장시장</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_namsan.html">남산</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_lotteworld.html">롯데월드</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nav_DDP.html">DDP</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="main2.html"><h2>강릉</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="ganTasty.html">맛집</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="Gunsan_Main.html"><h2>군산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_3.html">시간여행테마</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_2.html">고군산군도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Gunsan_Travel_4.html">개정/임피</a></li>
+                </ul>
+            <li class="nav-item"><a class="nav-link" href="busanMain.html"><h2>부산</h2></a>
+                <ul class = sub-nav>
+                    <li class="nav-item"><a class="nav-link" href="busanHeaundae.html">해운대</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGamcheon.html">감천마을</a></li>
+                    <li class="nav-item"><a class="nav-link" href="busanGwangalli.html">광안리</a></li>
+                </ul>
+        </ul>
+    </nav>
+</div>
+
+<div id="main">
+    <div id="main-header">
+        <h1 style="padding-top:30px; font-weight:bold; font-size:50px;">경복궁</h1>
+        <p><h4 style="color:#707070;">조선의 정궁(법궁)</h4></p>
+    </div>
+    <div id="main-middle">
+        <div id="main-middle-img">
+            <img src="images/goong.jpg">
+        </div>
+        <div id="main-middle-text">
+            <p><h3>상세정보</h3></p>
+            <div class="divide"></div>
+            <p>서울특별시 종로구 사직로 161 (세종로)에 있는 조선시대의 궁궐 중 하나이자 조선의 정궁(법궁)이다. 사적 제117호로 지정받았다.<br>
+                태조가 조선을 건국하고 한양 천도를 단행하면서 조선 시대에 가장 먼저 지은 궁궐이다.<br>
+                1592년 임진왜란 때 소실되어 275년간 방치되다가 19세기에 흥선대원군 주도로 중건되었다.<br>
+                당시에는 7천여 칸이라는 거대한 규모를 자랑하는 건축물로 거듭났었지만 구한말과 일제강점기를 거치며 수천 칸의 전각이 헐리고 매각되며 조선총독부 청사와 같은 다른 건물이 들어서는 등 궐내가 크게 훼손되었다.<br>
+                1990년에 이르러서는 고작 36동의 건물(고종 재위 당시의 7% 수준)만 남았고 지금도 계속 복원이 이루어지고 있다.<br>
+                다만 사라진 전각들에 대한 자료가 부족하여 최근 복원한 전각들도 원형이라는 보장은 없으며, 후일에도 완전한 경복궁의 모습을 볼 수 있을지는 미지수이다.</p>
+        </div>
+            <div class="divide" style="margin-bottom:50px; width:80%;"></div>
+        <div id="main-middle-price">
+            <div class="middle-price">
+                <h3>입장료</h3>
+                <div class="divide"></div>
+                <table class="table">
+                    <tr>
+                        <th colspan="2">입장요금</th>
+                        <th>개인</th>
+                        <th>단체</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><b>내국인</b></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">만25세 ~ 만64세</th>
+                        <td>3,000원</td>
+                        <td>2,400원</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">만24세 이하, 만65세 이상</th>
+                        <td colspan="2"><b>무료</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><b>외국인</b></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">만25세 ~ 만64세</th>
+                        <td>3,000원</td>
+                        <td>2,400원</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">만7세 ~ 만18세</th>
+                        <td>1,500원</td>
+                        <td>1,200원</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">만6세 이하, 만65세 이상</th>
+                        <td colspan="2"><b>무료</b></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="middle-price" style="margin-left:20px;">
+                <h3>관람시간 및 휴관일</h3>
+                <div class="divide"></div>
+                    <ul class="price">
+                        <li>1월 ~ 2월, 11월 ~ 12월 : 09:00 ~ 17:00 (마지막 입장 16:00)<br></li>
+                        <li>3월 ~ 5월, 9월 ~ 10월 : 09:00 ~ 18:00 (마지막 입장 17:00)<br></li>
+                        <li><p>6월 ~ 8월 : 09:00 ~ 18:30 (마지막 입장 17:30)</p></li>
+                        <li><p><b>매주 화요일은 휴궁.</b></p></li>
+                    </ul>
+                <div class="divide"></div>
+                <h3 style="margin-top:50px;">편의시설</h3>
+                <div class="divide"></div>
+                    <ul class="price">
+                        <li>주차비는 2시간에 2,000원, 15분에 500원이다.</li>
+                        <li>음성안내서비스를 대여할 수 있다.</li>
+                    </ul>
+            </div>
+            <div class="middle-price" style="margin-left:20px; width:30%;">
+                <h3>관람코스안내</h3>
+                <div class="divide" style="width:120%;"></div>
+                <img src ="images/goong-loadmap.webp" style="width:120%;">
+            </div>
+        </div>
+        <div id="middle2">
+            <div class="divide" style="margin-bottom:50px;"></div>
+            <h3>주변숙소</h3>
+            <div class="divide"></div>
+        </div>
+        <div id="lodging1">
+            <div class="lodging" style="margin:20px;">
+                <div class="lodging-img">
+                    <img src="images/goong-lodging1.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox1"><b>웨스틴 조선 서울</b>
+                        <button onclick="expandBox(1)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">8.7</span> <span class="grade2">5성급</span><span class="price1">1박(세금미포함/평균가격) </span><span class="price2">310,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 중구 소공로 106</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://hotels.naver.com/item?adultCnt=2&hotelFileName=hotel%3AThe_Westin_Josun_Seoul&checkIn=2024-01-22&checkOut=2024-01-23&includeTax=false" target="_blank">웨스틴 조선 서울 (네이버 여행상품)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:50px 0 0 150px;">
+                <div class="lodging-img">
+                    <img src="images/goong-lodging2.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox2"><b>신라 스테이 광화문</b>
+                        <button onclick="expandBox(2)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">8.0</span> <span class="grade2">3성급</span><span class="price1">1박(세금미포함/평균가격) </span><span class="price2">140,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 종로구 수송동 51-8</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://hotels.naver.com/item?hotelFileName=hotel%3AShilla_Stay_Gwanghwamun&adultCnt=2&checkIn=2024-01-22&checkOut=2024-01-23&includeTax=false" target="_blank">신라 스테이 광화문 (네이버 여행상품)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:0 0 0 150px;">
+                <div class="lodging-img">
+                    <img src="images/goong-lodging3.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox3"><b>코리아나 호텔</b>
+                        <button onclick="expandBox(3)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">8.5</span> <span class="grade2">4성급</span><span class="price1">1박(세금미포함/평균가격) </span><span class="price2">110,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 중구 세종대로 135 코리아나 호텔</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://hotels.naver.com/item?adultCnt=2&hotelFileName=hotel%3AKoreana_Hotel&checkIn=2024-01-22&checkOut=2024-01-23&includeTax=false" target="_blank">코리아나 호텔 (네이버 여행상품)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="middle3">
+            <div class="divide" style="margin-bottom:50px;"></div>
+            <h3>주변 맛집</h3>
+            <div class="divide"></div>
+        </div>
+        <div id="market1">
+            <div class="lodging" style="margin:70px 0 0 20px">
+                <div class="lodging-img">
+                    <img src="images/restaurant1.png">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox4"><b>황생가 칼국수</b>
+                        <button onclick="expandBox(4)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">4.32</span> <span class="grade2">칼국수 및 만두요리</span><span class="price1" style="margin-left:102px;">평균 </span><span class="price2">15,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 종로구 북촌로5길 78</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://map.naver.com/p/entry/place/11679429?c=15.00,0,0,0,dh" target="_blank">황생가 칼국수 (네이버 지도)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:110px 0 0 150px">
+                <div class="lodging-img">
+                    <img src="images/restaurant2.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox5"><b>스미스가 좋아하는 한옥</b>
+                        <button onclick="expandBox(5)">더보기</button>
+                        <div class="hidden-content">
+                            <p style="margin-top:10px;"><span class="red">★</span> <span class="grade1">4.39</span> <span class="grade2">이탈리아 음식</span><span class="price1" style="margin-left:142px;">평균 </span><span class="price2">40,000</span><span class="won">원</span></p>
+                            <p class="bold">주소 : 서울 종로구 삼청로 22-7</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://map.naver.com/p/entry/place/20514821?c=15.00,0,0,0,dh" target="_blank">스미스가 좋아하는 한옥 (네이버 지도)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lodging" style="margin:10px 0 0 150px">
+                <div class="lodging-img">
+                    <img src="images/restaurant3.jpg">
+                </div>
+                <div class="lodging-name">
+                    <div class="hotel-name" id ="expandableBox6"><b>모도우 광화문점</b>
+                        <button onclick="expandBox(6)">더보기</button>
+                        <div class="hidden-content">
+                            <span style="margin-top:10px;"><span class="red">★</span> <span class="grade1">4.63</span> <span class="grade2">소고기구이 및 퓨전요리</span></span>
+                            <span class="price1" style="margin-left:270px;">런치제외평균 </span><span class="price2">110,000</span><span class="won">원</span>
+                            <p class="bold">주소 : 서울 종로구 율곡로 6 트윈트리타워 B동 M층</p>
+                            <p class="bold" style="margin-bottom:5px;">자세한 정보</p>
+                            ┖ <a href="https://map.naver.com/p/entry/place/1637113198?c=15.00,0,0,0,dh" target="_blank">모도우 광화문점 (네이버 지도)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="middle4">
+            <div class="divide" style="margin:30px 0 50px 0;"></div>
+            <h3>오시는 길</h3>
+            <div class="divide" style="width:85%"></div>
+        </div>
+        <div class="traffic">
+            <ul><img src="images/icon-subway.png" style="width:70px; margin:0 0 10px -20px;">
+                <li>3호선 경복궁역 5번출구 도보 5분</li>
+                <li>5호선 광화문역 2번출구 도보 약 10분</li>
+            </ul>
+            <ul><img src="images/icon-bus.png" style="width:70px; margin:0 0 5px -20px;">
+                <li>경복궁 남측 : 109, 171, 272, 601, 606, 1020, 7025</li>
+                <li>경복궁 서측 : 1020, 1711, 7016, 7018, 7022, 7212, 6011, 9703</li>
+                <li>자세한 버스노선은 <a href="http://topis.seoul.go.kr" target="_blank">서울시 교통정보</a>를 참고하시기 바랍니다.</li>
+            </ul>
+        </div>
+        <div class="divide" style="margin-bottom:50px; width:85%;"></div>
+    </div>
+</div>
+<button id="scrollToTopBtn" onclick="scrollToTop()"><img src="images/up.png"></button>
+
+
+<footer class="footer">
+    <div class="footer-text">
+        <p>&copy; 주식회사 TRIP 2024.</p>
+        <ul>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">고객센터</a></li>
+        </ul>
+    </div>
+    <div class="footer-text2">
+        <ul> 운영진
+            <li>강연배</li>
+            <li>장준희</li>
+            <li>이은진</li>
+            <li>배호진</li>
+        </ul>
+    </div>
+</footer>
+<script>
+    function expandBox(boxNumber) {
+        var box = document.getElementById('expandableBox' + boxNumber);
+        var hiddenContent = box.querySelector('.hidden-content');
+
+        // 확장된 상태로 전환
+        box.classList.toggle('expanded');
+
+        // 내용 보이기/숨기기 토글
+        hiddenContent.classList.toggle('visible-content');
+    }
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    window.onscroll = function () {
+        var scrollButton = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+            scrollButton.style.display = "block";
+        } else {
+            scrollButton.style.display = "none";
+        }
+    };
+</script>
+</body>
+</html>
