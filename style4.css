@@ -4,6 +4,7 @@ body {
 	font: 14px 맑은 고딕;
 }
 .container {
+	align-items: center;
 	position:absolute;
 	width: 960px;
 	margin : 0 auto;
@@ -15,7 +16,7 @@ header {
 	height: 280px;
 	background-image: url('./header.jpg');
 	background-repeat: no-repeat;
-	background-position: left top;
+	background-position: center top;
 	background-size: cover;
 }
 header h1{
