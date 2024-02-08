@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 오버 이미지 변경</title>
+    <style>
+        /* 이미지에 대한 스타일을 지정합니다. */
+        #originalImage {
+            width: 300px;
+            height: 200px;
+            transition: transform 0.3s; /* 부드러운 효과를 위한 CSS transition 속성 */
+        }
+
+        /* 오버레이 이미지에 대한 스타일을 지정합니다. */
+        #overlayImage {
+            display: none; /* 초기에는 숨깁니다. */
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 기본 이미지 -->
+<img id="originalImage" src="images/kumRiverFuture.jpg" alt="Original Image">
+
+<!-- 마우스 오버 시 나타날 이미지 -->
+<img id="overlayImage" src="images/고군산군도움짤.gif" alt="Overlay Image">
+
+<script>
+    // JavaScript로 이벤트를 처리하는 부분입니다.
+    document.addEventListener('DOMContentLoaded', function () {
+        // 이미지 요소를 가져옵니다.
+        var originalImage = document.getElementById('originalImage');
+        var overlayImage = document.getElementById('overlayImage');
+
+        // 이미지에 마우스를 올렸을 때의 이벤트를 등록합니다.
+        originalImage.addEventListener('mouseover', function () {
+            // 오버레이 이미지를 보여주고, 기존 이미지를 숨깁니다.
+            overlayImage.style.display = 'block';
+            originalImage.style.display = 'none';
+        });
+
+        // 이미지에서 마우스가 벗어났을 때의 이벤트를 등록합니다.
+        originalImage.addEventListener('mouseout', function () {
+            // 기존 이미지를 보여주고, 오버레이 이미지를 숨깁니다.
+            overlayImage.style.display = 'none';
+            originalImage.style.display = 'block';
+        });
+    });
+</script>
+
+</body>
+</html>

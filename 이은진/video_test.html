@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지에 마우스를 올려놓으면 동영상 재생</title>
+    <style>
+        /* 동영상을 감싸는 div의 스타일을 지정합니다. */
+        #videoContainer {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 동영상 요소의 초기 상태를 설정합니다. */
+        #videoHide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* 이미지에 대한 스타일을 지정합니다. */
+        #thumbnail {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 이미지를 감싸는 div 요소 -->
+<div id="videoContainer">
+    <!-- 썸네일 이미지 -->
+    <img id="thumbnail" src="images/kumRiverFuture.jpg" alt="Thumbnail Image">
+    <iframe id="videoHide" name="iframe" src="https://www.youtube.com/embed/eDrIIcOnLuM?autoplay=1&mute=1&controls=0&loop=1&rel=0&playlist=eDrIIcOnLuM"></iframe>
+</div>
+
+<script>
+    // JavaScript로 이벤트를 처리하는 부분입니다.
+    document.addEventListener('DOMContentLoaded', function () {
+        // 썸네일 이미지와 동영상 요소를 가져옵니다.
+        var thumbnail = document.getElementById('thumbnail');
+        var video = document.getElementById('videoHide');
+
+        // 썸네일 이미지에 마우스를 올렸을 때의 이벤트를 등록합니다.
+        thumbnail.addEventListener('mouseover', function () {
+            // 동영상을 보여주고 재생합니다.
+            video.style.display = 'block';
+            video.play();
+        });
+
+        // 썸네일 이미지에서 마우스가 벗어났을 때의 이벤트를 등록합니다.
+        thumbnail.addEventListener('mouseout', function () {
+            // 동영상을 숨기고 일시 정지합니다.
+            video.style.display = 'none';
+            video.pause();
+        });
+    });
+</script>
+
+</body>
+</html>
