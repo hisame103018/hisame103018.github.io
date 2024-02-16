@@ -1,0 +1,59 @@
+<!-- 게시판 메인 페이지 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <title>명동 커뮤니티</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .post-link {
+            text-decoration: none; /* 기본 링크 스타일 무시 */
+            color: black;
+        }
+
+        .post-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h3>커뮤니티</h3>
+<!-- 게시글 목록 표시 -->
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>말머리</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
+        <th>좋아요</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for (let i = 0; i < posts.length; i++) { %>
+
+    <% } %>
+    </tbody>
+</table>
+</body>
+</html>
