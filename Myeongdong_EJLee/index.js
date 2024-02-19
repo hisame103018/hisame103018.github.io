@@ -1,10 +1,10 @@
 const express = require('express');
-// const oracledb = require('orabledb');
+const oracledb = require('orabledb');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const app = express();
-const port = 4240;
+const port = 3000;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,7 +23,7 @@ const dbConfig = {
 
 // 자동 commit 처리
 app.set('view engine', 'ejs');
-oracledb.initOracleClient({ lirDir: '../../../instantclient_21_13' });
+oracledb.initOracleClient({ lirDir: '../instantclient_21_13' });
 oracledb.autoCommit = true;
 
 // 게시판 메인 페이지 랜더링
@@ -94,6 +94,33 @@ app.get('/', async (req, res) => {
         }
     }
 });
+
+// 댓글 페이지 랜더링
+app.get('/addComment', (req, res) => {
+    const postId = req.query.postId; // postId 가져오기
+    res.render('addComment', {postId: postId});
+});
+
+// 로그인 페이지 랜더링
+app.get('/login',(req,res) => {
+    const { username, password } = req.body;
+    // 로그인 처리 로직 작성
+});
+
+// 글 작성 페이지 렌더링
+app.get('/create',(req,res) => {
+    // 로그인 여부 확인 로직 작성
+    res.render('create');
+});
+
+// 글 작성 처리
+app.post('/create', async (req, res) => {
+    // 로그인 여부 확인 로직 작성
+    const { title, content } = req.body;
+    // 글 작성 처리 로직 작성
+});
+
+// 다시 옮기기
 
 // 게시판 서버 시작
 app.listen(port, () => {
