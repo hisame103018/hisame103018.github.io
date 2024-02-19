@@ -51,9 +51,36 @@
     </thead>
     <tbody>
     <% for (let i = 0; i < posts.length; i++) { %>
-
+        <tr>
+            <td><a href="/detailPost/<%= posts[i][0] %>" class="post-link" data-post-id="<%= posts[i][0] %>">
+                    <%= posts[i][1] %> [<%= posts[i][5] %>]</a></td>
+            <td><%= posts[i][2] %></td>
+            <td><%= posts[i][3] %></td>
+            <td><%= posts[i][4] %></td>
+        </tr>
     <% } %>
     </tbody>
 </table>
+<script>
+    console.log(<%= startPage %>);
+</script>
+<!-- 페이징 -->
+<div>
+    <% if (currentPage > 1) { %>
+        <a href="/?page=<%= currentPage - 1 %>">이전</a>
+    <% } %>
+
+    <% for (let i = startPage; i <= endPage; i++) { %>
+        <% if ( i === currentPage) { %>
+            <span class="current-page"><%= i %></span>
+        <% } else { %>
+            <a href="/?page=<%= i %>"><%= i %></a>
+        <% } %>
+    <% } %>
+
+    <% if ( (totalPages - currentPage) > maxPageNumber) { %>
+            <a href="/?page= <%= currentPage + 1 %>">다음</a>
+    <% } %>
+</div>
 </body>
 </html>
