@@ -14,7 +14,7 @@ const port = 3000;
 app.set('view engine', 'ejs');
 const WEB_SERVER_HOME = 'C:\\EJLee\\Util\\nginx-1.24.0\\html';
 // 비대면 PC 경로
-// const WEB_SERVER_HOME = 'C:\\EJLee\\Util\\nginx-1.24.0\\html';
+// const WEB_SERVER_HOME = 'D:\\EJLEE\\Util\\nginx-1.24.0\\html';
 app.use('/', express.static(WEB_SERVER_HOME + '/'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
@@ -32,6 +32,7 @@ const dbConfig = {
 
 app.set('view engine', 'ejs');
 oracledb.initOracleClient({libDir: 'C:\\instantclient_21_13'});
+// oracledb.initOracleClient({libDir: 'D:\\instantclient_21_13'}); // 비대면 전용 oracle 루트입니다
 
 // express-session 미들웨어 설정
 app.use(session({
@@ -338,6 +339,7 @@ app.get('/detailPost/:id', async (req, res) => {
         );
 
         // 댓글 가져오기
+        // 댓글의 작성자 username을 구하기 위해 users 테이블과 조인한다.
         const commentResult = await conn.execute(
             `select c.id, c.author_id, c.content, u.username as author, to_char(c.created_at, 'YYYY-MM-DD HH:MM') as created_at, c.parent_comment_id
             from comments c
@@ -348,7 +350,7 @@ app.get('/detailPost/:id', async (req, res) => {
             { fetchInfo: { content: { type: oracledb.string } } }
         );
 
-        // 댓글과 댓글의 댓글을 구성
+        // 댓글과 댓글의 답글을 구성하기 위한 사용자 정의 자료구조 생성
         const comments = [];
         const commentMap = new Map(); // 댓글의 id를 key로 하여 댓글을 맵으로 저장
 
@@ -360,7 +362,6 @@ app.get('/detailPost/:id', async (req, res) => {
                 author: row[3],
                 created_at: row[4],
                 children: [], // 자식 댓글을 저장할 배열
-                isAuthor: row[1] === userId // 댓글 작성자가 현재 로그인한 사용자인지 확인
             };
 
             const parentId = row[5]; // 부모 댓글의 id
@@ -385,7 +386,7 @@ app.get('/detailPost/:id', async (req, res) => {
             views: postResult.rows[0][6],
             likes: postResult.rows[0][7]
         };
-        res.render('detalePost', {
+        res.render('detailPost', {
             post: post,
             userId: userId,
             userName: userName,
@@ -404,4 +405,177 @@ app.get('/detailPost/:id', async (req, res) => {
             }
         }
     }
+});
+
+// 수정 페이지 렌더링
+app.get('/editPost/:id', async (req, res) => {
+    // 로그인 여부 확인
+    if (!req.session.loggedIn) {
+        return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+    }
+
+    const postId = req.params.id;
+    const userId = req.params.user_id;
+    const userName = req.query.username;
+    let conn;
+    try {
+        conn = await oracledb.getConnection(dbConfig);
+
+        // 게시글 정보 가져오기
+        const result = await conn.execute(
+            `select * from posts where id = :id`,
+            [postId],
+            { fetchInfo: { content: { type: oracledb.STRING }}}
+        );
+
+        const post = {
+            id: result.rows[0][0],
+            title: result.rows[0][2],
+            content: result.rows[0][3]
+        };
+
+        res.render('editPost', {
+            post: post,
+            userId: userId,
+            userName: userName,
+            userRealName: userRealName
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    } finally {
+        if (conn) {
+            try {
+                await conn.close();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }
+});
+
+// 수정 처리
+app.post('/editPost/:id', async (req, res) => {
+    const { title, content } = req.body;
+    const postId = req.params.id;
+
+    let conn;
+    try {
+        conn = await oracledb.getConnection(dbConfig);
+
+        // 게시글 수정
+        await conn.execute(
+            `update posts set title = :title, content = :content where id = :id`,
+            [title, content, postId]
+        );
+
+        // 변경 사항 커밋
+        await conn.commit();
+
+        // 수정 후 상세 페이지로 리다이렉트
+        res.redirect(`/detailPost/${postId}?user=id=${req.session.userId}&username=${req.session.username}&user_realname=${req.session.userRealName}`);
+    } catch (err) {
+        console.error('게시글 수정 중 오류 발생:', err);
+        res.status(500).send('게시글 수정 중 오류가 발생했습니다.');
+    } finally {
+        if (conn) {
+            try {
+                await conn.close();
+            } catch (err) {
+                console.error('오라클 연결 종료 중 오류 발생:', err);
+            }
+        }
+    }
+});
+
+// 삭제 처리
+app.get('/deletePost/:id', async (req, res) => {
+    // 로그인 여부 확인
+    if (!req.session.loggedIn) {
+        return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+    }
+
+    const postId = req.params.id;
+    const userId = req.params.user_id;
+    const userName = req.query.username;
+    const userRealName = req.query.user_realname;
+
+    let conn;
+    try {
+        conn = await oracledb.getConnection(dbConfig);
+
+        // 게시글에 달린 댓글과 답글 삭제
+        await conn.execute(
+            `delete from comments where post_id = :postId or parent_comment_id in (select id from comments where post_id = :postId)`,
+            [postId, postId]
+        );
+        // 변경 사항 커밋
+        await conn.commit();
+        // 게시글 삭제
+        await conn.execute(
+            `delete from posts where id = :id`,
+            [postId]
+        );
+
+        // 변경 사항 커밋
+        await conn.commit();
+
+        // 삭제 후 게시판 메인 페이지로 리다이렉트
+        res.redirect(`/boardMain?id=${userId}$username=${userName}&name=${userRealName}`);
+    } catch (err) {
+        console.error('게시글 삭제 중 오류 발생:', err);
+        res.status(500).send('게시글 삭제 중 오류가 발생했습니다.');
+    } finally {
+        if (conn) {
+            try {
+                await conn.close();
+            } catch (err) {
+                console.error('오라클 연결 종료 중 오류 발생:', err);
+            }
+        }
+    }
+});
+
+// 댓글 삭제 처리
+app.post('/deleteComment/:id', async (req, res) => {
+    // 로그인 여부 확인
+    if(!req.session.loggedIn) {
+        return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
+    }
+
+    const commentId = req.params.id;
+    const postId = req.body.post_id;
+
+    let conn;
+    try {
+        conn = await oracledb.getConnection(dbConfig);
+
+        // 댓글 삭제
+        await conn.execute(
+            `delete from comments where id = :id or parent_comment_id = :parent_commnet_id`,
+            { id: commentId, parent_comment_id: commentId }
+        );
+
+        // 변경 사항 커밋
+        await conn.commit();
+
+        // 삭제 후 상세 페이지로 리다이렉트
+        res.redirect(`/detailPost/${postId}`);
+    } catch (err) {
+        console.error('댓글 삭제 중 오류 발생:', err);
+        res.status(500).send('댓글 삭제 중 오류가 발생했습니다.');
+    } finally {
+        if (conn) {
+            try {
+                await conn.close();
+            } catch (err) {
+                console.error('오라클 연결 종료 중 오류 발생:', err);
+            }
+        }
+    }
+});
+
+// 게시판 서버 시작
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}/boardMain`);
 });
