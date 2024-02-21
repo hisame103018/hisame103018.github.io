@@ -1,13 +1,28 @@
 -- 게시글 테이블 생성
-create table posts (
-                       id number primary key,
-                       subject varchar2(255),
-                       title varchar2(255),
-                       content clob,
-                       create_at timestamp default current_timestamp,
-                       views number default 0,
-                       foreign key (author_id) references users(id)
+create table md_posts (
+                          id number primary key,
+                          author_id number,
+                          sort_id number,
+                          title varchar(255),
+                          content clob,
+                          created_at timestamp default current_timestamp,
+                          views number default 0,
+                          likes number default 0,
+                          FOREIGN KEY (author_id) REFERENCES users(id)
 );
+
+-- 말머리 생성
+create table sort (
+                         id int primary key,
+                         subject varchar(255)
+);
+
+-- 말머리 id 생성
+insert into subject (id, name) values (1, '명소');
+insert into subject (id, name) values (2, '맛집');
+insert into subject (id, name) values (3, '숙소');
+commit;
+
 -- 덧글 테이블 생성
 create table comments (
                           id number primary key,

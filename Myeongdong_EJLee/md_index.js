@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 const WEB_SERVER_HOME = 'C:\\EJLee\\Util\\nginx-1.24.0\\html';
 // 비대면 PC 경로
 // const WEB_SERVER_HOME = 'D:\\EJLEE\\Util\\nginx-1.24.0\\html';
-app.use('/', express.static(WEB_SERVER_HOME + '/'));
+app.use(express.static(WEB_SERVER_HOME + '/'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
     secret: 'secret-key',
@@ -27,7 +27,7 @@ app.use(session({
 const dbConfig = {
     user: 'open-source',
     password: '1111',
-    connectString: 'localhost:1521/xe'
+    connectString: '192.168.0.17:1521/xe'
 };
 
 app.set('view engine', 'ejs');
@@ -280,7 +280,7 @@ app.post('/create', async (req, res) => {
 
         // 게시글 삽입
         await conn.execute(
-            `insert into posts (id, subject, author_id, title, content) values (:id, :subject, :authorId, :title, :content)`,
+            `insert into md_posts (id, sort_id, author_id, title, content) values (:id, :subject, :authorId, :title, :content)`,
             [postId, subject, authorID, title, content]
         );
 

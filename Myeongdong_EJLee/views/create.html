@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글 작성하기</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .author {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .content {
+            font-size: 16px;
+            padding: 20px;
+        }
+
+        .comment-section {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #ccc; /* 테두리 추가 */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .comment {
+            margin-bottom: 20px; /* 댓글 사이에 간격 추가 */
+        }
+
+        .comment:not(:last-child) {
+            border-bottom: 1px solid #ccc; /* 댓글 사이에 구분선 추가 */
+            padding-bottom: 10px;
+        }
+
+        .comment:last-child {
+            margin-bottom: 0;
+        }
+
+        .comment-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .comment-buttons {
+            margin-top: 5px;
+        }
+
+        .comment-buttons button {
+            margin-right: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        /*가운데 정렬 스타일 추가 */
+        .center {
+            text-align: center;
+        }
+
+        /* 버튼 스타일 정의 */
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        /* 버튼 호버 효과 */
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* 답글 달기 버튼 스타일 */
+        .reply-button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* 답글 달기 버튼 호버 효과 */
+        .reply-button:hover {
+            background-color: #004455;
+        }
+
+        /* 댓글 입력 폼 스타일 */
+        .comment-form {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 답글 폼 스타일 */
+        .reply-form {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="center">
+    <!-- 작성 폼 -->
+    <form action="/md_create" method="post">
+        <!-- 말머리 지정 -->
+        말머리:
+        <select>
+            <option value="subject1">명소</option>
+            <option value="subject2">맛집</option>
+            <option value="subject3">숙소</option>
+        </select><br>
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title"><br>
+        <label for="content">내용:</label>
+        <textarea id="content" name="content" rows="4" cols="50"></textarea><br>
+        <input class="button" type="submit" value="작성하기">
+    </form>
+    <!-- 이전 페이지로 돌아가기 버튼 -->
+    <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
+</div>
+
+</body>
+</html>
