@@ -255,7 +255,7 @@ async function varifyID(username, password) {
 }
 
 // 글작성 페이지 렌더링
-app.get('/create', (req, res) => {
+app.get('/md_create', (req, res) => {
     // 로그인 여부 확인 로직 생성
     res.render('create', {
         userId: req.session.userId,
@@ -264,7 +264,7 @@ app.get('/create', (req, res) => {
     });
 });
 
-app.post('/create', async (req, res) => {
+app.post('/md_create', async (req, res) => {
     console.log('Debug: post create');
     const { title, content } = req.body;
     const authorID = req.session.loggedInUserId; // 현재 로그인한 사용자의 ID

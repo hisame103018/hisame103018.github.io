@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글 상세 페이지</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .author {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .content {
+            font-size: 16px;
+            padding: 20px;
+        }
+
+        .comment {
+            margin-left: 20px;
+        }
+
+        /*가운데 정렬 스타일 추가 */
+        .center {
+            text-align: center;
+        }
+
+        /* 버튼 스타일 정의 */
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        /* 버튼 호버 효과 */
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* 답글 달기 버튼 스타일 */
+        .reply-button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        /* 답글 달기 버튼 호버 효과 */
+        .reply-button:hover {
+            background-color: #004455;
+        }
+
+        /* 댓글 입력 폼 스타일 */
+        .comment-form {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 답글 폼 스타일 */
+        .reply-form {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p><%= userRealName %>님 </p>
+</div>
+<table>
+    <tr>
+        <th>제목</th>
+        <td class="title"><%= post.title %></td>
+    </tr>
+    <tr>
+        <th>작성자</th>
+        <td class="author"><%= post.author %></td>
+    </tr>
+    <tr>
+        <th>게시글 내용</th>
+        <td class="content"><%= post.content %></td>
+    </tr>
+    <tr>
+        <th>생성일</th>
+        <td><%= post.created_at %></td>
+    </tr>
+    <tr>
+        <th>조회수</th>
+        <td><%= post.views %></td>
+    </tr>
+    <tr>
+        <th>좋아요 수</th>
+        <td><%= post.likes %></td>
+    </tr>
+    <tr>
+        <th>댓글</th>
+        <td>
+            <% if (comments && comments.length > 0) { %>
+            <% comments.forEach(comment => { %>
+            <div class="comment">
+                <p><%= comment.author %></p>
+                <p><%= comment.content %></p>
+                <p><%= comment.id %></p>
+                <p><%= comment.created_at %>
+                    <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a></p>
+                <% if (comment.children && comment.children.length > 0) { %>
+                <% comment.children.forEach(childComment => { %>
+                <div class="comment reply-form">
+                    <p><%= childComment.author %></p>
+                    <p><%= childComment.content %></p>
+                    <p><%= childComment.created_at %> <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a></p>
+                </div>
+                <% }); %>
+                <% } %>
+            </div>
+            <% }); %>
+            <% } else { %>
+            <p>댓글이 없습니다.</p>
+            <% } %>
+        </td>
+    </tr>
+</table>
+<div class="comment-form">
+    <form action="/addComment?post_id=<%= post.id %>&author_id=<%= userId %>" method="POST">
+        <textarea class="comment-input" name="content" rows="5" placeholder="'<%= username%>'님 댓글을 남겨보세요" required></textarea><br>
+        <input type="submit" value="등록" class="submit-button">
+    </form>
+</div>
+<!-- 이전 페이지로 돌아가기 버튼 -->
+<div class="center">
+    <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
+    <!-- 수정 버튼 추가 -->
+    <a href="/editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">수정</a>
+    <!-- 삭제 버튼 추가 -->
+    <a href="/deletePost/<%= post.id %>?user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">삭제</a>
+</div>
+
+<script>
+    // 답글쓰기 버튼 클릭 시 해당 댓글 아래에 답글 입력 폼을 표시하는 함수
+    document.querySelectorAll('.reply-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            // 클릭한 버튼의 data-comment-id 속성 값을 가져옴
+            const commentId = button.dataset.commentId;
+            const replyForm = document.createElement('div');
+            replyForm.classList.add('comment', 'reply-form');
+            replyForm.innerHTML = `
+            <form action="/addComment?post_id=<%= post.id %>&user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" method="POST">
+                <input type="hidden" name="post_id" value="<%= post.id %>">
+                <input type="hidden" name="author_id" value="<%= userId %>">
+                <!-- 클릭한 버튼의 data-comment-id 값을 comment_id로 설정 -->
+                <input type="hidden" name="comment_id" value="${commentId}">
+                <textarea class="comment-input" name="content" rows="3" placeholder="'<%= username%>'님 답글을 남겨보세요" required></textarea><br>
+                <input type="submit" value="등록" class="submit-button">
+            </form>
+        `;
+            // 클릭한 버튼 다음에 답글 입력 폼 삽입
+            button.parentElement.appendChild(replyForm);
+        });
+    });
+</script>
+
+</body>
+</html>

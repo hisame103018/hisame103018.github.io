@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세 포스트 보기</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        .inp_textarea {
+            width: 85%;
+            height: 100px;
+            resize: none;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .button {
+            display: inline-block;
+            background-color: #87cefa;
+            color: #000;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 0px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>말머리</th>
+        <td>제목</td>
+    </tr>
+    <tr>
+        <td>글쓴이</td>
+        <td>작성날짜</td>
+        <td>조회수</td>
+        <td>좋아요</td>
+    </tr>
+    <tr>
+        <td>내용</td>
+    </tr>
+    <tr>
+        <td>댓글</td>
+    </tr>
+</table>
+<!--
+    디시인사이드 상세 글 보기 구성
+    (말머리) (제목)
+    (글쓴이)               (작성날짜) (조회수) (좋아요)
+    (내용)
+    (댓글)
+    (이전 페이지)(수정)(삭제)
+-->
+<!-- 댓글 작성 -->
+<form>
+    <fieldset>
+        <label></label>
+        <textarea id="addcomment" name="addcomment" class="inp_textarea" placeholder="'<%= username%>'님 댓글을 남겨보세요."></textarea>
+        <input type="button" value="등록" class="button">
+    </fieldset>
+</form>
+<div class="center">
+<!--  -->
+<!-- 이전 페이지로 돌아가기 버튼 -->
+    <a class="button">이전 페이지로 돌아가기</a>
+<!-- 수정 버튼 -->
+    <a class="button">수정</a>
+<!-- 삭제 버튼 -->
+    <a class="button">삭제</a>
+</div>
+</body>
+</html>

@@ -3,14 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글쓰기</title>
+    <title>글 작성하기</title>
+    <style>
+        form {
+            max-width: 80%;
+            max-height: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0ffff;
+            border-radius: 5px;
+        }
+        form fieldset {
+            border: none;
+        }
+        @font-face {
+            font-family: 'SeoulHangangM';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulHangangM.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .btn_select {
+            width: 200px;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            box-sizing: border-box;
+            cursor: pointer;
+            text-align: left;
+        }
+        .inp_text {
+            width: 90%;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .inp_textarea {
+            width: 97.75%;
+            height: 500px;
+            resize: none;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .button {
+            display: inline-block;
+            background-color: #87cefa;
+            color: #000;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 0px;
+            border-radius: 10px;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<!-- 말머리 지정 -->
-<select>
-    <option value="subject1">명소</option>
-    <option value="subject2">맛집</option>
-    <option value="subject3">숙소</option>
-</select>
+<form action="/md_create" method="post">
+    <fieldset>
+        <!-- 말머리 지정 -->
+        <label>말머리
+            <select class="btn_select" id="hideSelect">
+                <option value="hotp">명소</option>
+                <option value="foodp">맛집</option>
+                <option value="accp">숙소</option>
+            </select>
+        </label>
+        <br><br>
+        <label>제목 &nbsp;&nbsp;</label>
+        <input type="text" class="inp_text" name="title">
+        <br><br>
+        <label for="content"></label>
+        <textarea id="content" name="content" class="inp_textarea" placeholder="내용을 입력하세요."></textarea>
+    </fieldset>
+    <fieldset class="center">
+        <input class="button" type="submit" value="등록하기">
+    </fieldset>
+</form>
+<br>
+<!-- 이전 페이지로 돌아가기 버튼 -->
+<div class="center">
+    <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var select = document.getElementById("hideSelect");
+        select.selectedIndex = -1;
+    });
+</script>
 </body>
 </html>
