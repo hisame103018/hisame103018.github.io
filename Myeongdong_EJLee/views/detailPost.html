@@ -161,7 +161,9 @@
                 <div class="comment reply-form">
                     <p><%= childComment.author %></p>
                     <p><%= childComment.content %></p>
-                    <p><%= childComment.created_at %> <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a></p>
+                    <p><%= childComment.created_at %>
+                        <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
+                    </p>
                 </div>
                 <% }); %>
                 <% } %>

@@ -280,15 +280,15 @@ app.post('/md_create', async (req, res) => {
 
         // 게시글 삽입
         await conn.execute(
-            `insert into md_posts (id, sort_id, author_id, title, content) values (:id, :subject, :authorId, :title, :content)`,
-            [postId, subject, authorID, title, content]
+            `insert into md_posts (id, sort_id, author_id, title, content) values (:id, :sortId, :authorId, :title, :content)`,
+            [postId, sortId, authorID, title, content]
         );
 
         // 변경 사항 커밋
         await conn.commit();
 
         // 게시글 작성 후 게시판 메인 페이지로 리다이렉트
-        res.redirect('/boardMain');
+        res.redirect('/md_boardMain');
     } catch (err) {
         console.error('글 작성 중 오류 발생:', err);
         res.status(500).send('글 작성 중 오류가 발생했습니다.');
@@ -303,8 +303,8 @@ app.post('/md_create', async (req, res) => {
     }
 });
 
-// app.get('/detailPost/:id', async (req, res) => {
-app.get('/detailPost/:id', async (req, res) => {
+// app.get('/md_detailPost/:id', async (req, res) => {
+app.get('/md_detailPost/:id', async (req, res) => {
     // 로그인 여부 확인
     if (!req.session.loggedIn) {
         return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
@@ -330,7 +330,7 @@ app.get('/detailPost/:id', async (req, res) => {
 
         // 게시글 정보 가져오기
         const postResult = await conn.execute(
-            `select p.id, p.subject, p.title, u.username as author, p.content, to_char(p.create_at, 'YYYY-MM-DD') as created_at, p.views
+            `select p.id, p.sort, p.title, u.username as author, p.content, to_char(p.create_at, 'YYYY-MM-DD') as created_at, p.views
             from posts p
             join users u on p.author_id = u.id
             where p.id = :id`,
@@ -408,7 +408,7 @@ app.get('/detailPost/:id', async (req, res) => {
 });
 
 // 수정 페이지 렌더링
-app.get('/editPost/:id', async (req, res) => {
+app.get('/md_editPost/:id', async (req, res) => {
     // 로그인 여부 확인
     if (!req.session.loggedIn) {
         return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
@@ -455,7 +455,7 @@ app.get('/editPost/:id', async (req, res) => {
 });
 
 // 수정 처리
-app.post('/editPost/:id', async (req, res) => {
+app.post('/md_editPost/:id', async (req, res) => {
     const { title, content } = req.body;
     const postId = req.params.id;
 
@@ -473,7 +473,7 @@ app.post('/editPost/:id', async (req, res) => {
         await conn.commit();
 
         // 수정 후 상세 페이지로 리다이렉트
-        res.redirect(`/detailPost/${postId}?user=id=${req.session.userId}&username=${req.session.username}&user_realname=${req.session.userRealName}`);
+        res.redirect(`/md_detailPost/${postId}?user=id=${req.session.userId}&username=${req.session.username}&user_realname=${req.session.userRealName}`);
     } catch (err) {
         console.error('게시글 수정 중 오류 발생:', err);
         res.status(500).send('게시글 수정 중 오류가 발생했습니다.');
@@ -489,7 +489,7 @@ app.post('/editPost/:id', async (req, res) => {
 });
 
 // 삭제 처리
-app.get('/deletePost/:id', async (req, res) => {
+app.get('/md_detailPost/:id', async (req, res) => {
     // 로그인 여부 확인
     if (!req.session.loggedIn) {
         return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
@@ -560,7 +560,7 @@ app.post('/deleteComment/:id', async (req, res) => {
         await conn.commit();
 
         // 삭제 후 상세 페이지로 리다이렉트
-        res.redirect(`/detailPost/${postId}`);
+        res.redirect(`/md_detailPost/${postId}`);
     } catch (err) {
         console.error('댓글 삭제 중 오류 발생:', err);
         res.status(500).send('댓글 삭제 중 오류가 발생했습니다.');

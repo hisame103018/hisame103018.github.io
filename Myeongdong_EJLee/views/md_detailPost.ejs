@@ -157,27 +157,27 @@
     <tr> <!-- 댓글 목록 영역-->
         <td class="td_comments" colspan="5">
             <% if (comments && comments.length > 0) { %>
-            <% comments.forEach( comment => { %>
-            <div class="comments">
-                <p><%= comment.author %></p>
-                <p><%= comment.content %></p>
-                <p><%= comment.id %></p>
-                <p><%= comment.created_at %>
-                    <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a></p>
-                <% if ( comment.children && comment.children.length > 0 ) { %>
-                <% comment.children.forEach ( childComment => { %>
-                <div class="comments">
-                    <p><%= childComment.author %></p>
-                    <p><%= childComment.content %></p>
-                    <p><%= comment.created_at %>
-                        <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a></p>
-                </div>
+                <% comments.forEach( comment => { %>
+                    <div class="comments">
+                        <p><%= comment.author %></p>
+                        <p><%= comment.content %></p>
+                        <p><%= comment.id %></p>
+                        <p><%= comment.created_at %>
+                            <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a></p>
+                        <% if ( comment.children && comment.children.length > 0 ) { %>
+                            <% comment.children.forEach ( childComment => { %>
+                                <div class="comments">
+                                    <p><%= childComment.author %></p>
+                                    <p><%= childComment.content %></p>
+                                    <p><%= comment.created_at %>
+                                        <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a></p>
+                                </div>
+                            <% }); %>
+                        <% } %>
+                    </div>
                 <% }); %>
-                <% } %>
-            </div>
-            <% }); %>
             <% } else { %>
-            <p> 댓글이 없습니다. </p>
+                <p> 댓글이 없습니다. </p>
             <% } %>
         </td>
     </tr>
@@ -189,11 +189,11 @@
 </form>
 <!-- 버튼 영역 -->
 <div class="center">
-<!-- 이전 페이지로 돌아가기 버튼 -->
+    <!-- 이전 페이지로 돌아가기 버튼 -->
     <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
-<!-- 수정 버튼 -->
+    <!-- 수정 버튼 -->
     <a href="/md_editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">수정</a>
-<!-- 삭제 버튼 -->
+    <!-- 삭제 버튼 -->
     <a href="/md_deletePost/<%= post.id %>?user_id=<% userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">삭제</a>
 </div>
 <script>
@@ -201,7 +201,7 @@
     document.querySelectorAll('.reply-button').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
-        // 클릭한 버튼의 data-comment-id 속성 값을 가져옴
+            // 클릭한 버튼의 data-comment-id 속성 값을 가져옴
             const commentId = button.dataset.commentId;
             const replyForm = document.createElement('div');
             replyForm.classList.add('comment', 'reply-form');
