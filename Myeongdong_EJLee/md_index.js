@@ -577,5 +577,5 @@ app.post('/deleteComment/:id', async (req, res) => {
 
 // 게시판 서버 시작
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}/boardMain`);
+    console.log(`Server is running on http://localhost:${port}/md_create`);
 });

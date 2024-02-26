@@ -72,34 +72,34 @@
     </style>
 </head>
 <body>
-<form action="/md_create" method="post">
-    <fieldset>
-        <!-- 말머리 지정 -->
-        <label>주제 &nbsp;&nbsp;
+    <form action="/md_create" method="post">
+        <fieldset>
+            <!-- 말머리 지정 -->
+            <label>주제 &nbsp;&nbsp;
             <select class="btn_select" id="sortId">
                 <option value="hotp">명소</option>
                 <option value="foodp">맛집</option>
                 <option value="accp">숙소</option>
             </select>
-        </label>
-        <br><br>
-        <label>제목 &nbsp;&nbsp;</label>
-        <input type="text" class="inp_text" name="title">
-        <br><br>
-        <label for="content"></label>
-        <textarea id="content" name="content" class="inp_textarea" placeholder="내용을 입력하세요."></textarea><br><br>
-        <label for="files">파일첨부&nbsp;</label>
-        <input type="file" id="files" name="files" multiple><br>
-    </fieldset>
-    <fieldset class="center">
+            </label>
+            <br><br>
+            <label>제목 &nbsp;&nbsp;</label>
+            <input type="text" class="inp_text" name="title">
+            <br><br>
+            <label for="content"></label>
+            <textarea id="content" name="content" class="inp_textarea" placeholder="내용을 입력하세요."></textarea><br><br>
+            <label for="files">파일첨부&nbsp;</label>
+            <input type="file" id="files" name="files" multiple><br>
+        </fieldset>
+        <fieldset class="center">
         <input class="button" type="submit" value="등록하기">
-    </fieldset>
-</form>
-<br>
-<!-- 이전 페이지로 돌아가기 버튼 -->
-<div class="center">
+        </fieldset>
+    </form>
+    <br>
+    <!-- 이전 페이지로 돌아가기 버튼 -->
+    <div class="center">
     <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
-</div>
+    </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var select = document.getElementById("hideSelect");

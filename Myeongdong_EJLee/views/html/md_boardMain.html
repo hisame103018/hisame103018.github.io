@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명동역 커뮤니티</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="searchContainer">
+    <!-- 기존의 /boardMain이 get방식으로 처리되고 있어 편의상 GET 방식으로 호출   -->
+    <form action="/boardMain" method="GET">
+        <label for="searchType">검색 조건:</label>
+        <select id="searchType" name="searchType">
+            <option value="title" selected>제목</option>
+            <option value="content">게시글 내용</option>
+            <option value="author">글 작성자</option>
+            <option value="sort">주제</option> <!-- 새로운 옵션 추가 -->
+        </select>
+        <input type="text" id="searchInput" name="searchInput">
+        <button type="submit">검색</button>
+        <div id="searchTypeContainer" style="display: none;">
+            <select class="btn_select" id="sortId">
+                <option value="hotp">명소</option>
+                <option value="foodp">맛집</option>
+                <option value="accp">숙소</option>
+            </select>
+        </div>
+        <!-- 주제가 선택되면 나타날 동적으로 생성된 입력 상자 -->
+        <div id="sortInputContainer" style="display: none;">
+            <input type="text" id="searchInput" name="searchInputTopic">
+        </div>
+    </form>
+
+    <script>
+        // JavaScript 코드
+        document.getElementById('searchType').addEventListener('change', function() {
+            var sortInputContainer = document.getElementById('sortInputContainer');
+            var searchTypeContainer = document.getElementById('searchTypeContainer');
+            var searchInput = document.getElementById('searchInput');
+            var sortId = document.getElementById('sortId');
+
+            // 주제가 선택되었을 때 동적으로 입력 상자를 나타나게 함
+            if (this.value === 'sort') {
+                searchTypeContainer.style.display = 'block';
+                sortInputContainer.style.display = 'none';
+            } else {
+                sortInputContainer.style.display = 'block';
+                searchInput.setAttribute('name', 'searchInput');
+                searchInput.setAttribute('name', 'searchInputTopic');
+            }
+        });
+    </script>
+</div>
+</body>
+</html>

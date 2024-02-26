@@ -124,7 +124,7 @@
         /* 수정 및 삭제 달기 버튼 */
         .comment-buttons button {
             margin-right: 5px;
-            background-color: #4169E1;
+            background-color: #1e90ff;
             color: #fff;
             padding: 7.5px;
             text-align: center;
@@ -136,7 +136,7 @@
         }
         /* 수정 및 삭제 달기 버튼 hover 효과 */
         .comment-buttons button:hover {
-            background-color: #0000CD;
+            background-color: #4682B4;
         }
         /* 좋아요 버튼 */
         .like-button {
@@ -176,11 +176,11 @@
             <%= post.content %>
             <% if (post.file_original_name && post.file_original_name !== '') { %>
                 <ul style="list-style-type: none; padding-left: 0;">
-                    <!-- 멀티 파일인 경우 구분자가 ; 이므로 ;를 기준으로 파일명만 배열로 수집 -->
+                <!-- 멀티 파일인 경우 구분자가 ; 이므로 ;를 기준으로 파일명만 배열로 수집 -->
                     <% const originalNames = post.file_original_name.split(';'); %>
                     <% const storedNames = post.file_stored_name.split(';'); %>
                     <% for(let i = 0; i < originalNames.length; i++) { %>
-                        <!-- 파일은 XXX.jpg 이런식의 패턴이므로 . 으로 split 한 후에 pop 하면 결국 파일 확장자를 얻을 수 있다. -->
+                <!-- 파일은 XXX.jpg 이런식의 패턴이므로 . 으로 split 한 후에 pop 하면 결국 파일 확장자를 얻을 수 있다. -->
                         <% const extension = originalNames[i].split('.').pop(); %>
                         <% if (['jpg', 'jpeg', 'gif', 'png'].includes(extension)) { %>
                             <li style="text-align: center;">
@@ -220,52 +220,52 @@
     <tr> <!-- 댓글 목록 영역-->
         <td class="td_comments" colspan="5">
             <% if (comments && comments.length > 0) { %>
-                <% comments.forEach( comment => { %>
-                    <div class="comments">
-                        <p><%= comment.author %>
-                            <% if (comment.author_id == userId) { %>
-                                (본인)
-                            <% } %>
-                            &nbsp;<%= comment.create_at %>
-                        </p>
-                        <p class="comment-content" data-comment-id="<%= comment.id %>"><%= comment.content %></p>
-                        <div class="comment-buttons">
-                            <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
-                            <% if (comment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
-                            <button class="edit-button" data-comment-id="<%= comment.id %>">수정</button> <!-- 'data-comment-id' 속성 추가 -->
-                            <form action="/deleteComment/<%= comment.id %>" method="post" style="display: inline;">
-                                <input type="hidden" name="post_id" value="<%= post.id %>">
-                                <button type="submit">삭제</button>
-                            </form>
-                            <% } %>
+            <% comments.forEach( comment => { %>
+            <div class="comments">
+                <p><%= comment.author %>
+                    <% if (comment.author_id == userId) { %>
+                        (본인)
+                    <% } %>
+                    &nbsp;<%= comment.create_at %>
+                </p>
+                <p class="comment-content" data-comment-id="<%= comment.id %>"><%= comment.content %></p>
+                <div class="comment-buttons">
+                    <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
+                    <% if (comment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
+                    <button class="edit-button" data-comment-id="<%= comment.id %>">수정</button> <!-- 'data-comment-id' 속성 추가 -->
+                    <form action="/deleteComment/<%= comment.id %>" method="post" style="display: inline;">
+                        <input type="hidden" name="post_id" value="<%= post.id %>">
+                        <button type="submit">삭제</button>
+                    </form>
+                    <% } %>
+                </div>
+                <% if (comment.children && comment.children.length > 0) { %>
+                    <% comment.children.forEach(childComment => { %>
+                        <div class="comment reply-form">
+                            <p><%= childComment.author %>
+                                <% if (childComment.author_id == userId) { %>
+                                    (본인)
+                                <% } %>
+                                &nbsp;<%= childComment.create_at %>
+                            </p>
+                            <p class="comment-content" data-comment-id="<%= childComment.id %>"><%= childComment.content %></p>
+                            <div class="comment-buttons">
+                                <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
+                                <% if (childComment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
+                                <button class="edit-button" data-comment-id="<%= childComment.id %>">수정</button>
+                                <form action="/deleteComment/<%= childComment.id %>" method="post" style="display: inline">
+                                    <input type="hidden" name="post_id" value="<%= post.id %>">
+                                    <button type="submit">삭제</button>
+                                </form>
+                                <% } %>
+                            </div>
                         </div>
-                        <% if (comment.children && comment.children.length > 0) { %>
-                            <% comment.children.forEach(childComment => { %>
-                                <div class="comment reply-form">
-                                    <p><%= childComment.author %>
-                                        <% if (childComment.author_id == userId) { %>
-                                            (본인)
-                                        <% } %>
-                                        &nbsp;<%= childComment.create_at %>
-                                    </p>
-                                    <p class="comment-content" data-comment-id="<%= childComment.id %>"><%= childComment.content %></p>
-                                    <div class="comment-buttons">
-                                        <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
-                                        <% if (childComment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
-                                        <button class="edit-button" data-comment-id="<%= childComment.id %>">수정</button>
-                                        <form action="/deleteComment/<%= childComment.id %>" method="post" style="display: inline">
-                                            <input type="hidden" name="post_id" value="<%= post.id %>">
-                                            <button type="submit">삭제</button>
-                                        </form>
-                                        <% } %>
-                                    </div>
-                                </div>
-                            <% }); %>
-                        <% } %>
-                    </div>
-                <% }); %>
+                    <% }); %>
+                <% } %>
+            </div>
+            <% }); %>
             <% } else { %>
-                <p> 댓글이 없습니다. </p>
+            <p> 댓글이 없습니다. </p>
             <% } %>
         </td>
     </tr>
@@ -277,11 +277,11 @@
 </form>
 <!-- 버튼 영역 -->
 <div class="center">
-    <!-- 이전 페이지로 돌아가기 버튼 -->
+<!-- 이전 페이지로 돌아가기 버튼 -->
     <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
-    <!-- 수정 버튼 -->
+<!-- 수정 버튼 -->
     <a href="/md_editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">수정</a>
-    <!-- 삭제 버튼 -->
+<!-- 삭제 버튼 -->
     <a href="/md_deletePost/<%= post.id %>?user_id=<% userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">삭제</a>
 </div>
 <script src="/js/jquery.js"></script>

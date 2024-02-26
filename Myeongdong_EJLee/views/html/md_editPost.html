@@ -72,11 +72,11 @@
     </style>
 </head>
 <body>
-<form action="/md_create" method="post">
+<form action="/md_create/<%= post.id %>" method="post">
     <fieldset>
         <!-- 말머리 지정 -->
-        <label>주제 &nbsp;&nbsp;
-            <select class="btn_select" id="sortId">
+        <label>말머리
+            <select class="btn_select" id="hideSelect">
                 <option value="hotp">명소</option>
                 <option value="foodp">맛집</option>
                 <option value="accp">숙소</option>
@@ -84,15 +84,13 @@
         </label>
         <br><br>
         <label>제목 &nbsp;&nbsp;</label>
-        <input type="text" class="inp_text" name="title">
+        <input type="text" class="inp_text" name="title" value="<%= post.title %>">
         <br><br>
         <label for="content"></label>
-        <textarea id="content" name="content" class="inp_textarea" placeholder="내용을 입력하세요."></textarea><br><br>
-        <label for="files">파일첨부&nbsp;</label>
-        <input type="file" id="files" name="files" multiple><br>
+        <textarea id="content" name="content" class="inp_textarea"><%= post.content %></textarea>
     </fieldset>
     <fieldset class="center">
-        <input class="button" type="submit" value="등록하기">
+        <input class="button" type="submit" value="수정하기">
     </fieldset>
 </form>
 <br>
