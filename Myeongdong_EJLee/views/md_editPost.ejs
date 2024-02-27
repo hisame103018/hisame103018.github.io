@@ -3,63 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상세 포스트 보기</title>
+    <title>글 작성하기</title>
     <style>
-        .center {
-            text-align: center;
-        }
-        table {
-            width: 80%;
-            border: 1px solid #999;
-            border-collapse: collapse;
+        form {
+            max-width: 80%;
+            max-height: 80%;
             margin: 0 auto;
+            padding: 20px;
+            background-color: #f0ffff;
+            border-radius: 5px;
         }
-        td {
+        form fieldset {
+            border: none;
+        }
+        @font-face {
+            font-family: 'SeoulHangangM';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulHangangM.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .btn_select {
+            width: 200px;
+            padding: 5px;
+            font-size: 14px;
             background-color: #fff;
-            padding: 10px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            box-sizing: border-box;
+            cursor: pointer;
+            text-align: left;
         }
-        .td_head {
-            background-color: #f0ffff;
-            font-size: 14px;
-        }
-        .td_headTitle {
-            background-color: #f0ffff;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .td_contents {
-            font-size: 14px;
-        }
-        .td_comments {
-            font-size: 14px;
-        }
-        .td_multifile {
-            font-size: 12px;
-            border-top: 1px dotted #999;
-            border-bottom: 1px dotted #999;
-        }
-        tr > td:nth-child(1) {
-            width: 15%;
-        }
-        tr > td:nth-child(2) {
-            width: 20%;
-        }
-        tr > td:nth-child(3) {
-            width: 15%;
-        }
-        tr > td:nth-child(4) {
-            width: 15%;
-        }
-        .inp_textarea {
-            width: 71.25%;
-            height: 36px;
+        .inp_text {
+            width: 90%;
             padding: 5px;
             font-size: 14px;
             background-color: #fff;
             border: 1px solid #999;
             border-radius: 5px;
             text-align: left;
+        }
+        .inp_textarea {
+            width: 97.75%;
+            height: 500px;
             resize: none;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            text-align: left;
         }
         .button {
             display: inline-block;
@@ -71,265 +63,45 @@
             font-size: 14px;
             margin: 4px 2px;
             cursor: pointer;
-            border: 0;
+            border: 0px;
             border-radius: 10px;
         }
-        .button:hover {
-            background-color: #00BFFF;
-        }
-        .comments {
-            font-size: 14px;
-        }
-        .comment-form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .comment-button {
-            display: inline-block;
-            background-color: #87cefa;
-            color: #000;
-            padding: 15px;
+        .center {
             text-align: center;
-            text-decoration: none;
-            font-size: 14px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border: 0;
-            border-radius: 10px;
-            margin-left: 10px;
-        }
-        .comment-button:hover {
-            background-color: #00BFFF;
-        }
-        /* 답글 달기 버튼 */
-        .reply-button {
-            display: inline-block;
-            background-color: #00BFFF;
-            color: #fff;
-            padding: 7.5px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 12px;
-            border: 0;
-            border-radius: 5px;
-        }
-        /* 답글 달기 버튼 hover 효과 */
-        .reply-button:hover {
-            background-color: #1e90ff;
-        }
-        .comment-buttons {
-            margin-top: 5px;
-        }
-        /* 수정 및 삭제 달기 버튼 */
-        .comment-buttons button {
-            margin-right: 5px;
-            background-color: #4169E1;
-            color: #fff;
-            padding: 7.5px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 12px;
-            border: 0;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        /* 수정 및 삭제 달기 버튼 hover 효과 */
-        .comment-buttons button:hover {
-            background-color: #0000CD;
-        }
-        /* 좋아요 버튼 */
-        .like-button {
-            display: inline-block;
-            background-color: #FFC0CB;
-            padding: 7.5px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 12px;
-            border: 0;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        /* 좋아요 버튼 hover 효과 */
-        .like-button:hover {
-            background-color: #FF69B4;
         }
     </style>
 </head>
 <body>
-<div>
-    <p><%= userRealName %>님</p>
-</div>
-<table>
-    <tr> <!-- 말머리, 제목 영역 -->
-        <td class="td_head"> <%= post.sort %> </td> <!-- 말머리 -->
-        <td class="td_headTitle" colspan="4"> <%= post.title %> </td> <!-- 제목 -->
-    </tr>
-    <tr> <!-- 글쓴이, 작성일, 조회수, 좋아요 영역 -->
-        <td class="td_head" colspan="2"> <%= post.author %> </td> <!-- 글쓴이 -->
-        <td class="td_head"> <%= post.create_at %> </td> <!-- 작성일 -->
-        <td class="td_head"> <b>조회수</b> <%= post.views %> </td> <!-- 조회수 -->
-        <td class="td_head"> <b>좋아요</b> <%= post.likes %> </td> <!-- 좋아요수 -->
-    </tr>
-    <tr> <!-- 내용 영역 -->
-        <td class="td_contents" colspan="5">
-            <%= post.content %>
-            <% if (post.file_original_name && post.file_original_name !== '') { %>
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <!-- 멀티 파일인 경우 구분자가 ; 이므로 ;를 기준으로 파일명만 배열로 수집 -->
-                    <% const originalNames = post.file_original_name.split(';'); %>
-                    <% const storedNames = post.file_stored_name.split(';'); %>
-                    <% for(let i = 0; i < originalNames.length; i++) { %>
-                        <!-- 파일은 XXX.jpg 이런식의 패턴이므로 . 으로 split 한 후에 pop 하면 결국 파일 확장자를 얻을 수 있다. -->
-                        <% const extension = originalNames[i].split('.').pop(); %>
-                        <% if (['jpg', 'jpeg', 'gif', 'png'].includes(extension)) { %>
-                            <li style="text-align: center;">
-                                <img src="/uploads/<%= storedNames[i] %>" alt="<%= originalNames[i] %>" style="max-width: 100%; height: auto;">
-                            </li>
-                        <% } %>
-                    <% } %>
-                </ul>
-            <% } %>
-        </td>
-    </tr>
-    <tr> <!-- 좋아요 영역 -->
-        <td colspan="5" align="center">
-            <a href="#" class="like-button">좋아요</a>
-        </td>
-    </tr>
-    <tr> <!-- 첨부파일 영역-->
-        <td class="td_multifile" colspan="5">
-            <% if (post.file_original_name && post.file_original_name !== '') { %>
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <% const originalNames = post.file_original_name.split(';'); %>
-                    <% const storedNames = post.file_stored_name.split(';'); %>
-                    <% for (let i = 0; i < originalNames.length; i++) { %>
-                        <li>
-                            <!-- 다운로드 링크에 download 속성 추가하여 원본 파일 이름으로 다운로드 -->
-                            <a href="/uploads/<%= storedNames[i] %>" download="<%= originalNames[i] %>">
-                                <%= originalNames[i] %>
-                            </a>
-                        </li>
-                    <% } %>
-                </ul>
-            <% } else { %>
-                <p>첨부된 파일이 없습니다.</p>
-            <% } %>
-        </td>
-    </tr>
-    <tr> <!-- 댓글 목록 영역-->
-        <td class="td_comments" colspan="5">
-            <% if (comments && comments.length > 0) { %>
-                <% comments.forEach( comment => { %>
-                    <div class="comments">
-                        <p><%= comment.author %>
-                            <% if (comment.author_id == userId) { %>
-                                (본인)
-                            <% } %>
-                            &nbsp;<%= comment.create_at %>
-                        </p>
-                        <p class="comment-content" data-comment-id="<%= comment.id %>"><%= comment.content %></p>
-                        <div class="comment-buttons">
-                            <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
-                            <% if (comment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
-                            <button class="edit-button" data-comment-id="<%= comment.id %>">수정</button> <!-- 'data-comment-id' 속성 추가 -->
-                            <form action="/deleteComment/<%= comment.id %>" method="post" style="display: inline;">
-                                <input type="hidden" name="post_id" value="<%= post.id %>">
-                                <button type="submit">삭제</button>
-                            </form>
-                            <% } %>
-                        </div>
-                        <% if (comment.children && comment.children.length > 0) { %>
-                            <% comment.children.forEach(childComment => { %>
-                                <div class="comment reply-form">
-                                    <p><%= childComment.author %>
-                                        <% if (childComment.author_id == userId) { %>
-                                            (본인)
-                                        <% } %>
-                                        &nbsp;<%= childComment.create_at %>
-                                    </p>
-                                    <p class="comment-content" data-comment-id="<%= childComment.id %>"><%= childComment.content %></p>
-                                    <div class="comment-buttons">
-                                        <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
-                                        <% if (childComment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
-                                        <button class="edit-button" data-comment-id="<%= childComment.id %>">수정</button>
-                                        <form action="/deleteComment/<%= childComment.id %>" method="post" style="display: inline">
-                                            <input type="hidden" name="post_id" value="<%= post.id %>">
-                                            <button type="submit">삭제</button>
-                                        </form>
-                                        <% } %>
-                                    </div>
-                                </div>
-                            <% }); %>
-                        <% } %>
-                    </div>
-                <% }); %>
-            <% } else { %>
-                <p> 댓글이 없습니다. </p>
-            <% } %>
-        </td>
-    </tr>
-</table>
-<!-- 댓글 영역 -->
-<form class="comment-form" action="/addComment?post_id=<%= post.id %>&author_id=<% userId %>" method="post">
-    <textarea class="inp_textarea" name="content" placeholder="'<%= username%>'님 댓글을 남겨보세요."></textarea>
-    <input type="submit" value="등록" class="comment-button">
+<form action="/md_create/<%= post.id %>" method="post">
+    <fieldset>
+        <!-- 말머리 지정 -->
+        <label>주제 &nbsp;&nbsp;
+            <select class="btn_select" id="categoryId">
+                <option value="hotp">명소</option>
+                <option value="foodp">맛집</option>
+                <option value="accp">숙소</option>
+            </select>
+        </label>
+        <br><br>
+        <label>제목 &nbsp;&nbsp;</label>
+        <input type="text" class="inp_text" name="title" value="<%= post.title %>">
+        <br><br>
+        <label for="content"></label>
+        <textarea id="content" name="content" class="inp_textarea"><%= post.content %></textarea>
+    </fieldset>
+    <fieldset class="center">
+        <input class="button" type="submit" value="수정하기">
+    </fieldset>
 </form>
-<!-- 버튼 영역 -->
+<br>
+<!-- 이전 페이지로 돌아가기 버튼 -->
 <div class="center">
-    <!-- 이전 페이지로 돌아가기 버튼 -->
     <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
-    <!-- 수정 버튼 -->
-    <a href="/md_editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">수정</a>
-    <!-- 삭제 버튼 -->
-    <a href="/md_deletePost/<%= post.id %>?user_id=<% userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">삭제</a>
 </div>
-<script src="/js/jquery.js"></script>
 <script>
-    $(document).ready(function () {
-        // 답글쓰기 버튼 클릭 시 해당 댓글 아래에 답글 입력 폼을 표시하는 함수
-        $('.reply-button').click(function (e) {
-            e.preventDefault();
-            const commentId = $(this).data('commentId');
-            // closest: 현재 클릭된 요소 중 가장 가까운 부모 요소를 찾는 메소드
-            // closest('.comment-buttons') 가장 가까운 요소 중 클래스가 .comment-buttons
-            // 인 요소를 찾아 반환
-            const replyForm = $(this).closest('.comment-buttons').find('.reply-form');
-            if (replyForm.length === 0) {
-                const newReplyForm =
-                    `<div class="comment reply-form">
-                        <form action="/addComment" method="post">
-                            <input type="hidden" name="post_id" value="<%= post.id %>">
-                            <input type="hidden" name="author_id" value="<%= userId %>">
-                            <input type="hidden" name="comment_id" value="${commentId}">
-                            <textarea class="inp_textarea" name="content" placeholder="'<%= username%>'님 댓글을 남겨보세요."></textarea>
-                            <input type="submit" value="등록" class="comment-button">
-                        </form>
-                    </div>`;
-                $(this).closest('.comment').append(newReplyForm);
-            }
-        });
-        // '수정' 버튼 클릭 시 해당 댓글의 수정 화면을 동적으로 생성
-        $(document).on('click', '.edit-button', function(e) {
-            e.preventDefault();
-            const commentArea = $(this).closest('.comment');
-            const commentId = $(this).data('commentId');
-            const existingForm = commentArea.find('.edit-form');
-            if (existingForm.length === 0) {
-                const commentContent = commentArea.find(`.comment-content[data-comment-id="${commentId}"]`).text().trim();
-                // 수정후 상세 페이지 리다이렉시시 필요한 게시글 id를 지정
-                const postId = '<%= post.id %>'; // 게시물 ID 가져오기
-                const editForm =
-                    `<div class="comment edit-form">
-                        <form action="/editComment/${commentId}" method="post">
-                            <textarea class="inp_textarea" name="content" placeholder="댓글 수정 내용을 입력하세요" required>${commentContent}</textarea>
-                            <input type="hidden" name="post_id" value="${postId}">
-                            <input type="submit" value="수정 완료" class="comment-buttons">
-                        </form>
-                    </div>`;
-                commentArea.append(editForm);
-            }
-        });
+    document.addEventListener("DOMContentLoaded", function () {
+        var select = document.getElementById("hideSelect");
+        select.selectedIndex = -1;
     });
 </script>
 </body>

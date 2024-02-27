@@ -162,7 +162,7 @@
 </div>
 <table>
     <tr> <!-- 말머리, 제목 영역 -->
-        <td class="td_head"> <%= post.sort %> </td> <!-- 말머리 -->
+        <td class="td_head"> <%= post.category %> </td> <!-- 말머리 -->
         <td class="td_headTitle" colspan="4"> <%= post.title %> </td> <!-- 제목 -->
     </tr>
     <tr> <!-- 글쓴이, 작성일, 조회수, 좋아요 영역 -->
@@ -278,7 +278,7 @@
 <!-- 버튼 영역 -->
 <div class="center">
 <!-- 이전 페이지로 돌아가기 버튼 -->
-    <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
+    <a href="/md_boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
 <!-- 수정 버튼 -->
     <a href="/md_editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">수정</a>
 <!-- 삭제 버튼 -->
