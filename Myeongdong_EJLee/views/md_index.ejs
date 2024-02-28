@@ -71,7 +71,7 @@
             align-items: center;
         }
         /* 주제 분류 스타일 */
-        .sort_select {
+        .cate_select {
             width: 200px;
             padding: 5px;
             font-size: 14px;
@@ -136,7 +136,7 @@
     <tbody>
     <% for (let i = 0; i < posts.length; i++) { %>
         <tr>
-            <td><%= posts[i][1] %></td>
+            <td><%= posts[i][6] %></td>
             <td><a href="/md_detailPost/<%= posts[i][0] %>" class="post-link"><%= posts[i][2] %> [<%= posts[i][7] %>] </a></td>
             <td><%= posts[i][3] %></td>
             <td><%= posts[i][4] %></td>
@@ -154,35 +154,35 @@
 <!-- 페이징 -->
 <div class="paging-container">
     <% if (currentPage > 1) { %>
-        <a href="/boardMain/?page=<%= currentPage - 1 %>">이전</a>
+        <a href="/md_mainBoard/?page=<%= currentPage - 1 %>">이전</a>
     <% } %>
 
     <% for (let i = startPage; i <= endPage; i++) { %>
         <% if (i === currentPage) { %>
             <span class="current-page"><%= i %></span>
         <% } else { %>
-            <a href="/boardMain/?page=<%= i %>"><%= i %></a>
+            <a href="/md_mainBoard/?page=<%= i %>"><%= i %></a>
         <% } %>
     <% } %>
 
     <% if ((totalPages - currentPage + 1) > maxPageNumber) { %>
-        <a href="/boardMain/?page=<%= currentPage + 1 %>">다음</a>
+        <a href="/md_mainBoard/?page=<%= currentPage + 1 %>">다음</a>
     <% } %>
 </div>
 <!-- 검색 영역 -->
-<form action="/boardMain" method="get">
+<form action="/md_mainBoard" method="get">
     <label for="searchType">찾기 </label>
     <select id="searchType" class="search_select" onchange="handleFilterChange()">
         <option value="title">제목</option>
         <option value="author">작성자</option>
         <option value="content">내용</option>
-        <option value="sort">주제</option>
+        <option value="category">주제</option>
     </select>
-    <select id="sortId" class="sort_select" style="display: none;">
+    <select id="categoryId" class="cate_select" style="display: none;">
         <!-- 말머리에 해당하는 옵션들을 추가 -->
-        <option value="hotp">명소</option>
-        <option value="foodp">맛집</option>
-        <option value="accp">숙소</option>
+        <option value="1">명소</option>
+        <option value="2">맛집</option>
+        <option value="3">숙소</option>
     </select>
     <input type="text" id="searchInput" class="filter-input" placeholder="검색어를 입력하세요">
     <button type="submit" class="button">검색</button>
@@ -191,16 +191,16 @@
     // 검색조건 스크립트
     function handleFilterChange() {
         var searchType = document.getElementById("searchType");
-        var sortId = document.getElementById("sortId");
+        var categoryId = document.getElementById("categoryId");
         var searchInput = document.getElementById("searchInput");
 
         // 모든 필터와 입력란을 숨김
-        sortId.style.display = "none";
+        categoryId.style.display = "none";
         searchInput.style.display = "none";
 
         // 선택된 필터에 따라 해당 필터와 입력란을 보여줌
-        if (searchType.value === "sort") {
-            sortId.style.display = "inline-block";
+        if (searchType.value === "category") {
+            categoryId.style.display = "inline-block";
         } else {
             searchInput.style.display = "inline-block";
         }

@@ -33,7 +33,7 @@ INSERT INTO categories (id, name) values (3, '숙소');
 -- 게시글 테이블 생성
 CREATE TABLE md_posts (
                        id NUMBER PRIMARY KEY,
-                       category_id NUMBER,
+                       category_id VARCHAR2(50),
                        author_id NUMBER,
                        title VARCHAR2(255),
                        content CLOB,

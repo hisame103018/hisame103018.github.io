@@ -3,10 +3,16 @@
 // npm i oracledb
 // npm i body-parser
 // npm i express-session
+// npm i multer
+// npm i fs
 const express = require('express');
 const oracledb = require('oracledb');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const multer = require('multer');
+const fs= require('fs');
+const path = require('path');
+const upload = multer({ dest: path.join(__dirname, 'temp'), encoding: 'utf8' });
 
 const app = express();
 const port = 3000;
@@ -15,6 +21,7 @@ app.set('view engine', 'ejs');
 const WEB_SERVER_HOME = 'C:\\EJLee\\Util\\nginx-1.24.0\\html';
 // 비대면 PC 경로
 // const WEB_SERVER_HOME = 'D:\\EJLEE\\Util\\nginx-1.24.0\\html';
+const UPLOAD_FOLDER = path.join('C:\\EJLee\\Util\\nginx-1.24.0\\html\\uploads', 'uploads');
 app.use(express.static(WEB_SERVER_HOME + '/'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
@@ -24,11 +31,16 @@ app.use(session({
 }));
 
 // Oracle 데이터베이스 연결 설정
+// const dbConfig = {
+//     user: 'open-source',
+//     password: '1111',
+//     connectString: '192.168.0.17:1521/xe'
+// };
 const dbConfig = {
-    user: 'open-source',
+    user: 'open_source',
     password: '1111',
-    connectString: '192.168.0.17:1521/xe'
-};
+    connectString: 'localhost:1521/xe'
+}
 
 app.set('view engine', 'ejs');
 oracledb.initOracleClient({libDir: 'C:\\instantclient_21_13'});
@@ -52,38 +64,7 @@ app.use('/login', require('./routes/login'));
 app.use('/loginFail', require('./routes/loginFail'));
 app.use('/logout', require('./routes/logout'));
 
-async function varifyID(username, password) {
-    let connection;
-    try {
-        connection = await oracledb.getConnection(dbConfig);
-
-        const result = await connection.execute(
-            'select * from users where username = :username and password = :password',
-            { username, password }
-        );
-
-        if (result.rows.length > 0) {
-            console.log('varifyID');
-            console.log(result.rows[0][0]);
-            return {
-                id: result.rows[0][0],
-                username: result.rows[0][1],
-                name: result.rows[0][3]
-            };
-        } else {
-            return null;
-        }
-    } catch (error) {
-        console.error('오류 발생:', error);
-        return null;
-    } finally {
-        if (connection) {
-            await connection.close();
-        }
-    }
-}
-
 // 게시판 서버 시작
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}/login`);
+    console.log(`Server is running on http://localhost:${port}/md_mainBoard`);
 });

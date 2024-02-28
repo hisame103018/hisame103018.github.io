@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
 
     try {
         conn = await oracledb.getConnection(dbConfig);
-        let result = await conn.extended(
-            `select count (*) as total from md_posts`
+        let result = await conn.execute(
+            `select count(*) as total from md_posts`
         );
         const totalPosts = result.rows[0];
         const postsPerPage = 10; // 한 페이지에 표시할 게시글 수
@@ -26,35 +26,37 @@ router.get('/', async (req, res) => {
         const endRow = currentPage * postsPerPage;
         console.log(`startRow: ${startRow}, endRow: ${endRow}`);
 
+        // 정렬 방식에 따른 SQL 쿼리 작성
+        let orderByClause = 'ORDER BY p.created_at DESC'; // 기본적으로 최신순 정렬
+
         // 검색 조건에 따른 SQL 쿼리 작성
         let searchCondition = ''; // 기본적으로 검색 조건 없음
 
         if (req.query.searchType && req.query.searchInput) {
             const searchType = req.query.searchType;
             const searchInput = req.query.searchInput;
+            const categoryId = req.query.categories;
 
             // 검색 조건에 따라 where 절 설정
             if (searchType === 'title') {
                 searchCondition = `and p.title like '%${searchInput}%'`;
-            } else if (searchType === 'content') {
-                searchCondition = `and p.content like '%${searchInput}%'`;
             } else if (searchType === 'author') {
                 searchCondition = `and u.username like '%${searchInput}%'`;
+            } else if (searchType === 'content') {
+                searchCondition = `and p.content like '%${searchInput}%'`;
+            } else if (searchType === 'category') {
+                searchCondition = `and p.category_id = '${categoryId}'`;
             }
         }
 
-        const sql_query = `select 
-                                id, category_id, title, author, to_char(created_at, 'YYYY-MM-DD'), views, likes, 
-                                (select count (*) from comments c where c.post_id = p.id) as comments_count
-            from (
-                    select
-                        p.id, p.category, p.title, u.username as author, p.created_at, p.views, p.likes,
-                        row_number() over (${orderByClause}) as rn
-                    from posts p join users u on p.author_id = u.id
-                    where 1=1 
-                        ${searchCondition}
-                 ) p
-            where rn between :startRow and :endRow`;
+        const sql_query = `SELECT id, category_id, title, author, TO_CHAR(created_at, 'YYYY-MM-DD'), views, category_name,
+                               (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comments_count
+                                from ( select p.id, p.category_id, p.title, u.username as author, p.created_at, p.views, p.category_name,
+                                              row_number() over (${orderByClause}) as rn
+                                       from md_posts p join users u on p.author_id = u.id
+                                       where 1=1 ${searchCondition}
+                                       ) p
+                                where rn between :startRow and :endRow`;
         result = await conn.execute(sql_query,
             {
                 startRow: startRow,
@@ -63,9 +65,9 @@ router.get('/', async (req, res) => {
         );
 
         const MAX_PAGE_LIMIT = 5;
-        const startPage = (totalPages - currentPage) < MAX_PAGE_LIMIT ? totalPages - MAX_PAGE_LIMIT + 1 : currentPage;
+        const startPage = (totalPages - currentPage) < MAX_PAGE_LIMIT ? Math.max(totalPages - MAX_PAGE_LIMIT + 1, 1) : currentPage;
         const endPage = Math.min(startPage + MAX_PAGE_LIMIT - 1, totalPages);
-        console.log(`result.rows: ${result.rows}`);
+        console.log(`result.rows: ${JSON.stringify(result.rows)}`);
         console.log(`result.rows[0].id: ${result.rows[0].id}`);
 
         res.render('md_index', {
@@ -86,16 +88,11 @@ router.get('/', async (req, res) => {
         if (conn) {
             try {
                 await conn.close();
-            } catch (err){
+            } catch (err) {
                 console.error(err);
             }
         }
     }
-});
-
-// POST 요청 처리
-router.post('/', async (req, res) => {
-
 });
 
 module.exports = router;
