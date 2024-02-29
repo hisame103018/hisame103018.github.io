@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글 작성하기</title>
+    <title>글 수정하기</title>
     <style>
         form {
             max-width: 80%;
@@ -72,11 +72,12 @@
     </style>
 </head>
 <body>
-<form action="/md_create/<%= post.id %>" method="post">
+<form action="/md_editPost/<%= post.id %>" method="post">
     <fieldset>
         <!-- 말머리 지정 -->
         <label>주제 &nbsp;&nbsp;
             <select class="btn_select" id="categoryId">
+                <option value="(null)"></option>
                 <option value="hotp">명소</option>
                 <option value="foodp">맛집</option>
                 <option value="accp">숙소</option>
@@ -96,7 +97,7 @@
 <br>
 <!-- 이전 페이지로 돌아가기 버튼 -->
 <div class="center">
-    <a href="/boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
+    <a href="/md_mainBoard?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {

@@ -162,23 +162,23 @@
 </div>
 <table>
     <tr> <!-- 말머리, 제목 영역 -->
-        <td class="td_head"> <%= post.category %> </td> <!-- 말머리 -->
-        <td class="td_headTitle" colspan="4"> <%= post.title %> </td> <!-- 제목 -->
+        <td class="td_head"> <%= md_posts.category_id %> </td> <!-- 말머리 -->
+        <td class="td_headTitle" colspan="4"> <%= md_posts.title %> </td> <!-- 제목 -->
     </tr>
     <tr> <!-- 글쓴이, 작성일, 조회수, 좋아요 영역 -->
-        <td class="td_head" colspan="2"> <%= post.author %> </td> <!-- 글쓴이 -->
-        <td class="td_head"> <%= post.create_at %> </td> <!-- 작성일 -->
-        <td class="td_head"> <b>조회수</b> <%= post.views %> </td> <!-- 조회수 -->
-        <td class="td_head"> <b>좋아요</b> <%= post.likes %> </td> <!-- 좋아요수 -->
+        <td class="td_head" colspan="2"> <b>작성자</b>&nbsp;&nbsp;<%= md_posts.author %> </td> <!-- 글쓴이 -->
+        <td class="td_head"> <b>작성일</b>&nbsp;&nbsp;<%= md_posts.created_at %> </td> <!-- 작성일 -->
+        <td class="td_head"> <b>조회수</b>&nbsp;&nbsp;<%= md_posts.views %> </td> <!-- 조회수 -->
+        <td class="td_head"> <b>좋아요</b>&nbsp;&nbsp;<%= md_posts.likes %> </td> <!-- 좋아요수 -->
     </tr>
     <tr> <!-- 내용 영역 -->
         <td class="td_contents" colspan="5">
-            <%= post.content %>
-            <% if (post.file_original_name && post.file_original_name !== '') { %>
+            <%= md_posts.content %>
+            <% if (md_posts.file_original_name && md_posts.file_original_name !== '') { %>
                 <ul style="list-style-type: none; padding-left: 0;">
                     <!-- 멀티 파일인 경우 구분자가 ; 이므로 ;를 기준으로 파일명만 배열로 수집 -->
-                    <% const originalNames = post.file_original_name.split(';'); %>
-                    <% const storedNames = post.file_stored_name.split(';'); %>
+                    <% const originalNames = md_posts.file_original_name.split(';'); %>
+                    <% const storedNames = md_posts.file_stored_name.split(';'); %>
                     <% for(let i = 0; i < originalNames.length; i++) { %>
                         <!-- 파일은 XXX.jpg 이런식의 패턴이므로 . 으로 split 한 후에 pop 하면 결국 파일 확장자를 얻을 수 있다. -->
                         <% const extension = originalNames[i].split('.').pop(); %>
@@ -199,10 +199,10 @@
     </tr>
     <tr> <!-- 첨부파일 영역-->
         <td class="td_multifile" colspan="5">
-            <% if (post.file_original_name && post.file_original_name !== '') { %>
+            <% if (md_posts.file_original_name && md_posts.file_original_name !== '') { %>
                 <ul style="list-style-type: none; padding-left: 0;">
-                    <% const originalNames = post.file_original_name.split(';'); %>
-                    <% const storedNames = post.file_stored_name.split(';'); %>
+                    <% const originalNames = md_posts.file_original_name.split(';'); %>
+                    <% const storedNames = md_posts.file_stored_name.split(';'); %>
                     <% for (let i = 0; i < originalNames.length; i++) { %>
                         <li>
                             <!-- 다운로드 링크에 download 속성 추가하여 원본 파일 이름으로 다운로드 -->
@@ -272,17 +272,17 @@
 </table>
 <!-- 댓글 영역 -->
 <form class="comment-form" action="/addComment?post_id=<%= post.id %>&author_id=<% userId %>" method="post">
-    <textarea class="inp_textarea" name="content" placeholder="'<%= username%>'님 댓글을 남겨보세요."></textarea>
+    <textarea class="inp_textarea" name="content" placeholder="'<%= userName %>'님 댓글을 남겨보세요."></textarea>
     <input type="submit" value="등록" class="comment-button">
 </form>
 <!-- 버튼 영역 -->
 <div class="center">
     <!-- 이전 페이지로 돌아가기 버튼 -->
-    <a href="/md_boardMain?id=<%= userId %>&username=<%= username %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
+    <a href="/md_mainBoard?id=<%= userId %>&username=<%= userName %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
     <!-- 수정 버튼 -->
-    <a href="/md_editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">수정</a>
+    <a href="/md_editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= userName %>&user_realname=<%= userRealName %>" class="button">수정</a>
     <!-- 삭제 버튼 -->
-    <a href="/md_deletePost/<%= post.id %>?user_id=<% userId %>&username=<%= username %>&user_realname=<%= userRealName %>" class="button">삭제</a>
+    <a href="/md_deletePost/<%= post.id %>?user_id=<% userId %>&username=<%= userName %>&user_realname=<%= userRealName %>" class="button">삭제</a>
 </div>
 <script src="/js/jquery.js"></script>
 <script>
@@ -302,7 +302,7 @@
                             <input type="hidden" name="post_id" value="<%= post.id %>">
                             <input type="hidden" name="author_id" value="<%= userId %>">
                             <input type="hidden" name="comment_id" value="${commentId}">
-                            <textarea class="inp_textarea" name="content" placeholder="'<%= username%>'님 댓글을 남겨보세요."></textarea>
+                            <textarea class="inp_textarea" name="content" placeholder="'<%= userName %>'님 댓글을 남겨보세요."></textarea>
                             <input type="submit" value="등록" class="comment-button">
                         </form>
                     </div>`;

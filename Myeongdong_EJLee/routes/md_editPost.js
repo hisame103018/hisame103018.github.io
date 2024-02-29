@@ -12,9 +12,10 @@ router.get('/:id', async (req, res) => {
     }
 
     const postId = req.params.id;
-    const userId = req.params.user_id;
+    const userId = req.params.userId;
     const userName = req.query.username;
-    const userRealName = req.query.user_realname;
+    const userRealName = req.query.userRealName;
+
     let conn;
     try {
         conn = await oracledb.getConnection(dbConfig);
@@ -26,14 +27,15 @@ router.get('/:id', async (req, res) => {
             { fetchInfo: { content: { type: oracledb.STRING }}}
         );
 
-        const post = {
+        const md_posts = {
             id: result.rows[0][0],
-            title: result.rows[0][3],
-            content: result.rows[0][4]
+            title: result.rows[0][2],
+            content: result.rows[0][3]
         };
 
         res.render('md_editPost', {
-            post: post,
+            md_posts: md_posts,
+            post: postId,
             userId: userId,
             userName: userName,
             userRealName: userRealName
@@ -63,7 +65,7 @@ router.post('/:id', async (req, res) => {
 
         // 게시글 수정
         await conn.execute(
-            `update posts set title = :title, content = :content where id = :id`,
+            `update md_posts set title = :title, content = :content where id = :id`,
             [title, content, postId]
         );
 

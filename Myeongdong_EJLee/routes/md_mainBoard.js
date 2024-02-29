@@ -68,7 +68,7 @@ router.get('/', async (req, res) => {
         const startPage = (totalPages - currentPage) < MAX_PAGE_LIMIT ? Math.max(totalPages - MAX_PAGE_LIMIT + 1, 1) : currentPage;
         const endPage = Math.min(startPage + MAX_PAGE_LIMIT - 1, totalPages);
         console.log(`result.rows: ${JSON.stringify(result.rows)}`);
-        console.log(`result.rows[0].id: ${result.rows[0].id}`);
+        console.log(`result.rows[0][0]: ${result.rows[0][0]}`);
 
         res.render('md_index', {
             userId: loggedInUserId,

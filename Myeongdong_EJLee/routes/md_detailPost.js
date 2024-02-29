@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
 
         // 조회수 증가 처리
         await conn.execute(
-            `update posts set views = views + 1 where id = :id`
+            `update md_posts set views = views + 1 where id = :id`,
                 [postId]
         );
 
@@ -31,12 +31,12 @@ router.get('/:id', async (req, res) => {
 
         // 게시글 정보 가져오기
         const postResult = await conn.execute(
-            `select p.id, p.category, p.title, u.username as author, p.content, to_char(p.create_at, 'YYYY-MM-DD') as created_at, p.views
-            from posts p
+            `select p.id, p.category_name, p.title, u.username as author, p.content, to_char(p.created_at, 'YYYY-MM-DD') as created_at, p.views
+            from md_posts p
             join users u on p.author_id = u.id
             where p.id = :id`,
             [postId],
-            { fetchInfo: { content: { type: oracledb.string } } }
+            { fetchInfo: { content: { type: oracledb.STRING } } }
         );
 
         // 댓글 가져오기
@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
             where c.post_id = :id
             order by c.id`,
             [postId],
-            { fetchInfo: { content: { type: oracledb.string } } }
+            { fetchInfo: { content: { type: oracledb.STRING } } }
         );
 
         // 댓글과 댓글의 답글을 구성하기 위한 사용자 정의 자료구조 생성
@@ -77,18 +77,21 @@ router.get('/:id', async (req, res) => {
                 parentComment.children.push(comment);
             }
         });
-        const post = {
+        const md_posts = {
             id: postResult.rows[0][0],
-            categories: postResult.rows[0][1],
+            category_id: postResult.rows[0][1],
             title: postResult.rows[0][2],
             author: postResult.rows[0][3],
             content: postResult.rows[0][4],
             created_at: postResult.rows[0][5],
             views: postResult.rows[0][6],
-            likes: postResult.rows[0][7]
+            likes: postResult.rows[0][7],
+            file_original_name: postResult.rows[0][8],
+            file_stored_name: postResult.rows[0][9]
         };
-        res.render('md_detailPost', {
-            post: post,
+        res.render('/md_detailPost', {
+            md_posts: md_posts,
+            post: postId,
             userId: userId,
             userName: userName,
             userRealName: userRealName,
