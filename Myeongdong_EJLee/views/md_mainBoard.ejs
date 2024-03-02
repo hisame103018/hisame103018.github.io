@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명동역 커뮤니티</title>
+    <style>
+        /* 게시글 테이블 style */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f0ffff;
+            border-bottom: 1px dotted #999;
+        }
+        td {
+            background-color: #fff;
+            border-bottom: 1px dotted #999;
+        }
+        /* 게시글 테이블 사이즈 정렬 */
+        tr > :nth-child(1), tr > :nth-child(5) {
+            width: 10%;
+        }
+        tr > :nth-child(2) {
+            width: 40%;
+        }
+        /* 게시글 영역 */
+        .post-link {
+            text-decoration: none;
+            color: #000;
+        }
+        .post-link:hover {
+            text-decoration: underline;
+        }
+        /* 글쓰기 영역 */
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+        /* form 가운데 정렬 */
+        form {
+            text-align: center;
+        }
+        /* 페이지 수 영역 */
+        .paging-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .paging-container a {
+            margin: 0 5px;
+        }
+        /* 검색 스타일 */
+        .search_select {
+            width: 75px;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 5px;
+            align-items: center;
+        }
+        /* 주제 분류 스타일 */
+        .cate_select {
+            width: 200px;
+            padding: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 5px;
+            align-items: center;
+        }
+        .filter-input {
+            width: 186px;
+            padding: 6px;
+            font-size: 14px;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 5px;
+            align-items: center;
+        }
+        /* 공통 버튼 스타일 */
+        .button {
+            display: inline-block;
+            background-color: #87cefa;
+            color: #000;
+            padding: 6px 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 0;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #00BFFF;
+        }
+    </style>
+</head>
+<body>
+<h2 align="center">게시판</h2>
+<!-- 로그인 영역 -->
+<div style="position: absolute; top: 10px; right: 10px;">
+    <% if (userRealName) { %>
+        <p><%= userRealName %>님 환영합니다. &nbsp;&nbsp;<a href="/logout" class="button">로그아웃</a></p>
+    <% } else { %>
+        <a href="/login" class="button">로그인</a>
+    <% } %>
+</div>
+<!-- 게시글 영역 -->
+<table>
+    <thead>
+    <tr>
+        <th>주제</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for (let i = 0; i < posts.length; i++) { %>
+        <tr>
+            <td><%= md_posts[i][1] %></td>
+            <td><a href="/md_detailPost/<%= md_posts[i][0] %>" class="post-link"><%= md_posts[i][2] %> [<%= md_posts[i][6] %>] </a></td>
+            <td><%= md_posts[i][3] %></td>
+            <td><%= md_posts[i][4] %></td>
+            <td><%= md_posts[i][5] %></td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+<!-- 글쓰기 버튼 영역 -->
+<div class="button-container">
+    <% if (userRealName) { %>
+        <a href="/md_create" class="button">글쓰기</a>
+    <% } %>
+</div>
+<!-- 페이징 -->
+<div class="paging-container">
+    <% if (currentPage > 1) { %>
+        <a href="/md_mainBoard/?page=<%= currentPage - 1 %>">이전</a>
+    <% } %>
+
+    <% for (let i = startPage; i <= endPage; i++) { %>
+        <% if (i === currentPage) { %>
+            <span class="current-page"><%= i %></span>
+        <% } else { %>
+            <a href="/md_mainBoard/?page=<%= i %>"><%= i %></a>
+        <% } %>
+    <% } %>
+
+    <% if ((totalPages - currentPage + 1) > maxPageNumber) { %>
+        <a href="/md_mainBoard/?page=<%= currentPage + 1 %>">다음</a>
+    <% } %>
+</div>
+<!-- 검색 영역 -->
+<div id="searchContainer">
+    <form action="/md_mainBoard" method="get">
+        <label for="searchType">찾기 </label>
+        <select id="searchType" class="search_select" onchange="handleFilterChange()">
+            <option value="title">제목</option>
+            <option value="author">작성자</option>
+            <option value="content">내용</option>
+            <option value="category">주제</option>
+        </select>
+        <select id="searchSelect" class="cate_select" style="display: none;">
+            <!-- 말머리에 해당하는 옵션들을 추가 -->
+            <option value="0">  </option>
+            <option value="1">명소</option>
+            <option value="2">맛집</option>
+            <option value="3">숙소</option>
+        </select>
+        <input type="text" id="searchInput" class="filter-input" placeholder="검색어를 입력하세요">
+        <button type="submit" class="button">검색</button>
+    </form>
+</div>
+<script>
+    // 검색조건 스크립트
+    function handleFilterChange() {
+        var searchType = document.getElementById("searchType");
+        var searchSelect = document.getElementById("searchSelect");
+        var searchInput = document.getElementById("searchInput");
+
+        // 모든 필터와 입력란을 숨김
+        searchSelect.style.display = "none";
+        searchInput.style.display = "none";
+
+        // 선택된 필터에 따라 해당 필터와 입력란을 보여줌
+        if (searchType.value === "category") {
+            searchSelect.style.display = "inline-block";
+        } else {
+            searchInput.style.display = "inline-block";
+        }
+    }
+</script>
+</body>
+</html>

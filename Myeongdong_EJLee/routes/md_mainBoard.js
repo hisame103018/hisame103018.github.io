@@ -31,11 +31,14 @@ router.get('/', async (req, res) => {
 
         // 검색 조건에 따른 SQL 쿼리 작성
         let searchCondition = ''; // 기본적으로 검색 조건 없음
+        let searchSelectCondition = { };
 
-        if (req.query.searchType && req.query.searchInput) {
+
+        if ((req.query.searchType && req.query.searchInput) || req.query.searchSelect) {
             const searchType = req.query.searchType;
             const searchInput = req.query.searchInput;
-            const categoryId = req.query.categories;
+            const searchSelect = req.query.searchSelect;
+
 
             // 검색 조건에 따라 where 절 설정
             if (searchType === 'title') {
@@ -45,18 +48,20 @@ router.get('/', async (req, res) => {
             } else if (searchType === 'content') {
                 searchCondition = `and p.content like '%${searchInput}%'`;
             } else if (searchType === 'category') {
-                searchCondition = `and p.category_id = '${categoryId}'`;
+                searchSelectCondition = { category: searchSelect };
             }
         }
 
-        const sql_query = `SELECT id, category_id, title, author, TO_CHAR(created_at, 'YYYY-MM-DD'), views, category_name,
-                               (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comments_count
-                                from ( select p.id, p.category_id, p.title, u.username as author, p.created_at, p.views, p.category_name,
-                                              row_number() over (${orderByClause}) as rn
+        const sql_query = `SELECT id, category_id, title, author, TO_CHAR(created_at, 'YYYY-MM-DD'), views, category,
+                                  (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comments_count
+                                from ( select p.id, p.category_id, p.title, u.username as author, p.created_at, p.views, p.category_name as category,
+                                              row_number() over (ORDER BY p.created_at DESC) as rn
                                        from md_posts p join users u on p.author_id = u.id
-                                       where 1=1 ${searchCondition}
+                                       where 1=1
+                                           ${searchCondition}
                                        ) p
                                 where rn between :startRow and :endRow`;
+
         result = await conn.execute(sql_query,
             {
                 startRow: startRow,

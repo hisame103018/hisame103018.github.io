@@ -1,7 +1,12 @@
 // routes/addComment.js
 const express = require('express');
 const oracledb = require('oracledb');
+const bodyParser = require('body-parser');
 const dbConfig = require('../dbConfig');
+const session = require('express-session');
+const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
 
 const router = express.Router();
 

@@ -31,7 +31,8 @@ router.get('/:id', async (req, res) => {
 
         // 게시글 정보 가져오기
         const postResult = await conn.execute(
-            `select p.id, p.category_name, p.title, u.username as author, p.content, to_char(p.created_at, 'YYYY-MM-DD') as created_at, p.views
+            `select p.id, p.category_name, p.title, u.username as author, p.content, to_char(p.created_at, 'YYYY-MM-DD') as created_at, p.views,
+                    p.likes, p.file_original_name, p.file_stored_name
             from md_posts p
             join users u on p.author_id = u.id
             where p.id = :id`,
@@ -79,7 +80,7 @@ router.get('/:id', async (req, res) => {
         });
         const md_posts = {
             id: postResult.rows[0][0],
-            category_id: postResult.rows[0][1],
+            category_name: postResult.rows[0][1],
             title: postResult.rows[0][2],
             author: postResult.rows[0][3],
             content: postResult.rows[0][4],

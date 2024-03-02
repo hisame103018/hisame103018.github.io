@@ -19,9 +19,9 @@ const port = 3000;
 
 app.set('view engine', 'ejs');
 const WEB_SERVER_HOME = 'C:\\EJLee\\Util\\nginx-1.24.0\\html';
-// 비대면 PC 경로
-// const WEB_SERVER_HOME = 'D:\\EJLEE\\Util\\nginx-1.24.0\\html';
+// const WEB_SERVER_HOME = 'D:\\EJLEE\\Util\\nginx-1.24.0\\html'; // 비대면 PC 경로
 const UPLOAD_FOLDER = path.join('C:\\EJLee\\Util\\nginx-1.24.0\\html\\uploads', 'uploads');
+// const UPLOAD_FOLDER = path.join('D:\\EJLEE\\Util\\nginx-1.24.0\\html\\uploads', 'uploads'); // 비대면 전용 로드
 app.use(express.static(WEB_SERVER_HOME + '/'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({

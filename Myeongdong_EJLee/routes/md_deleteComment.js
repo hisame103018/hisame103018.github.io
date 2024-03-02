@@ -5,9 +5,10 @@ const dbConfig = require('../dbConfig');
 
 const router = express.Router();
 
-router.get('/:id', async (req, res) => {
+// POST 요청 처리
+router.post('/:id', async (req, res) => {
     // 로그인 여부 확인
-    if(!req.session.loggedIn) {
+    if (!req.session.loggedIn) {
         return res.redirect('/login'); // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
     }
 
@@ -20,7 +21,7 @@ router.get('/:id', async (req, res) => {
 
         // 댓글 삭제
         await conn.execute(
-            `delete from comments where id = :id or parent_comment_id = :parent_commnet_id`,
+            `DELETE FROM comments WHERE id = :id OR parent_comment_id = :parent_comment_id`,
             { id: commentId, parent_comment_id: commentId }
         );
 
@@ -42,5 +43,6 @@ router.get('/:id', async (req, res) => {
         }
     }
 });
+
 
 module.exports = router;
