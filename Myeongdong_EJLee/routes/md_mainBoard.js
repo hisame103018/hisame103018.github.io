@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 
         // 검색 조건에 따른 SQL 쿼리 작성
         let searchCondition = ''; // 기본적으로 검색 조건 없음
-        let searchSelectCondition = { };
+        let searchSelectCondition = '';
 
 
         if ((req.query.searchType && req.query.searchInput) || req.query.searchSelect) {
@@ -48,19 +48,21 @@ router.get('/', async (req, res) => {
             } else if (searchType === 'content') {
                 searchCondition = `and p.content like '%${searchInput}%'`;
             } else if (searchType === 'category') {
-                searchSelectCondition = { category: searchSelect };
+                searchSelectCondition = `and p.category = '${searchSelect}'`;
             }
         }
 
-        const sql_query = `SELECT id, category_id, title, author, TO_CHAR(created_at, 'YYYY-MM-DD'), views, category,
+        const sql_query = `SELECT id, category, author, title, TO_CHAR(created_at, 'YYYY-MM-DD'), views,
                                   (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comments_count
-                                from ( select p.id, p.category_id, p.title, u.username as author, p.created_at, p.views, p.category_name as category,
-                                              row_number() over (ORDER BY p.created_at DESC) as rn
-                                       from md_posts p join users u on p.author_id = u.id
-                                       where 1=1
-                                           ${searchCondition}
-                                       ) p
-                                where rn between :startRow and :endRow`;
+                           from ( select p.id, p.category, u.username as author, p.title, p.created_at, p.views,
+                                         row_number() over (ORDER BY p.created_at DESC) as rn
+                                  from md_posts p join users u on p.author_id = u.id
+                                  where 1=1
+                                      ${searchCondition}
+                                        ${searchSelectCondition}
+                                ) p
+                           where rn between :startRow and :endRow`;
+        console.log(sql_query);
 
         result = await conn.execute(sql_query,
             {
@@ -75,7 +77,7 @@ router.get('/', async (req, res) => {
         console.log(`result.rows: ${JSON.stringify(result.rows)}`);
         console.log(`result.rows[0][0]: ${result.rows[0][0]}`);
 
-        res.render('md_index', {
+        res.render('md_mainBoard', {
             userId: loggedInUserId,
             userName: loggedInUserName,
             userRealName: loggedInUserRealName,

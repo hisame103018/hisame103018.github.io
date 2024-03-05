@@ -136,11 +136,11 @@
     <tbody>
     <% for (let i = 0; i < posts.length; i++) { %>
         <tr>
-            <td><%= md_posts[i][1] %></td>
-            <td><a href="/md_detailPost/<%= md_posts[i][0] %>" class="post-link"><%= md_posts[i][2] %> [<%= md_posts[i][6] %>] </a></td>
-            <td><%= md_posts[i][3] %></td>
-            <td><%= md_posts[i][4] %></td>
-            <td><%= md_posts[i][5] %></td>
+            <td><%= posts[i][1] %></td>
+            <td><a href="/md_detailPost/<%= posts[i][0] %>" class="post-link"><%= posts[i][3] %> [<%= posts[i][6] %>] </a></td>
+            <td><%= posts[i][2] %></td>
+            <td><%= posts[i][4] %></td>
+            <td><%= posts[i][5] %></td>
         </tr>
     <% } %>
     </tbody>
@@ -168,28 +168,27 @@
     <% if ((totalPages - currentPage + 1) > maxPageNumber) { %>
         <a href="/md_mainBoard/?page=<%= currentPage + 1 %>">다음</a>
     <% } %>
-</div>
+</div><br>
 <!-- 검색 영역 -->
-<div id="searchContainer">
-    <form action="/md_mainBoard" method="get">
-        <label for="searchType">찾기 </label>
-        <select id="searchType" class="search_select" onchange="handleFilterChange()">
-            <option value="title">제목</option>
-            <option value="author">작성자</option>
-            <option value="content">내용</option>
-            <option value="category">주제</option>
-        </select>
-        <select id="searchSelect" class="cate_select" style="display: none;">
-            <!-- 말머리에 해당하는 옵션들을 추가 -->
-            <option value="0">  </option>
-            <option value="1">명소</option>
-            <option value="2">맛집</option>
-            <option value="3">숙소</option>
-        </select>
-        <input type="text" id="searchInput" class="filter-input" placeholder="검색어를 입력하세요">
-        <button type="submit" class="button">검색</button>
-    </form>
-</div>
+<form action="/md_mainBoard" method="get">
+    <label for="searchType">찾기 </label>
+    <select id="searchType" name="searchType" class="search_select" onchange="handleFilterChange()">
+        <option value="title">제목</option>
+        <option value="author">작성자</option>
+        <option value="content">내용</option>
+        <option value="category">주제</option>
+    </select>
+    <select id="searchSelect" name="searchSelect" class="cate_select" style="display: none;">
+        <!-- 말머리에 해당하는 옵션들을 추가 -->
+        <option value=" "> </option>
+        <option value="명소">명소</option>
+        <option value="맛집">맛집</option>
+        <option value="숙소">숙소</option>
+        <option value="기타/자유">기타/자유</option>
+    </select>
+    <input type="text" id="searchInput" name="searchInput" class="filter-input" placeholder="검색어를 입력하세요">
+    <button type="submit" class="button">검색</button>
+</form>
 <script>
     // 검색조건 스크립트
     function handleFilterChange() {

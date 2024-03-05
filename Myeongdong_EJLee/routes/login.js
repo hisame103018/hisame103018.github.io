@@ -39,7 +39,7 @@ async function varifyID(username, password) {
 
 router.get('/', async (req, res) => {
     // '/' 경로로의 요청은 Nginx에서 login.html을 처리하도록 리다이렉트
-    res.redirect('/login.html');
+    res.redirect('login.html');
 });
 
 // POST 요청 처리
@@ -59,7 +59,5 @@ router.post('/', bodyParser.urlencoded({extended: false}), async (req, res) => {
         res.render('loginFail', { username });
     }
 });
-
-
 
 module.exports = router;

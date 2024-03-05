@@ -321,7 +321,7 @@
                 const postId = '<%= post.id %>'; // 게시물 ID 가져오기
                 const editForm =
                     `<div class="comment edit-form">
-                        <form action="/editComment/${commentId}" method="post">
+                        <form action="/editComLJW/${commentId}" method="post">
                             <textarea class="inp_textarea" name="content" placeholder="댓글 수정 내용을 입력하세요" required>${commentContent}</textarea>
                             <input type="hidden" name="post_id" value="${postId}">
                             <input type="submit" value="수정 완료" class="comment-buttons">

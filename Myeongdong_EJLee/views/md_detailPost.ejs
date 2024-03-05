@@ -123,7 +123,7 @@
         }
         /* 수정 및 삭제 달기 버튼 */
         .comment-buttons button {
-            margin-right: 5px;
+            margin-right: auto;
             background-color: #1e90ff;
             color: #fff;
             padding: 7.5px;
@@ -162,7 +162,7 @@
 </div>
 <table>
     <tr> <!-- 말머리, 제목 영역 -->
-        <td class="td_head"> <%= md_posts.category_id %> </td> <!-- 말머리 -->
+        <td class="td_head"> <%= md_posts.category %> </td> <!-- 말머리 -->
         <td class="td_headTitle" colspan="4"> <%= md_posts.title %> </td> <!-- 제목 -->
     </tr>
     <tr> <!-- 글쓴이, 작성일, 조회수, 좋아요 영역 -->
@@ -179,10 +179,10 @@
                     <!-- 멀티 파일인 경우 구분자가 ; 이므로 ;를 기준으로 파일명만 배열로 수집 -->
                     <% const originalNames = md_posts.file_original_name.split(';'); %>
                     <% const storedNames = md_posts.file_stored_name.split(';'); %>
-                    <% for(let i = 0; i < originalNames.length; i++) { %>
+                    <% for (let i = 0; i < originalNames.length; i++) { %>
                         <!-- 파일은 XXX.jpg 이런식의 패턴이므로 . 으로 split 한 후에 pop 하면 결국 파일 확장자를 얻을 수 있다. -->
                         <% const extension = originalNames[i].split('.').pop(); %>
-                        <% if (['jpg', 'jpeg', 'gif', 'png'].includes(extension)) { %>
+                        <% if (['jpg', 'jpeg', 'png'].includes(extension)) { %>
                             <li style="text-align: center;">
                                 <img src="/uploads/<%= storedNames[i] %>" alt="<%= originalNames[i] %>" style="max-width: 100%; height: auto;">
                             </li>
@@ -233,8 +233,8 @@
                             <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
                             <% if (comment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
                             <button class="edit-button" data-comment-id="<%= comment.id %>">수정</button> <!-- 'data-comment-id' 속성 추가 -->
-                            <form action="/deleteComment/<%= comment.id %>" method="post" style="display: inline;">
-                                <input type="hidden" name="post_id" value="<%= post.id %>">
+                            <form action="/md_deleteComment/<%= comment.id %>" method="post" style="display: inline;">
+                                <input type="hidden" name="post_id" value="<%= md_posts.id %>">
                                 <button type="submit">삭제</button>
                             </form>
                             <% } %>
@@ -253,8 +253,8 @@
                                         <a href="#" class="reply-button" data-comment-id="<%= comment.id %>">답글쓰기</a>
                                         <% if (childComment.author_id == userId) { %> <!-- 작성자 본인의 댓글일 경우 -->
                                         <button class="edit-button" data-comment-id="<%= childComment.id %>">수정</button>
-                                        <form action="/deleteComment/<%= childComment.id %>" method="post" style="display: inline">
-                                            <input type="hidden" name="post_id" value="<%= post.id %>">
+                                        <form action="/md_deleteComment/<%= childComment.id %>" method="post" style="display: inline">
+                                            <input type="hidden" name="post_id" value="<%= md_posts.id %>">
                                             <button type="submit">삭제</button>
                                         </form>
                                         <% } %>
@@ -271,8 +271,10 @@
     </tr>
 </table>
 <!-- 댓글 영역 -->
-<form class="comment-form" action="/addComment?post_id=<%= post.id %>&author_id=<% userId %>" method="post">
+<form class="comment-form" action="/md_addComment?post_id=<%= md_posts.id %>&author_id=<% userId %>" method="post">
     <textarea class="inp_textarea" name="content" placeholder="'<%= userName %>'님 댓글을 남겨보세요."></textarea>
+    <input type="hidden" name="post_id" value="<%= md_posts.id %>">
+    <input type="hidden" name="author_id" value="<%= userId %>">
     <input type="submit" value="등록" class="comment-button">
 </form>
 <!-- 버튼 영역 -->
@@ -280,9 +282,9 @@
     <!-- 이전 페이지로 돌아가기 버튼 -->
     <a href="/md_mainBoard?id=<%= userId %>&username=<%= userName %>&name=<%= userRealName %>" class="button">이전 페이지로 돌아가기</a>
     <!-- 수정 버튼 -->
-    <a href="/md_editPost/<%= post.id %>?user_id=<%= userId %>&username=<%= userName %>&user_realname=<%= userRealName %>" class="button">수정</a>
+    <a href="/md_editPost/<%= md_posts.id %>?user_id=<%= userId %>&username=<%= userName %>&user_realname=<%= userRealName %>" class="button">수정</a>
     <!-- 삭제 버튼 -->
-    <a href="/md_deletePost/<%= post.id %>?user_id=<% userId %>&username=<%= userName %>&user_realname=<%= userRealName %>" class="button">삭제</a>
+    <a href="/md_deletePost/<%= md_posts.id %>?user_id=<%= userId %>&username=<%= userName %>&user_realname=<%= userRealName %>" class="button">삭제</a>
 </div>
 <script src="/js/jquery.js"></script>
 <script>
@@ -290,7 +292,7 @@
         // 답글쓰기 버튼 클릭 시 해당 댓글 아래에 답글 입력 폼을 표시하는 함수
         $('.reply-button').click(function (e) {
             e.preventDefault();
-            const commentId = $(this).data('commentId');
+            const comment_id = $(this).data('comment_id');
             // closest: 현재 클릭된 요소 중 가장 가까운 부모 요소를 찾는 메소드
             // closest('.comment-buttons') 가장 가까운 요소 중 클래스가 .comment-buttons
             // 인 요소를 찾아 반환
@@ -298,10 +300,10 @@
             if (replyForm.length === 0) {
                 const newReplyForm =
                     `<div class="comment reply-form">
-                        <form action="/addComment" method="post">
-                            <input type="hidden" name="post_id" value="<%= post.id %>">
+                        <form action="/md_addComment" method="post">
+                            <input type="hidden" name="post_id" value="<%= md_posts.id %>">
                             <input type="hidden" name="author_id" value="<%= userId %>">
-                            <input type="hidden" name="comment_id" value="${commentId}">
+                            <input type="hidden" name="comment_id" value="${comment_id}">
                             <textarea class="inp_textarea" name="content" placeholder="'<%= userName %>'님 댓글을 남겨보세요."></textarea>
                             <input type="submit" value="등록" class="comment-button">
                         </form>
@@ -313,17 +315,17 @@
         $(document).on('click', '.edit-button', function(e) {
             e.preventDefault();
             const commentArea = $(this).closest('.comment');
-            const commentId = $(this).data('commentId');
+            const comment_id = $(this).data('commentId');
             const existingForm = commentArea.find('.edit-form');
             if (existingForm.length === 0) {
-                const commentContent = commentArea.find(`.comment-content[data-comment-id="${commentId}"]`).text().trim();
+                const commentContent = commentArea.find(`.comment-content[data-comment-id="${comment_id}"]`).text().trim();
                 // 수정후 상세 페이지 리다이렉시시 필요한 게시글 id를 지정
-                const postId = '<%= post.id %>'; // 게시물 ID 가져오기
+                const post_id = '<%= md_posts.id %>'; // 게시물 ID 가져오기
                 const editForm =
                     `<div class="comment edit-form">
-                        <form action="/editComment/${commentId}" method="post">
+                        <form action="/md_editComment/${comment_id}" method="post">
                             <textarea class="inp_textarea" name="content" placeholder="댓글 수정 내용을 입력하세요" required>${commentContent}</textarea>
-                            <input type="hidden" name="post_id" value="${postId}">
+                            <input type="hidden" name="post_id" value="${post_id}">
                             <input type="submit" value="수정 완료" class="comment-buttons">
                         </form>
                     </div>`;

@@ -26,7 +26,6 @@ CREATE TABLE categories (
     name VARCHAR2(255) UNIQUE
 );
 
-INSERT INTO categories (id, name) values (0, '');
 INSERT INTO categories (id, name) values (1, '명소');
 INSERT INTO categories (id, name) values (2, '맛집');
 INSERT INTO categories (id, name) values (3, '숙소');
@@ -34,8 +33,7 @@ INSERT INTO categories (id, name) values (3, '숙소');
 -- 게시글 테이블 생성
 CREATE TABLE md_posts (
                        id NUMBER PRIMARY KEY,
-                       category_id NUMBER,
-                       category_name varchar2(255),
+                       category_id VARCHAR2(50),
                        author_id NUMBER,
                        title VARCHAR2(255),
                        content CLOB,
@@ -51,14 +49,9 @@ CREATE TABLE md_posts (
 
 BEGIN
 FOR i IN 1..55 LOOP
-    INSERT INTO md_posts (id, category_name, title, content, author_id, created_at)
+    INSERT INTO md_posts (id, category_id, title, content, author_id, created_at)
     VALUES (post_id_seq.nextval,
-            case round(dbms_random.value(1,4))
-                when 0 then ''
-                when 1 then '명소'
-                when 2 then '맛집'
-                when 3 then '숙소'
-            end,
+            ROUND(DBMS_RANDOM.VALUE(1, 3)),
             '게시글 제목 ' || i,
             '게시글 내용 ' || i,
             ROUND(DBMS_RANDOM.VALUE(1, 3)),
@@ -88,14 +81,3 @@ CREATE TABLE comments (
                           FOREIGN KEY (parent_comment_id) REFERENCES comments(id)
 );
 commit;
-
--- 검색 조건 등록
-SELECT id, category_id, title, author, TO_CHAR(created_at, 'YYYY-MM-DD'), views, category,
-       (SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comments_count
-from ( select p.id, p.category_id, p.title, u.username as author, p.created_at, p.views, p.category_name as category,
-              row_number() over (ORDER BY p.created_at DESC) as rn
-       from md_posts p join users u on p.author_id = u.id
-       where 1=1
-         and p.title like '%50%'
-     ) p
-where rn between 1 and 10;

@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
         // 조회수 증가 처리
         await conn.execute(
             `update md_posts set views = views + 1 where id = :id`,
-                [postId]
+            [postId]
         );
 
         // 변경 사항을 커밋
@@ -31,13 +31,13 @@ router.get('/:id', async (req, res) => {
 
         // 게시글 정보 가져오기
         const postResult = await conn.execute(
-            `select p.id, p.category_name, p.title, u.username as author, p.content, to_char(p.created_at, 'YYYY-MM-DD') as created_at, p.views,
+            `select p.id, p.category, p.title, u.username as author, p.content, to_char(p.created_at, 'YYYY-MM-DD') as created_at, p.views,
                     p.likes, p.file_original_name, p.file_stored_name
             from md_posts p
-            join users u on p.author_id = u.id
+                join users u on p.author_id = u.id
             where p.id = :id`,
             [postId],
-            { fetchInfo: { content: { type: oracledb.STRING } } }
+            { fetchInfo: { CONTENT: { type: oracledb.STRING } } }
         );
 
         // 댓글 가져오기
@@ -80,7 +80,7 @@ router.get('/:id', async (req, res) => {
         });
         const md_posts = {
             id: postResult.rows[0][0],
-            category_name: postResult.rows[0][1],
+            category: postResult.rows[0][1],
             title: postResult.rows[0][2],
             author: postResult.rows[0][3],
             content: postResult.rows[0][4],
@@ -90,7 +90,7 @@ router.get('/:id', async (req, res) => {
             file_original_name: postResult.rows[0][8],
             file_stored_name: postResult.rows[0][9]
         };
-        res.render('/md_detailPost', {
+        res.render('C:\\EJLee\\Project\\2_WebProject\\1_FrontEnd\\MyPortpolio\\Myeongdong_EJLee\\views\\md_detailPost.ejs', {
             md_posts: md_posts,
             post: postId,
             userId: userId,

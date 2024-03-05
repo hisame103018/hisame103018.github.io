@@ -13,7 +13,7 @@ router.get('/:id', async (req, res) => {
 
     const postId = req.params.id;
     const userId = req.params.userId;
-    const userName = req.query.username;
+    const userName = req.query.userName;
     const userRealName = req.query.userRealName;
 
     let conn;
@@ -22,15 +22,16 @@ router.get('/:id', async (req, res) => {
 
         // 게시글 정보 가져오기
         const result = await conn.execute(
-            `select * from posts where id = :id`,
+            `select * from md_posts where id = :id`,
             [postId],
             { fetchInfo: { content: { type: oracledb.STRING }}}
         );
 
         const md_posts = {
             id: result.rows[0][0],
-            title: result.rows[0][2],
-            content: result.rows[0][3]
+            category: result.rows[0][2],
+            title: result.rows[0][3],
+            content: result.rows[0][4]
         };
 
         res.render('md_editPost', {
@@ -56,7 +57,7 @@ router.get('/:id', async (req, res) => {
 
 // POST 요청 처리
 router.post('/:id', async (req, res) => {
-    const { title, content } = req.body;
+    const { category, title, content } = req.body;
     const postId = req.params.id;
 
     let conn;
@@ -65,8 +66,8 @@ router.post('/:id', async (req, res) => {
 
         // 게시글 수정
         await conn.execute(
-            `update md_posts set title = :title, content = :content where id = :id`,
-            [title, content, postId]
+            `update md_posts set category = :category, title = :title, content = :content where id = :id`,
+            [category, title, content, postId]
         );
 
         // 변경 사항 커밋
